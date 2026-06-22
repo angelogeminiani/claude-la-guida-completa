@@ -109,6 +109,3 @@ docs.claude.com, code.claude.com, support.claude.com e anthropic.com.
 
 Per errata, imprecisioni o richieste di rimozione di contenuti, apri una
 *issue* su GitHub o contatta l'autore.
-
-> Questo documento fornisce informazioni di carattere generale e non
-> costituisce consulenza legale.
