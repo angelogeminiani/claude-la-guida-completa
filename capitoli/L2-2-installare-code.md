@@ -1,4 +1,4 @@
-# Capitolo 2.2 — Installare Claude Code
+# Capitolo L2.2 — Installare Claude Code
 
 > Livello 2 — Installazione locale.
 > Dati di prodotto verificati il 21/06/2026 su fonti ufficiali.
@@ -14,7 +14,7 @@ direttamente sui file del tuo progetto.
 
 - Un account a pagamento: **Pro, Max, Team, Enterprise o Console (API)**.
   Il piano Free non include Claude Code (vedi cap. F.3 e il ledger). (VOLATILE)
-- Un terminale aperto. Se non l'hai mai usato, vedi il cap. 2.1.
+- Un terminale aperto. Se non l'hai mai usato, vedi il cap. L2.1.
 - Connessione internet attiva.
 
 ## Quale metodo scegliere (EVERGREEN)
@@ -23,7 +23,7 @@ Esistono piu modi di installare, ma per quasi tutti la scelta e semplice:
 il **native installer**. Non richiede Node.js e si aggiorna da solo in
 background. Gli altri metodi servono in casi specifici.
 
-*Figura 2.2.1 — Albero di decisione per il metodo di installazione.*
+*Figura L2.2.1 — Albero di decisione per il metodo di installazione.*
 Alt-text: diagramma verticale che guida dalla scelta del metodo.
 
 ```mermaid
@@ -74,7 +74,7 @@ Bash tool. Senza Git, Claude Code usa il PowerShell tool.
 
 ## Metodi alternativi (VOLATILE)
 
-Tabella 2.2.1 — Quando usare un metodo diverso.
+Tabella L2.2.1 — Quando usare un metodo diverso.
 
 | Metodo | Comando | Aggiornamento |
 |---|---|---|
@@ -145,7 +145,7 @@ con il normale gestore di sistema.
 
 ## Prossimo passo
 
-Nel **cap. 2.3 — Autenticazione e primi controlli** completiamo il login,
+Nel **cap. L2.3 — Autenticazione e controlli** completiamo il login,
 vediamo l'uso con API key negli ambienti automatizzati e leggiamo l'output
 di `claude doctor` per risolvere i problemi piu frequenti.
 

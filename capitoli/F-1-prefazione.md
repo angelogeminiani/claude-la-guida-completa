@@ -1,4 +1,4 @@
-# Prefazione
+# F.1 — Prefazione
 
 > Front matter — Livello 0.
 > Dati di prodotto verificati il 22/06/2026 su fonti ufficiali.
@@ -61,9 +61,11 @@ I **tag** dicono quanto è stabile un'informazione. *(EVERGREEN)* indica concett
 che cambiano di rado. *(VOLATILE)* indica dati che possono cambiare presto:
 versioni, comandi, prezzi, nomi di menu.
 
-Le **figure** sono numerate per capitolo (es. Figura 2.1.1) e hanno sempre una
+Le **figure** sono numerate per capitolo e hanno sempre una
 breve didascalia e un testo alternativo, così restano comprensibili anche a chi
-usa lettori di schermo o legge una versione senza immagini.
+usa lettori di schermo o legge una versione senza immagini. L'identificativo
+unisce il capitolo e la progressione: la prima figura del cap. L2.1 è la
+Figura L2.1.1, la prima tabella del front matter F.2 è la Tabella F.2.1.
 
 ## Una nota onesta sul prodotto che cambia (EVERGREEN)
 

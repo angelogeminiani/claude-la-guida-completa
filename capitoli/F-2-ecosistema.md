@@ -1,4 +1,4 @@
-# L'ecosistema Claude
+# F.2 — L'ecosistema Claude
 
 > Front matter — Livello 0.
 > Dati di prodotto verificati il 22/06/2026 su fonti ufficiali.

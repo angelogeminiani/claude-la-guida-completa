@@ -1,4 +1,4 @@
-# Capitolo 2.1 — Installare Claude Desktop
+# Capitolo L2.1 — Installare Claude Desktop
 
 > Livello 2 — Installazione locale.
 > Dati di prodotto verificati il 22/06/2026 su fonti ufficiali.
@@ -15,7 +15,7 @@ senza passare dal browser.
 - Un account Claude (vedi cap. F.3). Per la sola **Chat** basta accedere;
   per **Cowork** serve un piano a pagamento. (VOLATILE)
 - Un computer **macOS o Windows**. Su Linux l'app non esiste: si usa la
-  CLI (vedi cap. 2.2). (VOLATILE)
+  CLI (vedi cap. L2.2). (VOLATILE)
 - Connessione internet attiva.
 
 ## Requisiti di sistema (VOLATILE)
@@ -23,7 +23,7 @@ senza passare dal browser.
 L'app gira su sistemi recenti. Su Mac un'unica build copre sia i processori
 Intel sia Apple Silicon; su Windows c'è una versione a parte per ARM64.
 
-Tabella 2.1.1 — Sistemi supportati.
+Tabella L2.1.1 — Sistemi supportati.
 
 | Sistema | Versione minima | Note |
 |---|---|---|
@@ -34,9 +34,9 @@ Tabella 2.1.1 — Sistemi supportati.
 ## Scaricare e installare (VOLATILE)
 
 Il percorso è lo stesso per tutti: una pagina di download, un file da aprire,
-un accesso. La figura 2.1.1 riassume il flusso, compreso il caso Linux.
+un accesso. La figura L2.1.1 riassume il flusso, compreso il caso Linux.
 
-*Figura 2.1.1 — Flusso di installazione di Claude Desktop.*
+*Figura L2.1.1 — Flusso di installazione di Claude Desktop.*
 Alt-text: diagramma verticale dal download alla scelta del tab.
 
 ```mermaid
@@ -56,7 +56,7 @@ flowchart TB
 Una volta dentro, l'app si divide in tre aree. È utile sapere subito quale
 serve a cosa, così non cerchi una funzione nel posto sbagliato.
 
-Tabella 2.1.2 — A cosa serve ogni tab.
+Tabella L2.1.2 — A cosa serve ogni tab.
 
 | Tab | A cosa serve |
 |---|---|
@@ -89,7 +89,7 @@ nelle cartelle che colleghi, e la rete segue le tue impostazioni di egress
 ## Errori comuni
 
 - **Sono su Linux e non trovo l'app.** Corretto: non esiste. Usa la CLI
-  (cap. 2.2).
+  (cap. L2.2).
 - **PC Windows ARM.** Scarica l'**installer ARM64** dedicato, non la x64.
 - **Cowork non parte (Windows).** Verifica il piano a pagamento e che la
   **Virtual Machine Platform** sia abilitata.
@@ -108,7 +108,7 @@ nelle cartelle che colleghi, e la rete segue le tue impostazioni di egress
 
 ## Prossimo passo
 
-Nel **cap. 2.2 — Installare Claude Code** vediamo la versione da riga di
+Nel **cap. L2.2 — Installare Claude Code** vediamo la versione da riga di
 comando (CLI), utile su Linux e per chi automatizza, e i metodi di
 installazione con la relativa manutenzione.
 

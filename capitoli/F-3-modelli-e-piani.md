@@ -1,4 +1,4 @@
-# Modelli e piani
+# F.3 — Modelli e piani
 
 > Front matter — Livello 0.
 > Dati di prodotto verificati il 22/06/2026 su fonti ufficiali.
@@ -52,7 +52,7 @@ Tabella F.3.2 — Cosa sblocca ogni piano.
 
 | Piano | Per chi | Cosa aggiunge |
 |---|---|---|
-| Free | provare | web search, file, 5 Projects |
+| Free | provare | Web search, file, 5 Projects |
 | Pro | singolo | Code, Cowork, Design, Research |
 | Max | uso intenso | usage 5x/20x, priorità |
 | Team | gruppi 5-150 | admin, SSO, deploy |
