@@ -65,8 +65,9 @@ Tabella L2.1.2 — A cosa serve ogni tab.
 | Code | sviluppo software in app |
 
 Chat è il punto di partenza. Cowork affida a Claude lavori in più passi su una
-cartella del tuo computer (lo vediamo nel Livello 3). Code porta in app le
-capacità della CLI (Livello 2 e seguenti).
+cartella del tuo computer (lo vediamo nel Livello 3); da qui parte anche il
+**Dispatch** (l'invio di un task perché prosegua a distanza, ripreso al Livello
+6). Code porta in app le capacità della CLI (Livello 2 e seguenti).
 
 ## In pratica: installa e accedi
 
