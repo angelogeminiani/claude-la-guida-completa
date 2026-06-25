@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1748" height="2480" viewBox="0 0 1748 2480">
+  <rect width="1748" height="2480" fill="#FAF9F5"/>
+
+  <!-- thin tonal frame -->
+  <rect x="70" y="70" width="1608" height="2340" fill="none"
+        stroke="#E7E2D6" stroke-width="3"/>
+
+  <!-- kicker -->
+  <text x="874.0" y="340" text-anchor="middle"
+        font-family="Liberation Sans, DejaVu Sans, sans-serif"
+        font-size="42" letter-spacing="14" fill="#CC785C">MANUALE OPERATIVO</text>
+
+  <!-- Claude mark -->
+  <line x1="874.0" y1="542.0" x2="874.0" y2="410.0" stroke="#D97757" stroke-width="30" stroke-linecap="round"/>
+<line x1="883.0" y1="544.4" x2="935.5" y2="453.5" stroke="#D97757" stroke-width="30" stroke-linecap="round"/>
+<line x1="889.6" y1="551.0" x2="1003.9" y2="485.0" stroke="#D97757" stroke-width="30" stroke-linecap="round"/>
+<line x1="892.0" y1="560.0" x2="997.0" y2="560.0" stroke="#D97757" stroke-width="30" stroke-linecap="round"/>
+<line x1="889.6" y1="569.0" x2="1003.9" y2="635.0" stroke="#D97757" stroke-width="30" stroke-linecap="round"/>
+<line x1="883.0" y1="575.6" x2="935.5" y2="666.5" stroke="#D97757" stroke-width="30" stroke-linecap="round"/>
+<line x1="874.0" y1="578.0" x2="874.0" y2="710.0" stroke="#D97757" stroke-width="30" stroke-linecap="round"/>
+<line x1="865.0" y1="575.6" x2="812.5" y2="666.5" stroke="#D97757" stroke-width="30" stroke-linecap="round"/>
+<line x1="858.4" y1="569.0" x2="744.1" y2="635.0" stroke="#D97757" stroke-width="30" stroke-linecap="round"/>
+<line x1="856.0" y1="560.0" x2="751.0" y2="560.0" stroke="#D97757" stroke-width="30" stroke-linecap="round"/>
+<line x1="858.4" y1="551.0" x2="744.1" y2="485.0" stroke="#D97757" stroke-width="30" stroke-linecap="round"/>
+<line x1="865.0" y1="544.4" x2="812.5" y2="453.5" stroke="#D97757" stroke-width="30" stroke-linecap="round"/>
+
+  <!-- title -->
+  <text x="874.0" y="990" text-anchor="middle"
+        font-family="Lora, DejaVu Serif, serif" font-weight="700"
+        font-size="300" fill="#1F1E1D">Claude</text>
+
+  <!-- accent rule -->
+  <line x1="724.0" y1="1110" x2="1024.0" y2="1110"
+        stroke="#D97757" stroke-width="8" stroke-linecap="round"/>
+
+  <!-- title 2 -->
+  <text x="874.0" y="1320" text-anchor="middle"
+        font-family="Lora, DejaVu Serif, serif" font-style="italic"
+        font-size="128" fill="#1F1E1D">la guida completa</text>
+
+  <!-- subtitle -->
+<text x="874.0" y="1640" text-anchor="middle" font-family="Liberation Sans, DejaVu Sans, sans-serif" font-size="50" fill="#73706B">Dal primo prompt all'automazione:</text>
+<text x="874.0" y="1710" text-anchor="middle" font-family="Liberation Sans, DejaVu Sans, sans-serif" font-size="50" fill="#73706B">Claude Code, Cowork, le skill e l'API</text>
+
+
+  <!-- author -->
+  <text x="874.0" y="2180" text-anchor="middle"
+        font-family="Lora, DejaVu Serif, serif" font-weight="700"
+        font-size="62" fill="#1F1E1D">Gian Angelo Geminiani</text>
+
+  <!-- edition -->
+  <text x="874.0" y="2270" text-anchor="middle"
+        font-family="Liberation Sans, DejaVu Sans, sans-serif"
+        font-size="38" letter-spacing="4" fill="#73706B">Edizione 2026  ·  Rev. 1</text>
+</svg>
