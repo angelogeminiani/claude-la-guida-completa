@@ -42,6 +42,7 @@ SOMMARIO.md Indice dei capitoli nell'ordine di lettura
 capitoli/   Capitoli del libro in Markdown (sorgente del testo)
 risorse/    Immagini, diagrammi e copertina (copertina.svg/.png)
 scripts/    Strumenti di build e QA per il formato A5
+docs/       Landing di presentazione (GitHub Pages) + PDF scaricabile
 LICENSE     Licenza MIT
 ```
 
@@ -78,6 +79,21 @@ Oppure la variante LaTeX (la cartella predefinita è `capitoli/`):
 bash scripts/check-a5.sh capitoli/
 bash scripts/build-a5.sh
 ```
+
+## Sito di presentazione
+
+La landing del libro è in `docs/` (HTML statico, un solo `index.html`, palette
+Claude.ai) e si pubblica su **GitHub Pages**:
+`https://angelogeminiani.github.io/claude-la-guida-completa/`.
+
+- **Attivazione (una volta):** repo *Settings → Pages → Build and deployment →
+  Source: Deploy from a branch → Branch: `main` / `/docs`*. Da lì ogni push che
+  modifica `docs/` aggiorna il sito (nessun workflow, nessuno scope token).
+- **Contenuti:** hero con download del PDF, valore del libro, i sei livelli, per
+  chi è, CTA finale; meta tag Open Graph/Twitter e immagine social `og-image.png`.
+- **Download:** `docs/manuale_produzione.pdf` è committato per il download diretto.
+- **Aggiornare gli asset del sito:** `bash scripts/build-site.sh` rigenera PDF,
+  immagine social e copertina dentro `docs/`.
 
 ## Errata e aggiornamenti
 

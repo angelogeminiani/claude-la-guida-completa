@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude: la guida completa — il manuale pratico in italiano (PDF gratis)</title>
+<meta name="description" content="Il manuale operativo in italiano per padroneggiare l'ecosistema Claude: chat, Claude Code, Cowork, Design, Skills, MCP e API. 33 capitoli, formato A5. Scarica il PDF gratis.">
+<link rel="canonical" href="https://angelogeminiani.github.io/claude-la-guida-completa/">
+<meta name="theme-color" content="#FAF9F5">
+<meta name="author" content="Gian Angelo Geminiani">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Claude: la guida completa">
+<meta property="og:title" content="Claude: la guida completa">
+<meta property="og:description" content="Dal primo prompt all'automazione. Il manuale pratico in italiano su tutto l'ecosistema Claude. 33 capitoli, A5, PDF gratis.">
+<meta property="og:url" content="https://angelogeminiani.github.io/claude-la-guida-completa/">
+<meta property="og:image" content="https://angelogeminiani.github.io/claude-la-guida-completa/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Copertina del libro Claude: la guida completa">
+<meta property="og:locale" content="it_IT">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Claude: la guida completa">
+<meta name="twitter:description" content="Il manuale pratico in italiano su tutto l'ecosistema Claude. 33 capitoli, A5, PDF gratis.">
+<meta name="twitter:image" content="https://angelogeminiani.github.io/claude-la-guida-completa/og-image.png">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cg stroke='%23D97757' stroke-width='3' stroke-linecap='round'%3E%3Cline x1='16' y1='5' x2='16' y2='27'/%3E%3Cline x1='5' y1='16' x2='27' y2='16'/%3E%3Cline x1='8' y1='8' x2='24' y2='24'/%3E%3Cline x1='24' y1='8' x2='8' y2='24'/%3E%3C/g%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,600;1,500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --cream:#FAF9F5; --ink:#1F1E1D; --coral:#D97757; --coral-d:#B65A3C;
+    --muted:#6B6760; --border:#E9E2D6; --card:#FFFFFF; --tint:#F4ECE3;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--cream); color:var(--ink);
+    font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    line-height:1.6; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px; margin:0 auto; padding:0 24px}
+  h1,h2,h3{font-family:Lora,Georgia,serif; line-height:1.15; font-weight:600}
+  a{color:var(--coral-d); text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  /* header */
+  header.nav{position:sticky; top:0; z-index:10;
+    background:rgba(250,249,245,.86); backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--border)}
+  .nav .wrap{display:flex; align-items:center; justify-content:space-between;
+    height:62px}
+  .brand{display:flex; align-items:center; gap:10px; font-family:Lora,serif;
+    font-weight:600; font-size:18px; color:var(--ink)}
+  .brand:hover{text-decoration:none}
+  .mark{width:22px; height:22px; flex:none}
+  .nav-cta{font-family:Inter; font-weight:600; font-size:14px}
+
+  /* buttons */
+  .btn{display:inline-flex; align-items:center; gap:9px; font-weight:700;
+    font-size:16px; padding:14px 26px; border-radius:999px; cursor:pointer;
+    border:1.5px solid transparent; transition:transform .08s ease, box-shadow .2s}
+  .btn:hover{text-decoration:none; transform:translateY(-1px)}
+  .btn-primary{background:var(--coral); color:#fff;
+    box-shadow:0 6px 20px rgba(217,119,87,.32)}
+  .btn-primary:hover{background:var(--coral-d); color:#fff}
+  .btn-ghost{background:transparent; color:var(--ink); border-color:var(--border)}
+  .btn-ghost:hover{border-color:var(--coral)}
+
+  /* hero */
+  .hero{padding:64px 0 32px}
+  .hero .grid{display:grid; grid-template-columns:1.15fr .85fr; gap:48px;
+    align-items:center}
+  .kicker{font-weight:700; letter-spacing:.16em; font-size:13px;
+    color:var(--coral-d); text-transform:uppercase; margin:0 0 18px}
+  .hero h1{font-size:clamp(40px,6vw,62px); margin:0 0 10px}
+  .rule{width:74px; height:4px; background:var(--coral); border-radius:2px;
+    margin:6px 0 20px}
+  .lead{font-size:19px; color:#3a362f; margin:0 0 28px; max-width:42ch}
+  .cta-row{display:flex; gap:14px; flex-wrap:wrap; align-items:center}
+  .meta{margin:20px 0 0; font-size:14px; color:var(--muted)}
+  .cover-shot{justify-self:center}
+  .cover-shot img{width:300px; max-width:78vw; border-radius:12px;
+    border:1px solid var(--border);
+    box-shadow:0 24px 48px rgba(31,30,29,.22), 0 4px 12px rgba(31,30,29,.10)}
+
+  /* sections */
+  section{padding:54px 0}
+  .section-head{text-align:center; max-width:60ch; margin:0 auto 36px}
+  .section-head h2{font-size:clamp(28px,4vw,38px); margin:0 0 12px}
+  .section-head p{color:var(--muted); margin:0; font-size:17px}
+
+  .cards{display:grid; grid-template-columns:repeat(4,1fr); gap:18px}
+  .card{background:var(--card); border:1px solid var(--border);
+    border-radius:14px; padding:22px}
+  .card .ic{width:34px; height:34px; margin-bottom:12px}
+  .card h3{font-size:18px; margin:0 0 6px}
+  .card p{margin:0; font-size:14.5px; color:#46423b}
+
+  /* levels */
+  .levels{background:var(--tint); border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border)}
+  .lvl-list{display:grid; grid-template-columns:1fr 1fr; gap:14px 28px;
+    max-width:920px; margin:0 auto}
+  .lvl{display:flex; gap:14px; padding:14px 0;
+    border-bottom:1px solid var(--border)}
+  .lvl .n{font-family:Lora,serif; font-weight:600; color:var(--coral-d);
+    font-size:15px; flex:none; width:96px}
+  .lvl .t{font-size:15px}
+  .lvl .t b{display:block; color:var(--ink)}
+  .lvl .t span{color:var(--muted); font-size:13.5px}
+
+  /* audience */
+  .aud{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+  .aud .card h3{color:var(--coral-d)}
+
+  /* final cta */
+  .final{text-align:center; background:var(--ink); color:#F4EEE6;
+    border-radius:22px; padding:54px 24px; margin:8px 0 0}
+  .final h2{color:#fff; font-size:clamp(26px,4vw,36px); margin:0 0 10px}
+  .final p{color:#cdc6ba; margin:0 0 26px; font-size:17px}
+  .final .btn-ghost{color:#fff; border-color:#5a554d}
+  .final .btn-ghost:hover{border-color:var(--coral)}
+
+  /* footer */
+  footer{padding:40px 0 56px; font-size:13.5px; color:var(--muted)}
+  footer .wrap{display:flex; flex-wrap:wrap; gap:14px 28px;
+    justify-content:space-between; align-items:flex-start}
+  footer .legal{max-width:62ch}
+  footer a{color:var(--coral-d)}
+  footer .links{display:flex; gap:18px; flex-wrap:wrap}
+
+  @media (max-width:820px){
+    .hero .grid{grid-template-columns:1fr; gap:30px}
+    .cover-shot{order:-1}
+    .cards{grid-template-columns:1fr 1fr}
+    .lvl-list{grid-template-columns:1fr}
+    .aud{grid-template-columns:1fr}
+  }
+  @media (max-width:520px){
+    .cards{grid-template-columns:1fr}
+    .cta-row .btn{width:100%; justify-content:center}
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="ast" viewBox="0 0 32 32">
+    <g stroke="#D97757" stroke-width="3.4" stroke-linecap="round">
+      <line x1="16" y1="4" x2="16" y2="28"/>
+      <line x1="4" y1="16" x2="28" y2="16"/>
+      <line x1="7.5" y1="7.5" x2="24.5" y2="24.5"/>
+      <line x1="24.5" y1="7.5" x2="7.5" y2="24.5"/>
+    </g>
+  </symbol>
+</svg>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <svg class="mark"><use href="#ast"/></svg> Claude · la guida completa
+    </a>
+    <a class="nav-cta" href="#scarica">Scarica il PDF →</a>
+  </div>
+</header>
+
+<a id="top"></a>
+<section class="hero">
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <p class="kicker">Manuale operativo · Edizione 2026</p>
+        <h1>Claude: la guida completa</h1>
+        <div class="rule"></div>
+        <p class="lead">Dal primo prompt all'automazione. Il manuale pratico in
+          italiano per padroneggiare tutto l'ecosistema Claude: chat, Claude
+          Code, Cowork, Design, Skills, MCP e API.</p>
+        <div class="cta-row" id="scarica">
+          <a class="btn btn-primary" href="manuale_produzione.pdf"
+             download>↓ Scarica il PDF gratis</a>
+          <a class="btn btn-ghost"
+             href="https://github.com/angelogeminiani/claude-la-guida-completa">
+             Vedi su GitHub</a>
+        </div>
+        <p class="meta">PDF · A5 · 152 pagine · 33 capitoli · gratuito, nessuna
+          registrazione</p>
+      </div>
+      <div class="cover-shot">
+        <img src="cover.png" alt="Copertina di Claude: la guida completa"
+             width="300">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Perché questo libro</h2>
+      <p>Pratico, ordinato e onesto sul fatto che il prodotto cambia in fretta.</p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <svg class="ic"><use href="#ast"/></svg>
+        <h3>Dal principiante all'esperto</h3>
+        <p>Sei livelli progressivi: dai fondamenti della chat fino a hooks, MCP
+          custom e API. Ogni capitolo dichiara il suo livello.</p>
+      </div>
+      <div class="card">
+        <svg class="ic"><use href="#ast"/></svg>
+        <h3>Pratico, non teorico</h3>
+        <p>Comandi verificati su fonti ufficiali, esempi reali, errori comuni da
+          evitare e box operativi passo-passo.</p>
+      </div>
+      <div class="card">
+        <svg class="ic"><use href="#ast"/></svg>
+        <h3>Non invecchia</h3>
+        <p>I dati che cambiano sono datati e raccolti nel repo companion: il
+          libro rimanda alle fonti aggiornate.</p>
+      </div>
+      <div class="card">
+        <svg class="ic"><use href="#ast"/></svg>
+        <h3>Curato nei dettagli</h3>
+        <p>Formato A5, diagrammi vettoriali, tabelle pulite. Pensato per leggersi
+          bene, su carta e su schermo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="levels">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Cosa c'è dentro</h2>
+      <p>33 capitoli su sei livelli, più front matter e chiusura.</p>
+    </div>
+    <div class="lvl-list">
+      <div class="lvl"><div class="n">Front matter</div><div class="t">
+        <b>Orientarsi</b><span>Ecosistema, modelli, piani, percorsi di lettura.</span></div></div>
+      <div class="lvl"><div class="n">Livello 1</div><div class="t">
+        <b>Fondamenti</b><span>Primo contatto, conversare bene, impostazioni e stili.</span></div></div>
+      <div class="lvl"><div class="n">Livello 2</div><div class="t">
+        <b>Installazione locale</b><span>Desktop, Claude Code, autenticazione, progetto.</span></div></div>
+      <div class="lvl"><div class="n">Livello 3</div><div class="t">
+        <b>Lavoro quotidiano</b><span>Cowork, Projects, connettori, documenti, slide ed Excel.</span></div></div>
+      <div class="lvl"><div class="n">Livello 4</div><div class="t">
+        <b>Design</b><span>Canvas, design system, /design-sync, export e Canva.</span></div></div>
+      <div class="lvl"><div class="n">Livello 5</div><div class="t">
+        <b>Skills e identità</b><span>Anatomia di una skill, la tua prima skill, la tua voce.</span></div></div>
+      <div class="lvl"><div class="n">Livello 6</div><div class="t">
+        <b>Avanzato</b><span>Hooks, MCP custom, automazioni, limiti d'uso, sicurezza, API.</span></div></div>
+      <div class="lvl"><div class="n">Chiusura</div><div class="t">
+        <b>Mettere tutto insieme</b><span>Un progetto end-to-end, glossario e troubleshooting.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Per chi è</h2>
+      <p>Un percorso unico, tre modi di leggerlo.</p>
+    </div>
+    <div class="aud">
+      <div class="card">
+        <h3>Chi parte da zero</h3>
+        <p>Vuoi usare Claude bene, senza toccare il terminale: chat, Cowork,
+          Projects e documenti.</p>
+      </div>
+      <div class="card">
+        <h3>Chi sviluppa</h3>
+        <p>Installi e configuri in locale: Claude Code, Design e il ponte
+          /design-sync verso il codice.</p>
+      </div>
+      <div class="card">
+        <h3>Chi automatizza</h3>
+        <p>Integri e lavori in team: Skills, MCP, automazioni, governance e
+          accesso via API.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="final">
+      <h2>Scarica il manuale, gratis</h2>
+      <p>152 pagine in formato A5. Nessuna email, nessuna registrazione.</p>
+      <div class="cta-row" style="justify-content:center">
+        <a class="btn btn-primary" href="manuale_produzione.pdf" download>
+          ↓ Scarica il PDF</a>
+        <a class="btn btn-ghost"
+           href="https://github.com/angelogeminiani/claude-la-guida-completa">
+           Codice e sorgenti</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="legal">
+      © 2026 Gian Angelo Geminiani. Pubblicazione <strong>indipendente e non
+      ufficiale</strong>: non affiliata, sponsorizzata né approvata da Anthropic.
+      &laquo;Claude&raquo; e &laquo;Anthropic&raquo; sono marchi dei rispettivi
+      titolari, citati a solo scopo identificativo. Dati verificati alla data
+      indicata e soggetti a modifica.
+    </div>
+    <div class="links">
+      <a href="manuale_produzione.pdf" download>Scarica il PDF</a>
+      <a href="https://github.com/angelogeminiani/claude-la-guida-completa">GitHub</a>
+      <a href="https://github.com/angelogeminiani/claude-la-guida-completa/blob/main/LICENSE">Licenza MIT</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
