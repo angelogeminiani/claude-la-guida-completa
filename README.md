@@ -38,11 +38,14 @@ front matter e chiusura.
 ## Cosa contiene
 
 ```
+SOMMARIO.md Indice dei capitoli nell'ordine di lettura
 capitoli/   Capitoli del libro in Markdown (sorgente del testo)
 risorse/    Immagini, diagrammi e copertina (copertina.svg/.png)
 scripts/    Strumenti di build e QA per il formato A5
 LICENSE     Licenza MIT
 ```
+
+L'elenco completo dei capitoli con i link è in [SOMMARIO.md](SOMMARIO.md).
 
 ## Strumenti di build
 

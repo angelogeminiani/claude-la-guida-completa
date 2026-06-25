@@ -7,8 +7,51 @@ set -euo pipefail
 
 OUT="manuale.pdf"
 
-# order chapters explicitly if needed; default = alphabetical in capitoli/
-CHAPTERS=(capitoli/*.md)
+# Explicit reading order: front matter -> levels 1-6 -> closing.
+# Alphabetical globbing would wrongly place C-* (Chiusura) before F-*.
+CHAPTERS=(
+  capitoli/F-1-prefazione.md
+  capitoli/F-2-ecosistema.md
+  capitoli/F-3-modelli-e-piani.md
+  capitoli/F-4-percorsi-di-lettura.md
+  capitoli/L1-1-primo-contatto.md
+  capitoli/L1-2-conversare-bene.md
+  capitoli/L1-3-impostazioni-e-stili.md
+  capitoli/L2-1-installare-desktop.md
+  capitoli/L2-2-installare-code.md
+  capitoli/L2-3-autenticazione.md
+  capitoli/L2-4-configurare-progetto.md
+  capitoli/L3-1-cowork-primi-passi.md
+  capitoli/L3-2-projects.md
+  capitoli/L3-3-connettori.md
+  capitoli/L3-4-documenti.md
+  capitoli/L3-5-slide-ed-excel.md
+  capitoli/L4-1-design-il-canvas.md
+  capitoli/L4-2-design-system-import.md
+  capitoli/L4-3-da-design-a-codice.md
+  capitoli/L4-4-design-dentro-cowork.md
+  capitoli/L4-5-export-e-canva.md
+  capitoli/L5-1-anatomia-di-una-skill.md
+  capitoli/L5-2-la-tua-prima-skill.md
+  capitoli/L5-3-skills-operative-in-cowork.md
+  capitoli/L5-4-far-suonare-claude-come-te.md
+  capitoli/L6-1-claude-code-avanzato.md
+  capitoli/L6-2-mcp-custom.md
+  capitoli/L6-3-automazioni-controllo-remoto.md
+  capitoli/L6-4-gestire-i-limiti-uso.md
+  capitoli/L6-5-claude-al-lavoro-sicuro.md
+  capitoli/L6-6-integrare-via-api.md
+  capitoli/C-1-progetto-end-to-end.md
+  capitoli/C-2-appendici.md
+)
+
+# Safety check: warn if a chapter file exists but is not in the list above.
+listed=${#CHAPTERS[@]}
+found=$(ls capitoli/*.md 2>/dev/null | wc -l | tr -d ' ')
+if [ "$listed" != "$found" ]; then
+  echo "Attenzione: $found file in capitoli/ ma $listed in lista."
+  echo "Aggiorna l'array CHAPTERS in scripts/build-a5.sh."
+fi
 
 # mermaid-filter renders ```mermaid blocks to images at build time.
 # install once: npm install -g mermaid-filter
