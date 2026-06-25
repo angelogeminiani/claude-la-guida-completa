@@ -141,5 +141,5 @@ def build(out_pdf):
 
 
 if __name__ == "__main__":
-    out = sys.argv[1] if len(sys.argv) > 1 else "manuale-elegante.pdf"
+    out = sys.argv[1] if len(sys.argv) > 1 else "manuale_produzione.pdf"
     build(out)

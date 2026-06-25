@@ -69,7 +69,7 @@ formato A5. Esistono **due pipeline** di build:
 Esempio:
 
 ```bash
-python3 scripts/build-elegant.py manuale-elegante.pdf
+python3 scripts/build-elegant.py manuale_produzione.pdf
 ```
 
 Oppure la variante LaTeX (la cartella predefinita è `capitoli/`):
