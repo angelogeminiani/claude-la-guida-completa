@@ -94,7 +94,7 @@ restringe.
 - **Custom connector = non verificato da Anthropic.** Puoi aggiungere connettori
   personalizzati (remote MCP), ma collega solo server di organizzazioni fidate.
   Sui custom connector entriamo nel dettaglio al Livello 6 (cap. L6.2).
-- **Team/Enterprise:** i connettori funzionano solo in private project, e le chat
+- **Team/Enterprise:** i connettori funzionano solo in Project privati, e le chat
   con contenuti sincronizzati non sono condivisibili.
 
 ## In pratica: collega Google Drive

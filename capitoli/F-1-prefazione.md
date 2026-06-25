@@ -80,6 +80,16 @@ ufficiale se ti serve il valore più recente.
 > sono stati verificati. È il tuo riferimento per capire quanto "fresca" è
 > un'informazione.
 
+## Riepilogo
+
+1. Il libro va dal principiante all'esperto: parti dal livello adatto a te.
+2. Claude non è solo la chat, ma un **ecosistema** di prodotti (cap. F.2).
+3. Il contenuto è diviso in **sei livelli** di complessità crescente.
+4. **Box**, **tag** *(EVERGREEN)*/*(VOLATILE)* e **figure numerate** ti orientano
+   nella lettura.
+5. I dati che cambiano sono datati e raccolti nel **repo companion**: verifica
+   sempre alla fonte quando ti serve il valore corrente.
+
 ## Prossimo passo
 
 Nel **cap. F.2 — L'ecosistema Claude** vediamo la mappa completa dei prodotti:

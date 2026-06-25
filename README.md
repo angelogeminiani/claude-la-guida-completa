@@ -14,11 +14,32 @@ di build; nel tempo ospiterà anche aggiornamenti dei dati volatili ed errata.
 > citati a solo scopo identificativo e descrittivo. Vedi le
 > [Note legali e disclaimer](#note-legali-e-disclaimer).
 
+## Struttura del libro
+
+Bozza completa: **33 capitoli** su sei livelli di complessità crescente, più
+front matter e chiusura.
+
+- **Front matter (F.1–F.4):** prefazione, ecosistema, modelli e piani, percorsi
+  di lettura.
+- **Livello 1 — Fondamenti (L1.1–L1.3):** primo contatto, conversare bene,
+  impostazioni e stili.
+- **Livello 2 — Installazione locale (L2.1–L2.4):** Desktop, Code,
+  autenticazione, configurare il progetto.
+- **Livello 3 — Lavoro quotidiano (L3.1–L3.5):** Cowork, Projects, connettori,
+  documenti, slide ed Excel.
+- **Livello 4 — Design (L4.1–L4.5):** canvas, design system import,
+  `/design-sync`, Design dentro Cowork, export e Canva.
+- **Livello 5 — Skills e identità (L5.1–L5.4):** anatomia, prima skill, skill in
+  Cowork, voce.
+- **Livello 6 — Avanzato (L6.1–L6.6):** Code avanzato, MCP custom, automazioni,
+  limiti d'uso, sicurezza, API.
+- **Chiusura (C.1–C.2):** progetto end-to-end, appendici.
+
 ## Cosa contiene
 
 ```
 capitoli/   Capitoli del libro in Markdown (sorgente del testo)
-risorse/    Immagini e diagrammi esportati
+risorse/    Immagini, diagrammi e copertina (copertina.svg/.png)
 scripts/    Strumenti di build e QA per il formato A5
 LICENSE     Licenza MIT
 ```

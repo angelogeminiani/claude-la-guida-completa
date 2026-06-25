@@ -13,7 +13,7 @@ ripetibile.
 ## Prerequisiti
 
 - Saper scrivere richieste chiare (vedi cap. L1.2).
-- Avere attiva la **code execution / file creation** (vedi cap. L1.3): è la
+- Avere attiva la **Code execution / file creation** (vedi cap. L1.3): è la
   sandbox con cui Claude crea i file. È su tutti i piani. (VOLATILE)
 
 ## Come Claude crea i file (VOLATILE)
@@ -118,7 +118,7 @@ ancora più ripetibile.
 - **Rigenerare per ogni ritocco.** Chiedi modifiche mirate ("cambia solo la
   tabella"): più veloce e più sicuro.
 - **Dimenticare la sandbox.** Se la creazione file non parte, controlla che la
-  code execution sia attiva (cap. L1.3). (VOLATILE)
+  Code execution sia attiva (cap. L1.3). (VOLATILE)
 
 ## Riepilogo
 
@@ -140,6 +140,6 @@ rifare il lavoro, e l'uso degli add-in dentro Office.
 
 ---
 
-*Dati su code execution / creazione file (piani, limite ~30 MB) dal ledger,
+*Dati su Code execution / creazione file (piani, limite ~30 MB) dal ledger,
 verificati il 22/06/2026 su support.claude.com. Gli esempi non sono stati
 eseguiti in questa sede.*

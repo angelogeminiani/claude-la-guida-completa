@@ -58,8 +58,8 @@ Tabella F.3.2 — Cosa sblocca ogni piano.
 | Team | gruppi 5-150 | admin, SSO, deploy |
 | Enterprise | aziende | controlli e sicurezza |
 
-Il piano **Free** copre bene la chat, la ricerca web, la creazione di file e
-fino a cinque Projects, ma non include Code, Cowork né Design. **Pro** è lo
+Il piano **Free** copre bene la chat, la ricerca web, la creazione di file, le
+Skills e fino a cinque Projects, ma non include Code, Cowork né Design. **Pro** è lo
 spartiacque: sblocca proprio quei tre. **Max** non aggiunge prodotti ma alza di
 molto i limiti d'uso. **Team** ed **Enterprise** aggiungono amministrazione,
 sicurezza e gestione centralizzata per le organizzazioni.

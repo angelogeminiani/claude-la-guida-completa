@@ -33,7 +33,7 @@ l'**effort level** (quanto a fondo ragiona). Un dettaglio che sorprende: tutte l
 superfici — claude.ai, Claude Code, Claude Desktop — attingono allo **stesso**
 usage. Non sono budget separati.
 
-> **Nota:** con la code execution attiva, le chat lunghe innescano la **gestione
+> **Nota:** con la Code execution attiva, le chat lunghe innescano la **gestione
 > automatica del contesto**: Claude riassume i messaggi più vecchi per proseguire.
 > Comodo, ma le conversazioni lunghe consumano **più** usage. (VOLATILE)
 

@@ -27,7 +27,7 @@ proteggere e gestire.
 ## Chi governa le capacità (VOLATILE)
 
 In Team ed Enterprise non tutto è acceso per tutti. Un **Owner** o **Primary
-Owner** decide cosa è disponibile, da **Admin > Capabilities**: web search,
+Owner** decide cosa è disponibile, da **Admin > Capabilities**: Web search,
 connettori, e altre funzioni si abilitano a livello di organizzazione. Per questo,
 se non vedi una funzione, spesso non è un errore: è una scelta di chi amministra
 (lo abbiamo già visto per Web search nel cap. L1.3 e per i connettori nel cap.

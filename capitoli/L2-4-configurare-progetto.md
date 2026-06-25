@@ -62,7 +62,7 @@ team al primo giorno.
 
 > **Tip:** dentro Claude Code, il comando `/init` analizza il progetto e ti
 > propone un primo `CLAUDE.md`. È un buon punto di partenza da rifinire a mano,
-> non un risultato finito.
+> non un risultato finito. (VOLATILE)
 
 Un esempio minimo:
 

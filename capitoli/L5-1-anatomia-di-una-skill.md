@@ -12,7 +12,7 @@ base concettuale per costruirne una tua nel prossimo capitolo.
 ## Prerequisiti
 
 - Saper scrivere richieste efficaci (cap. L1.2).
-- Avere **code execution** attiva (cap. L1.3): è richiesta per le Skills.
+- Avere **Code execution** attiva (cap. L1.3): è richiesta per le Skills.
   (VOLATILE)
 
 ## Skill o prompt? (EVERGREEN)

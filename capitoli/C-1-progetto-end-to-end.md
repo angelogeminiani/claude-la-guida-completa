@@ -17,7 +17,7 @@ a un report che si aggiorna da solo. Ogni tappa rimanda al capitolo dove l'hai
 imparata.
 
 *Figura C.1.1 — Il flusso completo, da idea a automazione.*
-Alt-text: diagramma verticale che collega idea, Design, design-sync, Code, Cowork e
+Alt-text: diagramma verticale che collega idea, Design, /design-sync, Code, Cowork e
 automazione in sequenza.
 
 ```mermaid
