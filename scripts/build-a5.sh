@@ -63,14 +63,27 @@ else
   echo "Installa con: npm install -g mermaid-filter"
 fi
 
+# Cover: if risorse/copertina.png exists, put it full-bleed as page 1
+# (replacing the default title page). Otherwise fall back to a text title page.
+COVER=()
+TITLE=(-M title="Claude: la guida completa"
+       -M author="Gian Angelo Geminiani")
+if [ -f risorse/copertina.png ]; then
+  COVER=(--include-before-body=scripts/a5-cover.tex)
+  TITLE=()  # the cover carries the title
+else
+  echo "Nota: risorse/copertina.png non trovata: uso la pagina-titolo testuale."
+fi
+
 pandoc "${CHAPTERS[@]}" \
   "${FILTER[@]}" \
   -o "$OUT" \
   --pdf-engine=xelatex \
+  --resource-path=.:risorse \
   --toc \
   -H scripts/a5-header.tex \
-  -M title="Claude: la guida completa" \
-  -M author="Gian Angelo Geminiani" \
+  "${COVER[@]}" \
+  "${TITLE[@]}" \
   -M lang=it \
   -V documentclass=scrbook \
   -V papersize=a5 \

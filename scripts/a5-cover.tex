@@ -1,0 +1,9 @@
+% a5-cover.tex — full-bleed cover as the first page.
+% Relative path resolved from the build dir (git-repo/) via --resource-path.
+\thispagestyle{empty}%
+\AddToShipoutPictureBG*{%
+  \put(0,0){\includegraphics[width=\paperwidth,height=\paperheight]%
+    {risorse/copertina.png}}%
+}%
+\null
+\clearpage
