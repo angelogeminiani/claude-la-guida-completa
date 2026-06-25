@@ -61,12 +61,17 @@ def _embed_diagrams(md):
 
 
 def _strip_heading_tags(md):
-    # Remove the (VOLATILE)/(EVERGREEN) status tags from headings only, for a
-    # cleaner reading experience. Source files keep them; inline body tags stay
-    # (F.1 explains what they mean).
+    # Remove the (VOLATILE)/(EVERGREEN) status tags from headings, for a cleaner
+    # reading experience. Source files keep them (useful in maintenance).
     return re.sub(
         r"^(#{1,6}\s+.*?)\s*\((?:VOLATILE|EVERGREEN)\)\s*$",
         r"\1", md, flags=re.M)
+
+
+def _strip_inline_tags(md):
+    # Remove the status tags anywhere in the text (used for every chapter
+    # except F.1, where the tags are explained to the reader).
+    return re.sub(r"\s*\((?:VOLATILE|EVERGREEN)\)", "", md)
 
 
 def _title_of(md):
@@ -74,8 +79,10 @@ def _title_of(md):
     return m.group(1).strip() if m else "?"
 
 
-def _md_to_html(md):
+def _md_to_html(md, strip_inline=False):
     md = _strip_heading_tags(md)
+    if strip_inline:
+        md = _strip_inline_tags(md)
     md = _embed_diagrams(md)
     p = subprocess.run(
         ["pandoc", "-f", "markdown", "-t", "html5"],
@@ -99,7 +106,9 @@ def build(out_pdf):
             path = os.path.join("capitoli", stem + ".md")
             md = open(path).read()
             title = _title_of(md)
-            html = _md_to_html(md)
+            # F.1 explains the tags, so it keeps them; every other chapter
+            # has them stripped from the body for a cleaner read.
+            html = _md_to_html(md, strip_inline=(stem != "F-1-prefazione"))
             chapters_html.append(
                 '<section class="chapter" id="%s">\n%s\n</section>' %
                 (stem, html))
