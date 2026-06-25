@@ -7,5 +7,7 @@ manuale-elegante.pdf
 *.out
 mermaid-filter.err
 
-# OS files
+# Python / OS files
+__pycache__/
+*.pyc
 .DS_Store
