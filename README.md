@@ -50,17 +50,29 @@ L'elenco completo dei capitoli con i link è in [SOMMARIO.md](SOMMARIO.md).
 ## Strumenti di build
 
 Gli script in `scripts/` aiutano a produrre e verificare i capitoli in
-formato A5:
+formato A5. Esistono **due pipeline** di build:
 
-- `build-a5.sh` — genera il PDF A5 (`manuale.pdf`) dai sorgenti Markdown con
-  Pandoc e XeLaTeX. Richiede `pandoc` e un motore XeLaTeX; per rendere i
-  diagrammi Mermaid usa, se presente, `mermaid-filter`
-  (`npm install -g mermaid-filter`), altrimenti i diagrammi restano come codice.
+- `build-elegant.py` — genera il PDF A5 nello **stile grafico Claude.ai**
+  (sfondo crema, accento corallo, titoli Lora, copertina, tabelle raffinate,
+  citazioni con barra, diagrammi vettoriali SVG) via HTML/CSS → **WeasyPrint**.
+  Richiede `pandoc`, Python con `weasyprint`, e il font Lora. I diagrammi Mermaid
+  sono resi in SVG da `mermaid2svg.py` (nessun Chromium necessario). Stile in
+  `scripts/style-claude.css`. È la pipeline consigliata per la stampa.
+- `build-a5.sh` — variante con **Pandoc + XeLaTeX** (`manuale.pdf`): layout da
+  libro più sobrio. Richiede `pandoc` e XeLaTeX; per i diagrammi usa
+  `mermaid-filter` se presente (`npm install -g mermaid-filter`), altrimenti
+  restano come codice. Header glifi in `scripts/a5-header.tex`, copertina in
+  `scripts/a5-cover.tex`.
 - `check-a5.sh` — segnala le righe **dentro i blocchi di codice** più lunghe
-  di 56 caratteri (limite di larghezza A5); i blocchi Mermaid e il testo
-  discorsivo vengono ignorati.
+  di 56 caratteri (limite di larghezza A5); Mermaid e prosa sono ignorati.
 
-Esempio (la cartella predefinita è `capitoli/`):
+Esempio:
+
+```bash
+python3 scripts/build-elegant.py manuale-elegante.pdf
+```
+
+Oppure la variante LaTeX (la cartella predefinita è `capitoli/`):
 
 ```bash
 bash scripts/check-a5.sh capitoli/
