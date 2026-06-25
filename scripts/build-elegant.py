@@ -60,12 +60,22 @@ def _embed_diagrams(md):
     return re.sub(r"```mermaid\n(.*?)```", repl, md, flags=re.S)
 
 
+def _strip_heading_tags(md):
+    # Remove the (VOLATILE)/(EVERGREEN) status tags from headings only, for a
+    # cleaner reading experience. Source files keep them; inline body tags stay
+    # (F.1 explains what they mean).
+    return re.sub(
+        r"^(#{1,6}\s+.*?)\s*\((?:VOLATILE|EVERGREEN)\)\s*$",
+        r"\1", md, flags=re.M)
+
+
 def _title_of(md):
     m = re.search(r"^#\s+(.*)$", md, re.M)
     return m.group(1).strip() if m else "?"
 
 
 def _md_to_html(md):
+    md = _strip_heading_tags(md)
     md = _embed_diagrams(md)
     p = subprocess.run(
         ["pandoc", "-f", "markdown", "-t", "html5"],
