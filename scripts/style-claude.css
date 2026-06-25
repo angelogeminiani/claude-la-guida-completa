@@ -144,6 +144,21 @@ hr + p { font-size: 8pt; color: #8A847A; font-style: italic;
 .cover img { display: block; width: 148mm; height: 210mm; object-fit: cover; }
 
 /* ---------------------------------------------------------------- */
+/*  colophon (legal page, right after the cover)                    */
+/* ---------------------------------------------------------------- */
+@page nochrome { @bottom-center { content: none } @top-center { content: none } }
+.colophon { page: nochrome; }
+.colophon h1 {
+  font-size: 13pt; border: none; padding: 0; margin: 0 0 1.4em;
+  color: #B65A3C; page-break-before: always;
+}
+.colophon p {
+  font-size: 8.6pt; line-height: 1.5; color: #4A463F;
+  text-align: left; margin: 0 0 .7em;
+}
+.colophon strong { color: #2A2722; }
+
+/* ---------------------------------------------------------------- */
 /*  table of contents                                               */
 /* ---------------------------------------------------------------- */
 .toc { page-break-before: always; }

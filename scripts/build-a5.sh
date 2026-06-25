@@ -75,6 +75,19 @@ else
   echo "Nota: risorse/copertina.png non trovata: uso la pagina-titolo testuale."
 fi
 
+# Colophon (legal page) right after the cover, not in the TOC.
+COLO=()
+if [ -f colophon.md ]; then
+  COLTEX="$(mktemp).tex"
+  {
+    echo '\clearpage\begingroup\thispagestyle{empty}\footnotesize'
+    echo '\textbf{\large Note legali}\par\medskip'
+    tail -n +2 colophon.md | pandoc -f markdown -t latex
+    echo '\endgroup\clearpage'
+  } > "$COLTEX"
+  COLO=(--include-before-body="$COLTEX")
+fi
+
 pandoc "${CHAPTERS[@]}" \
   "${FILTER[@]}" \
   -o "$OUT" \
@@ -83,6 +96,7 @@ pandoc "${CHAPTERS[@]}" \
   --toc \
   -H scripts/a5-header.tex \
   "${COVER[@]}" \
+  "${COLO[@]}" \
   "${TITLE[@]}" \
   -M lang=it \
   -V documentclass=scrbook \

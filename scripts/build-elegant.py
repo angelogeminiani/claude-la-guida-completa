@@ -111,13 +111,18 @@ def build(out_pdf):
         cover = ('<section class="cover">'
                  '<img src="risorse/copertina.png" alt="Copertina"></section>')
 
+    colophon = ""
+    if os.path.exists("colophon.md"):
+        colophon = ('<section class="colophon">' +
+                    _md_to_html(open("colophon.md").read()) + "</section>")
+
     toc = ('<section class="toc"><h1>Indice</h1><ul>' +
            "\n".join(toc_rows) + "</ul></section>")
 
     doc = (
         "<!DOCTYPE html><html lang=\"it\"><head><meta charset=\"utf-8\">"
         "<style>" + css + "</style></head><body>" +
-        cover + toc +
+        cover + colophon + toc +
         '<div class="book">' + "\n".join(chapters_html) + "</div>"
         "</body></html>")
 
