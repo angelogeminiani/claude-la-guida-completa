@@ -1,0 +1,11 @@
+% a5-header.tex — LaTeX header includes for the A5 build.
+% Maps Unicode glyphs that elegant serif fonts (e.g. Lora) lack
+% to math-mode symbols, so they always render in print.
+\usepackage{newunicodechar}
+\newunicodechar{→}{\ensuremath{\rightarrow}}
+\newunicodechar{↔}{\ensuremath{\leftrightarrow}}
+\newunicodechar{←}{\ensuremath{\leftarrow}}
+\newunicodechar{⇒}{\ensuremath{\Rightarrow}}
+\newunicodechar{≥}{\ensuremath{\geq}}
+\newunicodechar{≤}{\ensuremath{\leq}}
+\newunicodechar{×}{\ensuremath{\times}}

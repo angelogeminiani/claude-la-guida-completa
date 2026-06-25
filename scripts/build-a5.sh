@@ -68,11 +68,19 @@ pandoc "${CHAPTERS[@]}" \
   -o "$OUT" \
   --pdf-engine=xelatex \
   --toc \
+  -H scripts/a5-header.tex \
+  -M title="Claude: la guida completa" \
+  -M author="Gian Angelo Geminiani" \
+  -M lang=it \
   -V documentclass=scrbook \
   -V papersize=a5 \
   -V geometry:bindingoffset=8mm \
   -V geometry:margin=14mm \
-  -V mainfont="Noto Serif" \
+  -V mainfont="Lora" \
   -V monofont="Noto Sans Mono"
+
+# Note: mainfont "Lora" matches the elegant Claude.ai style and is a Google
+# Font; install it if missing (or change to a serif you have). The header
+# scripts/a5-header.tex maps arrows/symbols missing from many serif fonts.
 
 echo "Creato $OUT (formato A5)."
