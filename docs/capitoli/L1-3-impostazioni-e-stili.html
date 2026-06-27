@@ -1,0 +1,250 @@
+<!DOCTYPE html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>L1.3 — Impostazioni e stili · Claude: la guida completa</title><meta name="description" content="Al termine saprai configurare Claude perché risponda nel tuo tono e con le capacità giuste, senza ripetere le stesse istruzioni a ogni chat. Vedremo le…"><link rel="canonical" href="https://angelogeminiani.github.io/claude-la-guida-completa/capitoli/L1-3-impostazioni-e-stili.html"><meta name="theme-color" content="#FAF9F5"><meta name="author" content="Gian Angelo Geminiani"><meta property="og:type" content="article"><meta property="og:site_name" content="Claude: la guida completa"><meta property="og:title" content="L1.3 — Impostazioni e stili · Claude: la guida completa"><meta property="og:description" content="Al termine saprai configurare Claude perché risponda nel tuo tono e con le capacità giuste, senza ripetere le stesse istruzioni a ogni chat. Vedremo le…"><meta property="og:url" content="https://angelogeminiani.github.io/claude-la-guida-completa/capitoli/L1-3-impostazioni-e-stili.html"><meta property="og:image" content="https://angelogeminiani.github.io/claude-la-guida-completa/og-image.png"><meta property="og:locale" content="it_IT"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="L1.3 — Impostazioni e stili · Claude: la guida completa"><meta name="twitter:description" content="Al termine saprai configurare Claude perché risponda nel tuo tono e con le capacità giuste, senza ripetere le stesse istruzioni a ogni chat. Vedremo le…"><meta name="twitter:image" content="https://angelogeminiani.github.io/claude-la-guida-completa/og-image.png"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cg stroke='%23D97757' stroke-width='3' stroke-linecap='round'%3E%3Cline x1='16' y1='5' x2='16' y2='27'/%3E%3Cline x1='5' y1='16' x2='27' y2='16'/%3E%3Cline x1='8' y1='8' x2='24' y2='24'/%3E%3Cline x1='24' y1='8' x2='8' y2='24'/%3E%3C/g%3E%3C/svg%3E"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,600;1,500&display=swap" rel="stylesheet"><style>/* book.css — shared styles for the online chapter pages (docs/capitoli/*.html)
+   and the reading index (docs/leggi.html). Same Claude.ai palette as the
+   landing page, with the light/dark theme system. */
+
+:root{
+  color-scheme:light;
+  --cream:#FAF9F5; --ink:#1F1E1D; --coral:#D97757; --coral-d:#B65A3C;
+  --muted:#6B6760; --border:#E9E2D6; --card:#FFFFFF; --tint:#F4ECE3;
+  --body:#322f2a; --code-bg:#F1EADF; --code-ink:#7A3E27;
+  --nav-bg:rgba(250,249,245,.86);
+  --cta-bg:#1F1E1D; --cta-h:#ffffff; --cta-p:#cdc6ba; --cta-border:#5a554d;
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --cream:#1F1E1D; --ink:#EDEAE2; --coral:#D97757; --coral-d:#E7A184;
+  --muted:#A39E95; --border:#393732; --card:#2A2926; --tint:#242320;
+  --body:#C9C3B8; --code-bg:#2E2C28; --code-ink:#E7A184;
+  --nav-bg:rgba(31,30,29,.86);
+  --cta-bg:#2A2926; --cta-h:#ffffff; --cta-p:#BDB7AC; --cta-border:#4A463F;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --cream:#1F1E1D; --ink:#EDEAE2; --coral:#D97757; --coral-d:#E7A184;
+    --muted:#A39E95; --border:#393732; --card:#2A2926; --tint:#242320;
+    --body:#C9C3B8; --code-bg:#2E2C28; --code-ink:#E7A184;
+    --nav-bg:rgba(31,30,29,.86);
+    --cta-bg:#2A2926; --cta-h:#ffffff; --cta-p:#BDB7AC; --cta-border:#4A463F;
+  }
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--cream); color:var(--body);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  line-height:1.7; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:760px; margin:0 auto; padding:0 24px}
+a{color:var(--coral-d); text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* header / nav */
+header.nav{position:sticky; top:0; z-index:10;
+  background:var(--nav-bg); backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border)}
+.nav .row{max-width:1080px; margin:0 auto; padding:0 24px;
+  display:flex; align-items:center; justify-content:space-between; height:62px}
+.brand{display:flex; align-items:center; gap:10px; font-family:Lora,Georgia,serif;
+  font-weight:600; font-size:18px; color:var(--ink)}
+.brand:hover{text-decoration:none}
+.mark{width:22px; height:22px; flex:none}
+.nav-right{display:flex; align-items:center; gap:16px}
+.nav-cta{font-weight:600; font-size:14px}
+.theme-toggle{display:inline-flex; align-items:center; justify-content:center;
+  width:40px; height:40px; border-radius:999px; border:1px solid var(--border);
+  background:transparent; color:var(--ink); cursor:pointer; flex:none;
+  transition:border-color .2s}
+.theme-toggle:hover{border-color:var(--coral)}
+.theme-toggle svg{width:18px; height:18px}
+.theme-toggle .i-sun{display:none}
+.theme-toggle .i-moon{display:block}
+:root[data-theme="dark"] .theme-toggle .i-moon{display:none}
+:root[data-theme="dark"] .theme-toggle .i-sun{display:block}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .theme-toggle .i-moon{display:none}
+  :root:not([data-theme="light"]) .theme-toggle .i-sun{display:block}
+}
+
+/* breadcrumb */
+.crumbs{font-size:13.5px; color:var(--muted); margin:26px 0 4px}
+.crumbs a{color:var(--muted)}
+.crumbs a:hover{color:var(--coral-d)}
+
+/* article */
+article{padding:6px 0 8px}
+article h1{font-family:Lora,Georgia,serif; font-weight:600; line-height:1.18;
+  font-size:clamp(30px,5vw,42px); color:var(--ink); margin:8px 0 6px}
+article h2{font-family:Lora,Georgia,serif; font-weight:600; color:var(--ink);
+  font-size:clamp(22px,3.4vw,28px); margin:38px 0 10px; line-height:1.25}
+article h3{font-family:Lora,Georgia,serif; font-weight:600; color:var(--ink);
+  font-size:20px; margin:26px 0 8px}
+article p{margin:0 0 16px}
+article ul,article ol{margin:0 0 16px; padding-left:22px}
+article li{margin:6px 0}
+article strong{color:var(--ink)}
+.accent{width:74px; height:4px; background:var(--coral); border-radius:2px;
+  margin:14px 0 22px}
+
+/* inline code as a pill + code blocks */
+code{font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace; font-size:.88em;
+  background:var(--code-bg); color:var(--code-ink);
+  padding:.12em .42em; border-radius:6px}
+pre{background:var(--code-bg); border:1px solid var(--border); border-radius:12px;
+  padding:16px 18px; overflow-x:auto; margin:0 0 18px}
+pre code{background:none; color:var(--ink); padding:0; font-size:13.5px;
+  line-height:1.55}
+
+/* blockquote with coral left bar */
+blockquote{margin:0 0 18px; padding:2px 0 2px 18px;
+  border-left:3px solid var(--coral); color:var(--muted)}
+blockquote p{margin:0 0 8px}
+
+/* tables */
+.tablewrap{overflow-x:auto; margin:0 0 18px}
+table{border-collapse:collapse; width:100%; font-size:14.5px}
+th,td{border:1px solid var(--border); padding:9px 12px; text-align:left;
+  vertical-align:top}
+thead th{background:var(--tint); color:var(--ink); font-weight:600}
+tbody tr:nth-child(even){background:var(--tint)}
+
+/* figures (inline SVG diagrams) */
+.fig{margin:18px 0; text-align:center}
+.fig svg{max-width:100%; height:auto}
+
+/* prev / next */
+.pager{display:flex; gap:14px; justify-content:space-between; margin:36px 0 0;
+  border-top:1px solid var(--border); padding-top:20px}
+.pager a{display:block; max-width:48%; font-size:14px}
+.pager .lbl{display:block; color:var(--muted); font-size:12px;
+  text-transform:uppercase; letter-spacing:.08em; margin-bottom:3px}
+.pager .nxt{text-align:right; margin-left:auto}
+
+/* reading CTA */
+.readcta{background:var(--cta-bg); color:var(--cta-p); border-radius:18px;
+  border:1px solid var(--cta-border); padding:30px 26px; margin:34px 0 0;
+  text-align:center}
+.readcta h2{font-family:Lora,Georgia,serif; color:var(--cta-h); margin:0 0 8px;
+  font-size:24px}
+.readcta p{margin:0 0 18px; font-size:15.5px}
+.btn{display:inline-flex; align-items:center; gap:9px; font-weight:700;
+  font-size:15px; padding:12px 24px; border-radius:999px; cursor:pointer;
+  border:1.5px solid transparent}
+.btn-primary{background:var(--coral); color:#fff;
+  box-shadow:0 6px 20px rgba(217,119,87,.32)}
+.btn-primary:hover{background:var(--coral-d); color:#fff; text-decoration:none}
+
+/* reading index (leggi.html) */
+.lead{font-size:18px; color:var(--muted); margin:6px 0 26px}
+.part-h{font-family:Lora,Georgia,serif; color:var(--ink); font-weight:600;
+  font-size:22px; margin:30px 0 6px}
+.toc{list-style:none; margin:0 0 8px; padding:0}
+.toc li{border-bottom:1px solid var(--border)}
+.toc a{display:flex; gap:12px; padding:12px 4px; color:var(--ink)}
+.toc a:hover{color:var(--coral-d); text-decoration:none}
+.toc .id{font-family:Lora,Georgia,serif; color:var(--coral-d); flex:none;
+  width:54px}
+
+/* footer */
+footer{margin-top:46px; border-top:1px solid var(--border);
+  padding:28px 0 56px; font-size:13px; color:var(--muted)}
+footer a{color:var(--coral-d)}
+</style><script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"L1.3 — Impostazioni e stili","description":"Al termine saprai configurare Claude perché risponda nel tuo tono e con le capacità giuste, senza ripetere le stesse istruzioni a ogni chat. Vedremo le…","inLanguage":"it","author":{"@type":"Person","name":"Gian Angelo Geminiani"},"isPartOf":{"@type":"Book","name":"Claude: la guida completa"},"mainEntityOfPage":"https://angelogeminiani.github.io/claude-la-guida-completa/capitoli/L1-3-impostazioni-e-stili.html"}</script><script>(function(){try{var s=localStorage.getItem('theme');if(s==='dark'||s==='light')document.documentElement.setAttribute('data-theme',s);}catch(e){}})();</script></head><body><svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="ast" viewBox="0 0 32 32"><g stroke="#D97757" stroke-width="3.4" stroke-linecap="round"><line x1="16" y1="4" x2="16" y2="28"/><line x1="4" y1="16" x2="28" y2="16"/><line x1="7.5" y1="7.5" x2="24.5" y2="24.5"/><line x1="24.5" y1="7.5" x2="7.5" y2="24.5"/></g></symbol><symbol id="moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol><symbol id="sun" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><line x1="12" y1="2.5" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="21.5"/><line x1="2.5" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="21.5" y2="12"/><line x1="5.2" y1="5.2" x2="6.9" y2="6.9"/><line x1="17.1" y1="17.1" x2="18.8" y2="18.8"/><line x1="5.2" y1="18.8" x2="6.9" y2="17.1"/><line x1="17.1" y1="6.9" x2="18.8" y2="5.2"/></g></symbol></svg><header class="nav"><div class="row"><a class="brand" href="../index.html"><svg class="mark"><use href="#ast"/></svg> Claude · la guida completa</a><div class="nav-right"><a class="nav-cta" href="../leggi.html">Indice</a><a class="nav-cta" href="../manuale_produzione.pdf" download>Scarica il PDF →</a><button class="theme-toggle" id="theme-toggle" type="button" aria-label="Cambia tema chiaro/scuro" title="Cambia tema"><svg class="i-moon" aria-hidden="true"><use href="#moon"/></svg><svg class="i-sun" aria-hidden="true"><use href="#sun"/></svg></button></div></div></header><main class="wrap"><div class="crumbs"><a href="../index.html">Home</a> · <a href="../leggi.html">Leggi online</a> · Livello 1 — Fondamenti</div><article><h1 id="capitolo-l1.3-impostazioni-e-stili">Capitolo L1.3 — Impostazioni e stili</h1>
+<blockquote>
+<p>Livello 1 — Fondamenti. Dati di prodotto verificati il 22/06/2026 su fonti ufficiali.</p>
+</blockquote>
+<h2 id="obiettivo">Obiettivo</h2>
+<p>Al termine saprai configurare Claude perché risponda nel tuo tono e con le capacità giuste, senza ripetere le stesse istruzioni a ogni chat. Vedremo le preferenze d’account, gli Styles (stili) e le capacità Web search (ricerca web), Code execution (esecuzione del codice) e Memory (memoria).</p>
+<h2 id="prerequisiti">Prerequisiti</h2>
+<ul>
+<li>Saper avviare una conversazione (cap. L1.1).</li>
+</ul>
+<h2 id="istruzioni-a-livello-di-account">Istruzioni a livello di account</h2>
+<p>In <strong>Settings → Instructions for Claude</strong> imposti preferenze che valgono per tutte le conversazioni: come ti chiami, in che lingua scrivere, il tono che preferisci, termini ricorrenti del tuo lavoro. È il posto giusto per le cose che diresti a ogni chat: scriverle una volta sola ti fa risparmiare tempo.</p>
+<p>È diverso da un’istruzione data nella singola chat, che vale solo lì: queste valgono ovunque. Esempi utili da mettere qui: «scrivi sempre in italiano», «preferisco risposte concise con esempi», «sono uno sviluppatore», «non usare emoji». Tienile brevi e aggiornale quando le tue esigenze cambiano: è il livello più comodo per le preferenze stabili.</p>
+<h2 id="stili-di-risposta">Stili di risposta</h2>
+<p>Gli <strong>Styles</strong> controllano <em>come</em> Claude comunica. Sono disponibili alcuni preset — Normal, Concise (conciso), Formal (formale), Explanatory (esplicativo) — e puoi crearne di personalizzati, anche caricando esempi della tua scrittura. Li trovi nel menu “Search and tools” accanto alla casella di testo.</p>
+<p>Quando usarli? <strong>Concise</strong> per risposte rapide e dense; <strong>Explanatory</strong> quando stai imparando e vuoi più contesto; <strong>Formal</strong> per testi professionali. Lo stile <strong>custom</strong> è il più potente: carichi alcuni tuoi testi e Claude ne imita registro e ritmo. È il primo passo verso il «far suonare Claude come te», che approfondiamo con le Skills nel Livello 5.</p>
+<blockquote>
+<p><strong>Attenzione:</strong> gli Styles stanno evolvendo verso le Skills (vedi Livello 5). Funzioni e nomi potrebbero cambiare: è un’area volatile, verifica lo stato attuale nelle impostazioni.</p>
+</blockquote>
+<h2 id="le-capacità-da-conoscere">Le capacità da conoscere</h2>
+<p>Oltre al tono, puoi attivare capacità che ampliano ciò che Claude può fare. La tabella le riassume; sotto, il dettaglio.</p>
+<p>Tabella L1.3.1 — Capacità principali e disponibilità.</p>
+<div class="tablewrap"><table>
+<thead>
+<tr class="header">
+<th>Funzione</th>
+<th>A cosa serve</th>
+<th>Disponibilità</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Web search</td>
+<td>dati aggiornati</td>
+<td>tutti i piani</td>
+</tr>
+<tr class="even">
+<td>Code execution</td>
+<td>creare file</td>
+<td>tutti i piani</td>
+</tr>
+<tr class="odd">
+<td>Memory</td>
+<td>ricorda lo storico</td>
+<td>tutti i piani</td>
+</tr>
+<tr class="even">
+<td>Chat search</td>
+<td>cerca chat passate</td>
+<td>a pagamento</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Web search.</strong> Attiva la ricerca live sul web, con citazioni delle fonti. È indispensabile per informazioni recenti, dove la conoscenza “a memoria” del modello non basta. Si attiva dal pulsante “+” o dal menu strumenti. Consuma i tuoi limiti d’uso. Su Team ed Enterprise va abilitata da un amministratore. In pratica: chiedi «cerca le ultime notizie su X» e Claude porta risultati con i link, così risali alla fonte. Senza, risponde con ciò che «sa» e su fatti recenti può sbagliare.</p>
+<p><strong>Code execution e creazione file.</strong> Dà a Claude un ambiente sandbox per eseguire codice e produrre file veri: Excel, PowerPoint, Word, PDF, grafici. Serve anche per caricare file XLSX. È disponibile su tutti i piani, con un limite indicativo di ~30 MB per file. È ciò che permette richieste come «crea un Excel con queste spese e un grafico a torta»: Claude scrive il file e te lo restituisce pronto da scaricare.</p>
+<p><strong>Memory e ricerca nelle chat.</strong> La <strong>Memory</strong> crea una sintesi del tuo storico, così Claude costruisce sul contesto passato; è disponibile su tutti i piani. La <strong>ricerca nelle chat passate</strong> è invece riservata ai piani a pagamento. Le conversazioni in incognito (icona fantasma) restano escluse da entrambe.</p>
+<h2 id="privacy-e-controllo-dei-dati">Privacy e controllo dei dati</h2>
+<p>Tre cose da tenere a mente. Le chat in <strong>incognito</strong> non finiscono nello storico né nella Memory: usale quando non vuoi lasciare traccia. La <strong>Memory</strong> è una sintesi, non una copia fedele: se un dato è importante, ripetilo nella chat invece di confidare che sia stato ricordato. Infine, su <strong>Team</strong> ed <strong>Enterprise</strong> alcune capacità le abilita un amministratore da <em>Admin → Capabilities</em>: se non le vedi, non è un errore tuo, chiedi a chi gestisce l’organizzazione.</p>
+<blockquote>
+<p><strong>Tip:</strong> non devi attivare tutto subito. Parti da Web search e Code execution: coprono la gran parte dei casi quotidiani; il resto lo aggiungi quando serve.</p>
+</blockquote>
+<h2 id="projects-in-due-parole">Projects, in due parole</h2>
+<p>Un <strong>Project</strong> è uno spazio di lavoro con una sua knowledge base e istruzioni dedicate, condivise tra le chat di quel progetto. È utile quando lavori a lungo sullo stesso tema. Gli utenti Free possono crearne fino a cinque; la condivisione è riservata a Team ed Enterprise. Li approfondiamo nel cap. L3.2.</p>
+<h2 id="preferenze-styles-o-projects">Preferenze, Styles o Projects?</h2>
+<p>Si sovrappongono, ma servono a scopi diversi. Le <strong>Instructions for Claude</strong> sono preferenze personali valide ovunque. Gli <strong>Styles</strong> cambiano il modo di comunicare e li attivi all’occorrenza. Un <strong>Project</strong> isola contesto e istruzioni per un tema o un cliente specifico, senza inquinare le altre chat. Regola pratica: preferenze stabili → Instructions; come scrivere → Styles; un lavoro a sé → Project.</p>
+<p>Esempio concreto: per scrivere questo libro potresti tenere un Project con le regole di stile e i capitoli già pronti, così ogni nuova chat parte già «sul pezzo» senza ripetere il contesto.</p>
+<blockquote>
+<p><strong>Nota:</strong> le impostazioni viste qui sono personali. In un’organizzazione, alcune scelte (sicurezza, uso dei dati per il training) le definisce l’amministratore: il tuo account eredita quelle regole.</p>
+</blockquote>
+<h2 id="in-pratica-configura-il-tuo-claude">In pratica: configura il tuo Claude</h2>
+<ol type="1">
+<li>Apri <strong>Settings → Instructions for Claude</strong> e scrivi nome, lingua e tono.</li>
+<li>Scegli uno <strong>stile</strong> dal menu “Search and tools” (prova Concise).</li>
+<li>Attiva <strong>Web search</strong> e fai una domanda su un fatto recente.</li>
+<li>In <strong>Settings → Capabilities</strong>, verifica che <strong>Code execution</strong> sia attiva.</li>
+<li>Controlla le impostazioni di <strong>Memory</strong> e decidi se tenerla attiva.</li>
+<li>Se sei in un’organizzazione, verifica in <strong>Admin → Capabilities</strong> cosa è abilitato sul tuo account.</li>
+</ol>
+<h2 id="errori-comuni">Errori comuni</h2>
+<ul>
+<li><strong>Ripetere le stesse istruzioni a ogni chat.</strong> Mettile una volta in “Instructions for Claude”.</li>
+<li><strong>Dimenticare Web search sui fatti recenti.</strong> Senza, Claude risponde “a memoria” e può sbagliare date o numeri.</li>
+<li><strong>Aspettarsi un file Excel senza Code execution.</strong> Va attivata, altrimenti niente generazione di file.</li>
+<li><strong>Confidare nella Memory per tutto.</strong> È una sintesi, non un archivio preciso: per dati importanti, riportali nella chat.</li>
+<li><strong>Pensare a un bug quando manca una funzione.</strong> Su Team/Enterprise può averla disattivata l’amministratore: controlla in Admin → Capabilities.</li>
+<li><strong>Creare un Project per ogni domanda.</strong> I Project servono ai lavori continui; per una richiesta isolata basta una chat normale.</li>
+</ul>
+<h2 id="riepilogo">Riepilogo</h2>
+<ol type="1">
+<li><strong>Instructions for Claude</strong> applica le tue preferenze a ogni conversazione.</li>
+<li>Gli <strong>Styles</strong> regolano il tono; stanno evolvendo verso le Skills.</li>
+<li><strong>Web search</strong> serve per i dati aggiornati e consuma usage.</li>
+<li><strong>Code execution</strong> abilita la creazione di file; <strong>Memory</strong> ricorda lo storico.</li>
+<li>La <strong>ricerca nelle chat</strong> è solo a pagamento; l’incognito resta escluso.</li>
+</ol>
+<h2 id="prossimo-passo">Prossimo passo</h2>
+<p>Hai completato i fondamenti. Nel <strong>Livello 2</strong> passiamo all’installazione locale: si parte dal <strong>cap. L2.1 — Installare Claude Desktop</strong>.</p>
+</article><nav class="pager"><a href="./L1-2-conversare-bene.html"><span class="lbl">← Precedente</span>L1.2 — Conversare bene</a><a class="nxt" href="./L2-1-installare-desktop.html"><span class="lbl">Successivo →</span>L2.1 — Installare Claude Desktop</a></nav><div class="readcta"><h2>Ti è utile? Prendi tutto il manuale</h2><p>33 capitoli in un unico PDF A5, gratis e senza registrazione.</p><a class="btn btn-primary" href="../manuale_produzione.pdf" download>↓ Scarica il PDF gratis</a></div></main><footer><div class="wrap">© 2026 Gian Angelo Geminiani. Pubblicazione <strong>indipendente e non ufficiale</strong>: non affiliata, sponsorizzata né approvata da Anthropic. «Claude» e «Anthropic» sono marchi dei rispettivi titolari, citati a solo scopo identificativo. Dati verificati alla data indicata e soggetti a modifica.</div></footer><script>(function(){var r=document.documentElement;function eff(){var f=r.getAttribute('data-theme');return f?f:(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');}function meta(t){var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',t==='dark'?'#1F1E1D':'#FAF9F5');}meta(eff());var b=document.getElementById('theme-toggle');if(b)b.addEventListener('click',function(){var n=eff()==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem('theme',n);}catch(e){}meta(n);});})();</script></body></html>

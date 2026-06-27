@@ -1,0 +1,255 @@
+<!DOCTYPE html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>L2.3 — Autenticazione e controlli · Claude: la guida completa</title><meta name="description" content="Al termine saprai accedere a Claude Code con il metodo giusto — abbonamento o API key — capire quale credenziale è attiva e diagnosticare i problemi…"><link rel="canonical" href="https://angelogeminiani.github.io/claude-la-guida-completa/capitoli/L2-3-autenticazione.html"><meta name="theme-color" content="#FAF9F5"><meta name="author" content="Gian Angelo Geminiani"><meta property="og:type" content="article"><meta property="og:site_name" content="Claude: la guida completa"><meta property="og:title" content="L2.3 — Autenticazione e controlli · Claude: la guida completa"><meta property="og:description" content="Al termine saprai accedere a Claude Code con il metodo giusto — abbonamento o API key — capire quale credenziale è attiva e diagnosticare i problemi…"><meta property="og:url" content="https://angelogeminiani.github.io/claude-la-guida-completa/capitoli/L2-3-autenticazione.html"><meta property="og:image" content="https://angelogeminiani.github.io/claude-la-guida-completa/og-image.png"><meta property="og:locale" content="it_IT"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="L2.3 — Autenticazione e controlli · Claude: la guida completa"><meta name="twitter:description" content="Al termine saprai accedere a Claude Code con il metodo giusto — abbonamento o API key — capire quale credenziale è attiva e diagnosticare i problemi…"><meta name="twitter:image" content="https://angelogeminiani.github.io/claude-la-guida-completa/og-image.png"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cg stroke='%23D97757' stroke-width='3' stroke-linecap='round'%3E%3Cline x1='16' y1='5' x2='16' y2='27'/%3E%3Cline x1='5' y1='16' x2='27' y2='16'/%3E%3Cline x1='8' y1='8' x2='24' y2='24'/%3E%3Cline x1='24' y1='8' x2='8' y2='24'/%3E%3C/g%3E%3C/svg%3E"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,600;1,500&display=swap" rel="stylesheet"><style>/* book.css — shared styles for the online chapter pages (docs/capitoli/*.html)
+   and the reading index (docs/leggi.html). Same Claude.ai palette as the
+   landing page, with the light/dark theme system. */
+
+:root{
+  color-scheme:light;
+  --cream:#FAF9F5; --ink:#1F1E1D; --coral:#D97757; --coral-d:#B65A3C;
+  --muted:#6B6760; --border:#E9E2D6; --card:#FFFFFF; --tint:#F4ECE3;
+  --body:#322f2a; --code-bg:#F1EADF; --code-ink:#7A3E27;
+  --nav-bg:rgba(250,249,245,.86);
+  --cta-bg:#1F1E1D; --cta-h:#ffffff; --cta-p:#cdc6ba; --cta-border:#5a554d;
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --cream:#1F1E1D; --ink:#EDEAE2; --coral:#D97757; --coral-d:#E7A184;
+  --muted:#A39E95; --border:#393732; --card:#2A2926; --tint:#242320;
+  --body:#C9C3B8; --code-bg:#2E2C28; --code-ink:#E7A184;
+  --nav-bg:rgba(31,30,29,.86);
+  --cta-bg:#2A2926; --cta-h:#ffffff; --cta-p:#BDB7AC; --cta-border:#4A463F;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --cream:#1F1E1D; --ink:#EDEAE2; --coral:#D97757; --coral-d:#E7A184;
+    --muted:#A39E95; --border:#393732; --card:#2A2926; --tint:#242320;
+    --body:#C9C3B8; --code-bg:#2E2C28; --code-ink:#E7A184;
+    --nav-bg:rgba(31,30,29,.86);
+    --cta-bg:#2A2926; --cta-h:#ffffff; --cta-p:#BDB7AC; --cta-border:#4A463F;
+  }
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--cream); color:var(--body);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  line-height:1.7; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:760px; margin:0 auto; padding:0 24px}
+a{color:var(--coral-d); text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* header / nav */
+header.nav{position:sticky; top:0; z-index:10;
+  background:var(--nav-bg); backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border)}
+.nav .row{max-width:1080px; margin:0 auto; padding:0 24px;
+  display:flex; align-items:center; justify-content:space-between; height:62px}
+.brand{display:flex; align-items:center; gap:10px; font-family:Lora,Georgia,serif;
+  font-weight:600; font-size:18px; color:var(--ink)}
+.brand:hover{text-decoration:none}
+.mark{width:22px; height:22px; flex:none}
+.nav-right{display:flex; align-items:center; gap:16px}
+.nav-cta{font-weight:600; font-size:14px}
+.theme-toggle{display:inline-flex; align-items:center; justify-content:center;
+  width:40px; height:40px; border-radius:999px; border:1px solid var(--border);
+  background:transparent; color:var(--ink); cursor:pointer; flex:none;
+  transition:border-color .2s}
+.theme-toggle:hover{border-color:var(--coral)}
+.theme-toggle svg{width:18px; height:18px}
+.theme-toggle .i-sun{display:none}
+.theme-toggle .i-moon{display:block}
+:root[data-theme="dark"] .theme-toggle .i-moon{display:none}
+:root[data-theme="dark"] .theme-toggle .i-sun{display:block}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .theme-toggle .i-moon{display:none}
+  :root:not([data-theme="light"]) .theme-toggle .i-sun{display:block}
+}
+
+/* breadcrumb */
+.crumbs{font-size:13.5px; color:var(--muted); margin:26px 0 4px}
+.crumbs a{color:var(--muted)}
+.crumbs a:hover{color:var(--coral-d)}
+
+/* article */
+article{padding:6px 0 8px}
+article h1{font-family:Lora,Georgia,serif; font-weight:600; line-height:1.18;
+  font-size:clamp(30px,5vw,42px); color:var(--ink); margin:8px 0 6px}
+article h2{font-family:Lora,Georgia,serif; font-weight:600; color:var(--ink);
+  font-size:clamp(22px,3.4vw,28px); margin:38px 0 10px; line-height:1.25}
+article h3{font-family:Lora,Georgia,serif; font-weight:600; color:var(--ink);
+  font-size:20px; margin:26px 0 8px}
+article p{margin:0 0 16px}
+article ul,article ol{margin:0 0 16px; padding-left:22px}
+article li{margin:6px 0}
+article strong{color:var(--ink)}
+.accent{width:74px; height:4px; background:var(--coral); border-radius:2px;
+  margin:14px 0 22px}
+
+/* inline code as a pill + code blocks */
+code{font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace; font-size:.88em;
+  background:var(--code-bg); color:var(--code-ink);
+  padding:.12em .42em; border-radius:6px}
+pre{background:var(--code-bg); border:1px solid var(--border); border-radius:12px;
+  padding:16px 18px; overflow-x:auto; margin:0 0 18px}
+pre code{background:none; color:var(--ink); padding:0; font-size:13.5px;
+  line-height:1.55}
+
+/* blockquote with coral left bar */
+blockquote{margin:0 0 18px; padding:2px 0 2px 18px;
+  border-left:3px solid var(--coral); color:var(--muted)}
+blockquote p{margin:0 0 8px}
+
+/* tables */
+.tablewrap{overflow-x:auto; margin:0 0 18px}
+table{border-collapse:collapse; width:100%; font-size:14.5px}
+th,td{border:1px solid var(--border); padding:9px 12px; text-align:left;
+  vertical-align:top}
+thead th{background:var(--tint); color:var(--ink); font-weight:600}
+tbody tr:nth-child(even){background:var(--tint)}
+
+/* figures (inline SVG diagrams) */
+.fig{margin:18px 0; text-align:center}
+.fig svg{max-width:100%; height:auto}
+
+/* prev / next */
+.pager{display:flex; gap:14px; justify-content:space-between; margin:36px 0 0;
+  border-top:1px solid var(--border); padding-top:20px}
+.pager a{display:block; max-width:48%; font-size:14px}
+.pager .lbl{display:block; color:var(--muted); font-size:12px;
+  text-transform:uppercase; letter-spacing:.08em; margin-bottom:3px}
+.pager .nxt{text-align:right; margin-left:auto}
+
+/* reading CTA */
+.readcta{background:var(--cta-bg); color:var(--cta-p); border-radius:18px;
+  border:1px solid var(--cta-border); padding:30px 26px; margin:34px 0 0;
+  text-align:center}
+.readcta h2{font-family:Lora,Georgia,serif; color:var(--cta-h); margin:0 0 8px;
+  font-size:24px}
+.readcta p{margin:0 0 18px; font-size:15.5px}
+.btn{display:inline-flex; align-items:center; gap:9px; font-weight:700;
+  font-size:15px; padding:12px 24px; border-radius:999px; cursor:pointer;
+  border:1.5px solid transparent}
+.btn-primary{background:var(--coral); color:#fff;
+  box-shadow:0 6px 20px rgba(217,119,87,.32)}
+.btn-primary:hover{background:var(--coral-d); color:#fff; text-decoration:none}
+
+/* reading index (leggi.html) */
+.lead{font-size:18px; color:var(--muted); margin:6px 0 26px}
+.part-h{font-family:Lora,Georgia,serif; color:var(--ink); font-weight:600;
+  font-size:22px; margin:30px 0 6px}
+.toc{list-style:none; margin:0 0 8px; padding:0}
+.toc li{border-bottom:1px solid var(--border)}
+.toc a{display:flex; gap:12px; padding:12px 4px; color:var(--ink)}
+.toc a:hover{color:var(--coral-d); text-decoration:none}
+.toc .id{font-family:Lora,Georgia,serif; color:var(--coral-d); flex:none;
+  width:54px}
+
+/* footer */
+footer{margin-top:46px; border-top:1px solid var(--border);
+  padding:28px 0 56px; font-size:13px; color:var(--muted)}
+footer a{color:var(--coral-d)}
+</style><script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"L2.3 — Autenticazione e controlli","description":"Al termine saprai accedere a Claude Code con il metodo giusto — abbonamento o API key — capire quale credenziale è attiva e diagnosticare i problemi…","inLanguage":"it","author":{"@type":"Person","name":"Gian Angelo Geminiani"},"isPartOf":{"@type":"Book","name":"Claude: la guida completa"},"mainEntityOfPage":"https://angelogeminiani.github.io/claude-la-guida-completa/capitoli/L2-3-autenticazione.html"}</script><script>(function(){try{var s=localStorage.getItem('theme');if(s==='dark'||s==='light')document.documentElement.setAttribute('data-theme',s);}catch(e){}})();</script></head><body><svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="ast" viewBox="0 0 32 32"><g stroke="#D97757" stroke-width="3.4" stroke-linecap="round"><line x1="16" y1="4" x2="16" y2="28"/><line x1="4" y1="16" x2="28" y2="16"/><line x1="7.5" y1="7.5" x2="24.5" y2="24.5"/><line x1="24.5" y1="7.5" x2="7.5" y2="24.5"/></g></symbol><symbol id="moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol><symbol id="sun" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><line x1="12" y1="2.5" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="21.5"/><line x1="2.5" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="21.5" y2="12"/><line x1="5.2" y1="5.2" x2="6.9" y2="6.9"/><line x1="17.1" y1="17.1" x2="18.8" y2="18.8"/><line x1="5.2" y1="18.8" x2="6.9" y2="17.1"/><line x1="17.1" y1="6.9" x2="18.8" y2="5.2"/></g></symbol></svg><header class="nav"><div class="row"><a class="brand" href="../index.html"><svg class="mark"><use href="#ast"/></svg> Claude · la guida completa</a><div class="nav-right"><a class="nav-cta" href="../leggi.html">Indice</a><a class="nav-cta" href="../manuale_produzione.pdf" download>Scarica il PDF →</a><button class="theme-toggle" id="theme-toggle" type="button" aria-label="Cambia tema chiaro/scuro" title="Cambia tema"><svg class="i-moon" aria-hidden="true"><use href="#moon"/></svg><svg class="i-sun" aria-hidden="true"><use href="#sun"/></svg></button></div></div></header><main class="wrap"><div class="crumbs"><a href="../index.html">Home</a> · <a href="../leggi.html">Leggi online</a> · Livello 2 — Installazione locale</div><article><h1 id="capitolo-l2.3-autenticazione-e-controlli">Capitolo L2.3 — Autenticazione e controlli</h1>
+<blockquote>
+<p>Livello 2 — Installazione locale. Dati di prodotto verificati il 22/06/2026 su fonti ufficiali.</p>
+</blockquote>
+<h2 id="obiettivo">Obiettivo</h2>
+<p>Al termine saprai accedere a Claude Code con il metodo giusto — abbonamento o API key — capire quale credenziale è attiva e diagnosticare i problemi più comuni di login e di PATH. È il passo che trasforma un’installazione in uno strumento pronto all’uso.</p>
+<h2 id="prerequisiti">Prerequisiti</h2>
+<ul>
+<li>Claude Code installato e funzionante (vedi cap. L2.2).</li>
+<li>Un account a pagamento o una API key da Console (vedi cap. F.3).</li>
+</ul>
+<h2 id="il-primo-accesso">Il primo accesso</h2>
+<p>Dopo l’installazione, entra in una cartella di progetto ed esegui:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">claude</span></span></code></pre></div>
+<p>Al primo avvio Claude Code apre il browser per il login (OAuth, accesso delegato senza digitare la password nel terminale). Accedi con il tuo account Claude.ai e torni al terminale già autenticato. Se il browser non si apre da solo, premi <code>c</code> per copiare l’URL e incollarlo a mano.</p>
+<p>A seconda di chi sei, accedi con un abbonamento <strong>Pro o Max</strong> (account Claude.ai), un account <strong>Team/Enterprise</strong> invitato dall’amministratore, oppure credenziali <strong>Claude Console</strong> se la tua organizzazione fattura via API.</p>
+<blockquote>
+<p><strong>Nota:</strong> per uscire e ri-autenticarti digita <code>/logout</code> al prompt di Claude Code; <code>/login</code> riavvia l’accesso.</p>
+</blockquote>
+<h2 id="due-strade-abbonamento-o-api-key">Due strade: abbonamento o API key</h2>
+<p>Le due modalità più comuni rispondono a bisogni diversi. L’<strong>abbonamento</strong> (login da browser) è la scelta normale quando lavori al computer. La <strong>API key</strong> serve quando un browser non c’è: server, pipeline di CI, script automatici. Lì il login interattivo non è praticabile, e si usa una chiave generata nella Console.</p>
+<p><em>Figura L2.3.1 — Come scegliere il metodo di accesso.</em> Alt-text: diagramma verticale che dal comando claude porta a tre vie di accesso e poi alla verifica con lo stato.</p>
+<div class="fig">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 372" width="100%" font-family="Inter, &#39;Helvetica Neue&#39;, Arial, sans-serif">
+<defs><marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#D97757"/></marker></defs> <line x1="300.0" y1="54.0" x2="300.0" y2="92.0" stroke="#D97757" stroke-width="1.5" marker-end="url(#ah)"/> <line x1="300.0" y1="172.0" x2="122.5" y2="210.0" stroke="#D97757" stroke-width="1.5" marker-end="url(#ah)"/> <rect x="176.75" y="183.0" width="69.0" height="15" rx="3" fill="#FAF9F5"/> <text x="211.25" y="194.0" font-size="11" fill="#6B6760" text-anchor="middle">Pro / Max</text> <line x1="300.0" y1="172.0" x2="289.5" y2="210.0" stroke="#D97757" stroke-width="1.5" marker-end="url(#ah)"/> <rect x="246.25" y="183.0" width="97.0" height="15" rx="3" fill="#FAF9F5"/> <text x="294.75" y="194.0" font-size="11" fill="#6B6760" text-anchor="middle">Console / API</text> <line x1="300.0" y1="172.0" x2="467.0" y2="210.0" stroke="#D97757" stroke-width="1.5" marker-end="url(#ah)"/> <rect x="331.5" y="183.0" width="104.0" height="15" rx="3" fill="#FAF9F5"/> <text x="383.5" y="194.0" font-size="11" fill="#6B6760" text-anchor="middle">Provider cloud</text> <line x1="122.5" y1="264.0" x2="300.0" y2="302.0" stroke="#D97757" stroke-width="1.5" marker-end="url(#ah)"/> <line x1="289.5" y1="264.0" x2="300.0" y2="302.0" stroke="#D97757" stroke-width="1.5" marker-end="url(#ah)"/> <line x1="467.0" y1="264.0" x2="300.0" y2="302.0" stroke="#D97757" stroke-width="1.5" marker-end="url(#ah)"/> <rect x="240.5" y="16.0" width="119.0" height="38" rx="7" fill="#FFFFFF" stroke="#E5DED2" stroke-width="1.2"/> <text x="300.0" y="38.0" font-size="13" fill="#1F1E1D" text-anchor="middle">Esegui claude</text> <polygon points="300.0,94.0 365.0,133.0 300.0,172.0 235.0,133.0" fill="#FBEEE7" stroke="#D97757" stroke-width="1.5"/> <text x="300.0" y="116.0" font-size="13" fill="#1F1E1D" text-anchor="middle">Tipo di</text> <text x="300.0" y="132.0" font-size="13" fill="#1F1E1D" text-anchor="middle">accesso?</text> <rect x="63.0" y="212.0" width="119.0" height="52" rx="7" fill="#FFFFFF" stroke="#E5DED2" stroke-width="1.2"/> <text x="122.5" y="234.0" font-size="13" fill="#1F1E1D" text-anchor="middle">Login browser</text> <text x="122.5" y="250.0" font-size="13" fill="#1F1E1D" text-anchor="middle">OAuth</text> <rect x="216.0" y="212.0" width="147.0" height="52" rx="7" fill="#FFFFFF" stroke="#E5DED2" stroke-width="1.2"/> <text x="289.5" y="234.0" font-size="13" fill="#1F1E1D" text-anchor="middle">ANTHROPIC_API_KEY</text> <text x="289.5" y="250.0" font-size="13" fill="#1F1E1D" text-anchor="middle">da Console</text> <rect x="397.0" y="212.0" width="140.0" height="52" rx="7" fill="#FFFFFF" stroke="#E5DED2" stroke-width="1.2"/> <text x="467.0" y="234.0" font-size="13" fill="#1F1E1D" text-anchor="middle">Variabili</text> <text x="467.0" y="250.0" font-size="13" fill="#1F1E1D" text-anchor="middle">Bedrock / Vertex</text> <rect x="251.0" y="304.0" width="98.0" height="52" rx="7" fill="#FFFFFF" stroke="#E5DED2" stroke-width="1.2"/> <text x="300.0" y="326.0" font-size="13" fill="#1F1E1D" text-anchor="middle">Verifica</text> <text x="300.0" y="342.0" font-size="13" fill="#1F1E1D" text-anchor="middle">con status</text>
+</svg>
+</div>
+<p>Tabella L2.3.1 — I metodi di autenticazione.</p>
+<div class="tablewrap"><table>
+<thead>
+<tr class="header">
+<th>Metodo</th>
+<th>Per chi</th>
+<th>Come</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>OAuth</td>
+<td>uso al computer</td>
+<td>login browser</td>
+</tr>
+<tr class="even">
+<td>API key</td>
+<td>headless / CI</td>
+<td>ANTHROPIC_API_KEY</td>
+</tr>
+<tr class="odd">
+<td>Cloud</td>
+<td>Bedrock/Vertex</td>
+<td>variabili dedicate</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="usare-una-api-key-headless">Usare una API key headless</h2>
+<p>Genera la chiave nella Console (platform.claude.com) e impostala come variabile d’ambiente. Su macOS e Linux:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="bu">export</span> <span class="va">ANTHROPIC_API_KEY=</span>sk-ant-...</span></code></pre></div>
+<p>Su Windows (PowerShell):</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="va">$env</span>:ANTHROPIC_API_KEY = <span class="st">&quot;sk-ant-...&quot;</span></span></code></pre></div>
+<p>In modalità interattiva, Claude Code ti chiede una volta di approvare la chiave e ricorda la scelta. In modalità non interattiva (<code>claude -p</code>) la chiave viene usata sempre, senza chiedere: è ciò che serve negli script.</p>
+<h2 id="quale-credenziale-vince">Quale credenziale vince</h2>
+<p>Se più credenziali sono presenti, Claude Code ne sceglie una con un ordine fisso, dalla più forte alla più debole:</p>
+<ol type="1">
+<li>provider cloud (<code>CLAUDE_CODE_USE_BEDROCK</code> e simili);</li>
+<li><code>ANTHROPIC_AUTH_TOKEN</code> (bearer per gateway o proxy);</li>
+<li><code>ANTHROPIC_API_KEY</code>;</li>
+<li>script <code>apiKeyHelper</code> (credenziali a rotazione);</li>
+<li>abbonamento OAuth da <code>/login</code>.</li>
+</ol>
+<p>Conoscere l’ordine spiega la trappola più frequente: se hai un abbonamento attivo <strong>ma</strong> anche <code>ANTHROPIC_API_KEY</code> impostata, vince la key. Se quella chiave appartiene a un’organizzazione disabilitata, il login fallisce pur avendo un abbonamento valido.</p>
+<blockquote>
+<p><strong>Attenzione:</strong> queste variabili valgono solo per la CLI da terminale. Claude Desktop e le sessioni remote usano sempre OAuth e ignorano <code>ANTHROPIC_API_KEY</code>.</p>
+</blockquote>
+<h2 id="dove-finiscono-le-credenziali">Dove finiscono le credenziali</h2>
+<p>Claude Code conserva il login in modo sicuro: su macOS nel <strong>Keychain</strong> cifrato; su Linux e Windows nel file <code>~/.claude/.credentials.json</code> (su Linux con permessi <code>0600</code>), oppure sotto <code>$CLAUDE_CONFIG_DIR</code> se impostata. Non devi gestirlo a mano, ma sapere dov’è aiuta per backup o reset.</p>
+<h2 id="in-pratica-accedi-e-verifica">In pratica: accedi e verifica</h2>
+<ol type="1">
+<li><p>Entra in una cartella di progetto ed esegui <code>claude</code>.</p></li>
+<li><p>Completa il login nel browser (o premi <code>c</code> per copiare l’URL).</p></li>
+<li><p>Controlla quale metodo è attivo con <code>/status</code>.</p></li>
+<li><p>Se serve la diagnosi dell’installazione:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="ex">claude</span> doctor</span></code></pre></div></li>
+<li><p>In un ambiente automatizzato imposta <code>ANTHROPIC_API_KEY</code> e avvia con <code>claude -p</code>.</p></li>
+</ol>
+<h2 id="errori-comuni">Errori comuni</h2>
+<ul>
+<li><strong>Login fallito con abbonamento valido.</strong> Probabile <code>ANTHROPIC_API_KEY</code> di troppo: esegui <code>unset ANTHROPIC_API_KEY</code> e ricontrolla con <code>/status</code>.</li>
+<li><strong><code>command not found</code> dopo l’installazione.</strong> Apri un nuovo terminale; il binario è in <code>~/.local/bin/claude</code>, che deve stare nel PATH (vedi cap. L2.2).</li>
+<li><strong>Il browser non si apre al login.</strong> Premi <code>c</code> per copiare l’URL e aprilo a mano.</li>
+<li><strong>API key ignorata nel Desktop.</strong> È normale: il Desktop usa solo OAuth.</li>
+</ul>
+<h2 id="riepilogo">Riepilogo</h2>
+<ol type="1">
+<li>Al primo <code>claude</code> si accede dal <strong>browser</strong> con l’account Claude.ai.</li>
+<li>Per gli ambienti <strong>headless</strong> si usa <code>ANTHROPIC_API_KEY</code> dalla Console.</li>
+<li>Con più credenziali vince un <strong>ordine fisso</strong>: la API key batte l’abbonamento.</li>
+<li><code>/status</code> dice quale metodo è attivo; <code>/logout</code> ripulisce l’accesso.</li>
+<li><code>claude doctor</code> diagnostica installazione e configurazione.</li>
+</ol>
+<h2 id="prossimo-passo">Prossimo passo</h2>
+<p>Nel <strong>cap. L2.4 — Configurare il progetto</strong> prepariamo <code>CLAUDE.md</code>, la cartella <code>.claude</code> e i permessi, per far partire Claude Code già “sul pezzo” su un repo reale.</p>
+<p><em>Dati verificati il 22/06/2026 su code.claude.com/docs/en/authentication e support.claude.com (troubleshoot Claude Code). Login OAuth e API key richiedono un account reale, quindi non sono stati eseguiti nella VM; comandi e variabili sono riportati fedelmente dalla documentazione ufficiale.</em></p>
+</article><nav class="pager"><a href="./L2-2-installare-code.html"><span class="lbl">← Precedente</span>L2.2 — Installare Claude Code</a><a class="nxt" href="./L2-4-configurare-progetto.html"><span class="lbl">Successivo →</span>L2.4 — Configurare il progetto</a></nav><div class="readcta"><h2>Ti è utile? Prendi tutto il manuale</h2><p>33 capitoli in un unico PDF A5, gratis e senza registrazione.</p><a class="btn btn-primary" href="../manuale_produzione.pdf" download>↓ Scarica il PDF gratis</a></div></main><footer><div class="wrap">© 2026 Gian Angelo Geminiani. Pubblicazione <strong>indipendente e non ufficiale</strong>: non affiliata, sponsorizzata né approvata da Anthropic. «Claude» e «Anthropic» sono marchi dei rispettivi titolari, citati a solo scopo identificativo. Dati verificati alla data indicata e soggetti a modifica.</div></footer><script>(function(){var r=document.documentElement;function eff(){var f=r.getAttribute('data-theme');return f?f:(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');}function meta(t){var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',t==='dark'?'#1F1E1D':'#FAF9F5');}meta(eff());var b=document.getElementById('theme-toggle');if(b)b.addEventListener('click',function(){var n=eff()==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem('theme',n);}catch(e){}meta(n);});})();</script></body></html>

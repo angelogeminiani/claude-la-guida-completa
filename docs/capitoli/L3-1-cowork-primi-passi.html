@@ -1,0 +1,243 @@
+<!DOCTYPE html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>L3.1 — Cowork: primi passi · Claude: la guida completa</title><meta name="description" content="Al termine saprai cos&#x27;è Cowork e in cosa differisce da Chat e da Claude Code, avviare un task su una cartella del tuo computer, descrivere un risultato…"><link rel="canonical" href="https://angelogeminiani.github.io/claude-la-guida-completa/capitoli/L3-1-cowork-primi-passi.html"><meta name="theme-color" content="#FAF9F5"><meta name="author" content="Gian Angelo Geminiani"><meta property="og:type" content="article"><meta property="og:site_name" content="Claude: la guida completa"><meta property="og:title" content="L3.1 — Cowork: primi passi · Claude: la guida completa"><meta property="og:description" content="Al termine saprai cos&#x27;è Cowork e in cosa differisce da Chat e da Claude Code, avviare un task su una cartella del tuo computer, descrivere un risultato…"><meta property="og:url" content="https://angelogeminiani.github.io/claude-la-guida-completa/capitoli/L3-1-cowork-primi-passi.html"><meta property="og:image" content="https://angelogeminiani.github.io/claude-la-guida-completa/og-image.png"><meta property="og:locale" content="it_IT"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="L3.1 — Cowork: primi passi · Claude: la guida completa"><meta name="twitter:description" content="Al termine saprai cos&#x27;è Cowork e in cosa differisce da Chat e da Claude Code, avviare un task su una cartella del tuo computer, descrivere un risultato…"><meta name="twitter:image" content="https://angelogeminiani.github.io/claude-la-guida-completa/og-image.png"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cg stroke='%23D97757' stroke-width='3' stroke-linecap='round'%3E%3Cline x1='16' y1='5' x2='16' y2='27'/%3E%3Cline x1='5' y1='16' x2='27' y2='16'/%3E%3Cline x1='8' y1='8' x2='24' y2='24'/%3E%3Cline x1='24' y1='8' x2='8' y2='24'/%3E%3C/g%3E%3C/svg%3E"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,600;1,500&display=swap" rel="stylesheet"><style>/* book.css — shared styles for the online chapter pages (docs/capitoli/*.html)
+   and the reading index (docs/leggi.html). Same Claude.ai palette as the
+   landing page, with the light/dark theme system. */
+
+:root{
+  color-scheme:light;
+  --cream:#FAF9F5; --ink:#1F1E1D; --coral:#D97757; --coral-d:#B65A3C;
+  --muted:#6B6760; --border:#E9E2D6; --card:#FFFFFF; --tint:#F4ECE3;
+  --body:#322f2a; --code-bg:#F1EADF; --code-ink:#7A3E27;
+  --nav-bg:rgba(250,249,245,.86);
+  --cta-bg:#1F1E1D; --cta-h:#ffffff; --cta-p:#cdc6ba; --cta-border:#5a554d;
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --cream:#1F1E1D; --ink:#EDEAE2; --coral:#D97757; --coral-d:#E7A184;
+  --muted:#A39E95; --border:#393732; --card:#2A2926; --tint:#242320;
+  --body:#C9C3B8; --code-bg:#2E2C28; --code-ink:#E7A184;
+  --nav-bg:rgba(31,30,29,.86);
+  --cta-bg:#2A2926; --cta-h:#ffffff; --cta-p:#BDB7AC; --cta-border:#4A463F;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --cream:#1F1E1D; --ink:#EDEAE2; --coral:#D97757; --coral-d:#E7A184;
+    --muted:#A39E95; --border:#393732; --card:#2A2926; --tint:#242320;
+    --body:#C9C3B8; --code-bg:#2E2C28; --code-ink:#E7A184;
+    --nav-bg:rgba(31,30,29,.86);
+    --cta-bg:#2A2926; --cta-h:#ffffff; --cta-p:#BDB7AC; --cta-border:#4A463F;
+  }
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--cream); color:var(--body);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  line-height:1.7; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:760px; margin:0 auto; padding:0 24px}
+a{color:var(--coral-d); text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* header / nav */
+header.nav{position:sticky; top:0; z-index:10;
+  background:var(--nav-bg); backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border)}
+.nav .row{max-width:1080px; margin:0 auto; padding:0 24px;
+  display:flex; align-items:center; justify-content:space-between; height:62px}
+.brand{display:flex; align-items:center; gap:10px; font-family:Lora,Georgia,serif;
+  font-weight:600; font-size:18px; color:var(--ink)}
+.brand:hover{text-decoration:none}
+.mark{width:22px; height:22px; flex:none}
+.nav-right{display:flex; align-items:center; gap:16px}
+.nav-cta{font-weight:600; font-size:14px}
+.theme-toggle{display:inline-flex; align-items:center; justify-content:center;
+  width:40px; height:40px; border-radius:999px; border:1px solid var(--border);
+  background:transparent; color:var(--ink); cursor:pointer; flex:none;
+  transition:border-color .2s}
+.theme-toggle:hover{border-color:var(--coral)}
+.theme-toggle svg{width:18px; height:18px}
+.theme-toggle .i-sun{display:none}
+.theme-toggle .i-moon{display:block}
+:root[data-theme="dark"] .theme-toggle .i-moon{display:none}
+:root[data-theme="dark"] .theme-toggle .i-sun{display:block}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .theme-toggle .i-moon{display:none}
+  :root:not([data-theme="light"]) .theme-toggle .i-sun{display:block}
+}
+
+/* breadcrumb */
+.crumbs{font-size:13.5px; color:var(--muted); margin:26px 0 4px}
+.crumbs a{color:var(--muted)}
+.crumbs a:hover{color:var(--coral-d)}
+
+/* article */
+article{padding:6px 0 8px}
+article h1{font-family:Lora,Georgia,serif; font-weight:600; line-height:1.18;
+  font-size:clamp(30px,5vw,42px); color:var(--ink); margin:8px 0 6px}
+article h2{font-family:Lora,Georgia,serif; font-weight:600; color:var(--ink);
+  font-size:clamp(22px,3.4vw,28px); margin:38px 0 10px; line-height:1.25}
+article h3{font-family:Lora,Georgia,serif; font-weight:600; color:var(--ink);
+  font-size:20px; margin:26px 0 8px}
+article p{margin:0 0 16px}
+article ul,article ol{margin:0 0 16px; padding-left:22px}
+article li{margin:6px 0}
+article strong{color:var(--ink)}
+.accent{width:74px; height:4px; background:var(--coral); border-radius:2px;
+  margin:14px 0 22px}
+
+/* inline code as a pill + code blocks */
+code{font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace; font-size:.88em;
+  background:var(--code-bg); color:var(--code-ink);
+  padding:.12em .42em; border-radius:6px}
+pre{background:var(--code-bg); border:1px solid var(--border); border-radius:12px;
+  padding:16px 18px; overflow-x:auto; margin:0 0 18px}
+pre code{background:none; color:var(--ink); padding:0; font-size:13.5px;
+  line-height:1.55}
+
+/* blockquote with coral left bar */
+blockquote{margin:0 0 18px; padding:2px 0 2px 18px;
+  border-left:3px solid var(--coral); color:var(--muted)}
+blockquote p{margin:0 0 8px}
+
+/* tables */
+.tablewrap{overflow-x:auto; margin:0 0 18px}
+table{border-collapse:collapse; width:100%; font-size:14.5px}
+th,td{border:1px solid var(--border); padding:9px 12px; text-align:left;
+  vertical-align:top}
+thead th{background:var(--tint); color:var(--ink); font-weight:600}
+tbody tr:nth-child(even){background:var(--tint)}
+
+/* figures (inline SVG diagrams) */
+.fig{margin:18px 0; text-align:center}
+.fig svg{max-width:100%; height:auto}
+
+/* prev / next */
+.pager{display:flex; gap:14px; justify-content:space-between; margin:36px 0 0;
+  border-top:1px solid var(--border); padding-top:20px}
+.pager a{display:block; max-width:48%; font-size:14px}
+.pager .lbl{display:block; color:var(--muted); font-size:12px;
+  text-transform:uppercase; letter-spacing:.08em; margin-bottom:3px}
+.pager .nxt{text-align:right; margin-left:auto}
+
+/* reading CTA */
+.readcta{background:var(--cta-bg); color:var(--cta-p); border-radius:18px;
+  border:1px solid var(--cta-border); padding:30px 26px; margin:34px 0 0;
+  text-align:center}
+.readcta h2{font-family:Lora,Georgia,serif; color:var(--cta-h); margin:0 0 8px;
+  font-size:24px}
+.readcta p{margin:0 0 18px; font-size:15.5px}
+.btn{display:inline-flex; align-items:center; gap:9px; font-weight:700;
+  font-size:15px; padding:12px 24px; border-radius:999px; cursor:pointer;
+  border:1.5px solid transparent}
+.btn-primary{background:var(--coral); color:#fff;
+  box-shadow:0 6px 20px rgba(217,119,87,.32)}
+.btn-primary:hover{background:var(--coral-d); color:#fff; text-decoration:none}
+
+/* reading index (leggi.html) */
+.lead{font-size:18px; color:var(--muted); margin:6px 0 26px}
+.part-h{font-family:Lora,Georgia,serif; color:var(--ink); font-weight:600;
+  font-size:22px; margin:30px 0 6px}
+.toc{list-style:none; margin:0 0 8px; padding:0}
+.toc li{border-bottom:1px solid var(--border)}
+.toc a{display:flex; gap:12px; padding:12px 4px; color:var(--ink)}
+.toc a:hover{color:var(--coral-d); text-decoration:none}
+.toc .id{font-family:Lora,Georgia,serif; color:var(--coral-d); flex:none;
+  width:54px}
+
+/* footer */
+footer{margin-top:46px; border-top:1px solid var(--border);
+  padding:28px 0 56px; font-size:13px; color:var(--muted)}
+footer a{color:var(--coral-d)}
+</style><script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"L3.1 — Cowork: primi passi","description":"Al termine saprai cos'è Cowork e in cosa differisce da Chat e da Claude Code, avviare un task su una cartella del tuo computer, descrivere un risultato…","inLanguage":"it","author":{"@type":"Person","name":"Gian Angelo Geminiani"},"isPartOf":{"@type":"Book","name":"Claude: la guida completa"},"mainEntityOfPage":"https://angelogeminiani.github.io/claude-la-guida-completa/capitoli/L3-1-cowork-primi-passi.html"}</script><script>(function(){try{var s=localStorage.getItem('theme');if(s==='dark'||s==='light')document.documentElement.setAttribute('data-theme',s);}catch(e){}})();</script></head><body><svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="ast" viewBox="0 0 32 32"><g stroke="#D97757" stroke-width="3.4" stroke-linecap="round"><line x1="16" y1="4" x2="16" y2="28"/><line x1="4" y1="16" x2="28" y2="16"/><line x1="7.5" y1="7.5" x2="24.5" y2="24.5"/><line x1="24.5" y1="7.5" x2="7.5" y2="24.5"/></g></symbol><symbol id="moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol><symbol id="sun" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><line x1="12" y1="2.5" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="21.5"/><line x1="2.5" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="21.5" y2="12"/><line x1="5.2" y1="5.2" x2="6.9" y2="6.9"/><line x1="17.1" y1="17.1" x2="18.8" y2="18.8"/><line x1="5.2" y1="18.8" x2="6.9" y2="17.1"/><line x1="17.1" y1="6.9" x2="18.8" y2="5.2"/></g></symbol></svg><header class="nav"><div class="row"><a class="brand" href="../index.html"><svg class="mark"><use href="#ast"/></svg> Claude · la guida completa</a><div class="nav-right"><a class="nav-cta" href="../leggi.html">Indice</a><a class="nav-cta" href="../manuale_produzione.pdf" download>Scarica il PDF →</a><button class="theme-toggle" id="theme-toggle" type="button" aria-label="Cambia tema chiaro/scuro" title="Cambia tema"><svg class="i-moon" aria-hidden="true"><use href="#moon"/></svg><svg class="i-sun" aria-hidden="true"><use href="#sun"/></svg></button></div></div></header><main class="wrap"><div class="crumbs"><a href="../index.html">Home</a> · <a href="../leggi.html">Leggi online</a> · Livello 3 — Lavoro quotidiano</div><article><h1 id="capitolo-l3.1-cowork-primi-passi">Capitolo L3.1 — Cowork: primi passi</h1>
+<blockquote>
+<p>Livello 3 — Lavoro quotidiano. Dati di prodotto verificati il 27/06/2026 su fonti ufficiali.</p>
+</blockquote>
+<h2 id="obiettivo">Obiettivo</h2>
+<p>Al termine saprai cos’è Cowork e in cosa differisce da Chat e da Claude Code, avviare un task su una cartella del tuo computer, descrivere un risultato invece di una sequenza di passi, e approvare le azioni che Claude propone mentre lavora.</p>
+<h2 id="prerequisiti">Prerequisiti</h2>
+<ul>
+<li>Claude Desktop installato (vedi cap. L2.1).</li>
+<li>Un piano a pagamento: <strong>Pro, Max, Team o Enterprise</strong>. Cowork non è incluso nel Free (vedi cap. F.3 e il ledger).</li>
+<li>Una cartella con file su cui ha senso lavorare.</li>
+</ul>
+<h2 id="cosè-cowork">Cos’è Cowork</h2>
+<p>Cowork è il tab dell’app desktop per il <strong>lavoro agentico non di codice</strong>: gli affidi un compito su una cartella e lui lo porta avanti da solo — legge i file, ragiona, crea o modifica documenti, esegue passaggi in sequenza — fermandosi a chiederti conferma quando serve. È disponibile sui piani a pagamento su macOS e Windows. (VOLATILE: lo stato del prodotto evolve in fretta; vedi il ledger.)</p>
+<p>Gira in una <strong>VM isolata</strong> (una macchina virtuale, un computer dentro il computer) sul tuo dispositivo. Questo è il punto chiave per la fiducia: Cowork legge e scrive <strong>solo nelle cartelle che gli colleghi</strong>, e la rete segue le impostazioni di egress (cosa può raggiungere su internet). Non vede il resto del tuo disco se non glielo dai.</p>
+<h2 id="cowork-chat-e-code-chi-fa-cosa">Cowork, Chat e Code: chi fa cosa</h2>
+<p>I tre tab dell’app rispondono a bisogni diversi. Sceglierli bene è metà del lavoro.</p>
+<p>Tabella L3.1.1 — Quando usare quale tab.</p>
+<div class="tablewrap"><table>
+<thead>
+<tr class="header">
+<th>Tab</th>
+<th>Per cosa</th>
+<th>Forma</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Chat</td>
+<td>Domande, bozze, idee</td>
+<td>Botta e risposta</td>
+</tr>
+<tr class="even">
+<td>Code</td>
+<td>Sviluppo software</td>
+<td>Sui file di codice</td>
+</tr>
+<tr class="odd">
+<td>Cowork</td>
+<td>Compiti su file, multi-passo</td>
+<td>Agentico, lungo</td>
+</tr>
+</tbody>
+</table></div>
+<p>In breve: se vuoi una risposta, Chat. Se programmi, Code. Se vuoi che qualcuno <strong>faccia</strong> una cosa articolata sui tuoi file — riorganizza una cartella, produca un report da più documenti, prepari una serie di file — Cowork.</p>
+<h2 id="end-state-non-i-passi">End-state, non i passi</h2>
+<p>L’errore più comune al primo uso è guidare Cowork passo per passo, come si fa in chat. Funziona meglio il contrario: descrivi il <strong>risultato che vuoi</strong> (lo “end-state”) e lascia che sia lui a trovare la sequenza.</p>
+<ul>
+<li><strong>Debole (passi):</strong> “Apri il file. Ora leggi la colonna B. Adesso copia…”</li>
+<li><strong>Meglio (end-state):</strong> “Da questi tre Excel di vendita, crea un riepilogo per regione con i totali trimestrali, salvato come <code>riepilogo.xlsx</code>.”</li>
+</ul>
+<p>Descrivere il risultato sfrutta ciò per cui Cowork è fatto: pianificare il percorso. Tu definisci il “dove arrivare” e i vincoli; lui trova il “come”.</p>
+<h2 id="approvare-le-azioni">Approvare le azioni</h2>
+<p>Mentre lavora, Cowork si ferma prima delle azioni che contano e ti mostra cosa sta per fare: creare un file, modificarne uno, eseguire un comando. Tu approvi o correggi. È lo stesso principio dei permessi di Claude Code (vedi cap. L2.4): la parte ripetitiva scorre, le decisioni restano tue.</p>
+<p>Non approvare a scatola chiusa. Leggi cosa propone, soprattutto le prime volte: è così che impari a fidarti — o a capire dove serve essere più precisi nella richiesta.</p>
+<p>Cowork ha due <strong>modalità di permessi</strong> che decidono quanto spesso si ferma:</p>
+<ul>
+<li><strong>Ask before acting:</strong> si ferma e chiede conferma a ogni azione. È la modalità giusta con file o strumenti nuovi, o quando vuoi tenere tutto sotto controllo.</li>
+<li><strong>Act without asking:</strong> procede senza fermarsi. Più veloce, ma più rischiosa: usala solo mentre stai supervisionando, su file e siti di cui ti fidi.</li>
+</ul>
+<p>In <strong>entrambe</strong> le modalità, Claude chiede sempre conferma prima di <strong>cancellare</strong> file in modo definitivo: la cancellazione non è mai automatica.</p>
+<h2 id="in-pratica-il-tuo-primo-task">In pratica: il tuo primo task</h2>
+<ol type="1">
+<li><p>Apri Claude Desktop e vai sul tab <strong>Cowork</strong>.</p></li>
+<li><p><strong>Collega una cartella</strong>: scegline una con dei file veri, ma di cui hai una copia. Cowork agirà solo dentro questa cartella.</p></li>
+<li><p>Scrivi il compito come <strong>end-state</strong>, con i vincoli:</p>
+<pre class="text"><code>In questa cartella ci sono appunti .txt sparsi.
+Raggruppali per argomento in sottocartelle e
+crea un INDICE.md che elenca cosa c&#39;è dove.</code></pre></li>
+<li><p>Lascia che pianifichi. Quando si ferma per un’azione, <strong>leggi e approva</strong>.</p></li>
+<li><p>A fine task, controlla il risultato nella cartella. Se non è quello che volevi, raffina la richiesta e rilancia.</p></li>
+</ol>
+<h2 id="errori-comuni">Errori comuni</h2>
+<ul>
+<li><strong>Guidarlo passo per passo.</strong> Spreca il suo punto di forza. Descrivi il risultato, non la procedura.</li>
+<li><strong>Collegare l’intero disco o cartelle critiche.</strong> Collega solo ciò che serve, e lavora su copie finché non ti fidi.</li>
+<li><strong>Aspettarsi Cowork nel Free.</strong> Serve un piano a pagamento.</li>
+<li><strong>Approvare senza leggere.</strong> Le prime volte controlla cosa propone: è lì che impari a dargli istruzioni migliori.</li>
+</ul>
+<h2 id="riepilogo">Riepilogo</h2>
+<ol type="1">
+<li>Cowork è il tab desktop per il lavoro agentico non di codice, in una <strong>VM isolata</strong> che vede solo le cartelle collegate.</li>
+<li>Chat per le risposte, Code per il software, Cowork per i compiti multi-passo sui tuoi file.</li>
+<li>Descrivi il <strong>risultato</strong> (end-state) e i vincoli, non la sequenza di passi.</li>
+<li>Approva le azioni che Cowork propone: il controllo resta tuo.</li>
+<li>Collega solo le cartelle necessarie e parti da copie.</li>
+</ol>
+<h2 id="prossimo-passo">Prossimo passo</h2>
+<p>Nel <strong>cap. L3.2 — Projects</strong> vediamo come dare a un lavoro ricorrente una casa stabile: istruzioni, file di riferimento e memoria che restano tra una sessione e l’altra.</p>
+<p><em>Dati su Cowork (VM isolata, piani, cartelle collegate, modalità di permessi) dal ledger, verificati il 27/06/2026 su support.claude.com/en/articles/13345190 e code.claude.com/docs. Il task di esempio non è stato eseguito qui: richiede l’app desktop con un account a pagamento.</em></p>
+</article><nav class="pager"><a href="./L2-4-configurare-progetto.html"><span class="lbl">← Precedente</span>L2.4 — Configurare il progetto</a><a class="nxt" href="./L3-2-projects.html"><span class="lbl">Successivo →</span>L3.2 — Projects</a></nav><div class="readcta"><h2>Ti è utile? Prendi tutto il manuale</h2><p>33 capitoli in un unico PDF A5, gratis e senza registrazione.</p><a class="btn btn-primary" href="../manuale_produzione.pdf" download>↓ Scarica il PDF gratis</a></div></main><footer><div class="wrap">© 2026 Gian Angelo Geminiani. Pubblicazione <strong>indipendente e non ufficiale</strong>: non affiliata, sponsorizzata né approvata da Anthropic. «Claude» e «Anthropic» sono marchi dei rispettivi titolari, citati a solo scopo identificativo. Dati verificati alla data indicata e soggetti a modifica.</div></footer><script>(function(){var r=document.documentElement;function eff(){var f=r.getAttribute('data-theme');return f?f:(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');}function meta(t){var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',t==='dark'?'#1F1E1D':'#FAF9F5');}meta(eff());var b=document.getElementById('theme-toggle');if(b)b.addEventListener('click',function(){var n=eff()==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem('theme',n);}catch(e){}meta(n);});})();</script></body></html>

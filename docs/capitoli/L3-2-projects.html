@@ -1,0 +1,222 @@
+<!DOCTYPE html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>L3.2 — Projects · Claude: la guida completa</title><meta name="description" content="Al termine saprai cos&#x27;è un Project, quando conviene crearne uno, come dargli istruzioni e file di riferimento che restano tra una conversazione e…"><link rel="canonical" href="https://angelogeminiani.github.io/claude-la-guida-completa/capitoli/L3-2-projects.html"><meta name="theme-color" content="#FAF9F5"><meta name="author" content="Gian Angelo Geminiani"><meta property="og:type" content="article"><meta property="og:site_name" content="Claude: la guida completa"><meta property="og:title" content="L3.2 — Projects · Claude: la guida completa"><meta property="og:description" content="Al termine saprai cos&#x27;è un Project, quando conviene crearne uno, come dargli istruzioni e file di riferimento che restano tra una conversazione e…"><meta property="og:url" content="https://angelogeminiani.github.io/claude-la-guida-completa/capitoli/L3-2-projects.html"><meta property="og:image" content="https://angelogeminiani.github.io/claude-la-guida-completa/og-image.png"><meta property="og:locale" content="it_IT"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="L3.2 — Projects · Claude: la guida completa"><meta name="twitter:description" content="Al termine saprai cos&#x27;è un Project, quando conviene crearne uno, come dargli istruzioni e file di riferimento che restano tra una conversazione e…"><meta name="twitter:image" content="https://angelogeminiani.github.io/claude-la-guida-completa/og-image.png"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cg stroke='%23D97757' stroke-width='3' stroke-linecap='round'%3E%3Cline x1='16' y1='5' x2='16' y2='27'/%3E%3Cline x1='5' y1='16' x2='27' y2='16'/%3E%3Cline x1='8' y1='8' x2='24' y2='24'/%3E%3Cline x1='24' y1='8' x2='8' y2='24'/%3E%3C/g%3E%3C/svg%3E"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,600;1,500&display=swap" rel="stylesheet"><style>/* book.css — shared styles for the online chapter pages (docs/capitoli/*.html)
+   and the reading index (docs/leggi.html). Same Claude.ai palette as the
+   landing page, with the light/dark theme system. */
+
+:root{
+  color-scheme:light;
+  --cream:#FAF9F5; --ink:#1F1E1D; --coral:#D97757; --coral-d:#B65A3C;
+  --muted:#6B6760; --border:#E9E2D6; --card:#FFFFFF; --tint:#F4ECE3;
+  --body:#322f2a; --code-bg:#F1EADF; --code-ink:#7A3E27;
+  --nav-bg:rgba(250,249,245,.86);
+  --cta-bg:#1F1E1D; --cta-h:#ffffff; --cta-p:#cdc6ba; --cta-border:#5a554d;
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --cream:#1F1E1D; --ink:#EDEAE2; --coral:#D97757; --coral-d:#E7A184;
+  --muted:#A39E95; --border:#393732; --card:#2A2926; --tint:#242320;
+  --body:#C9C3B8; --code-bg:#2E2C28; --code-ink:#E7A184;
+  --nav-bg:rgba(31,30,29,.86);
+  --cta-bg:#2A2926; --cta-h:#ffffff; --cta-p:#BDB7AC; --cta-border:#4A463F;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --cream:#1F1E1D; --ink:#EDEAE2; --coral:#D97757; --coral-d:#E7A184;
+    --muted:#A39E95; --border:#393732; --card:#2A2926; --tint:#242320;
+    --body:#C9C3B8; --code-bg:#2E2C28; --code-ink:#E7A184;
+    --nav-bg:rgba(31,30,29,.86);
+    --cta-bg:#2A2926; --cta-h:#ffffff; --cta-p:#BDB7AC; --cta-border:#4A463F;
+  }
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--cream); color:var(--body);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  line-height:1.7; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:760px; margin:0 auto; padding:0 24px}
+a{color:var(--coral-d); text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* header / nav */
+header.nav{position:sticky; top:0; z-index:10;
+  background:var(--nav-bg); backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border)}
+.nav .row{max-width:1080px; margin:0 auto; padding:0 24px;
+  display:flex; align-items:center; justify-content:space-between; height:62px}
+.brand{display:flex; align-items:center; gap:10px; font-family:Lora,Georgia,serif;
+  font-weight:600; font-size:18px; color:var(--ink)}
+.brand:hover{text-decoration:none}
+.mark{width:22px; height:22px; flex:none}
+.nav-right{display:flex; align-items:center; gap:16px}
+.nav-cta{font-weight:600; font-size:14px}
+.theme-toggle{display:inline-flex; align-items:center; justify-content:center;
+  width:40px; height:40px; border-radius:999px; border:1px solid var(--border);
+  background:transparent; color:var(--ink); cursor:pointer; flex:none;
+  transition:border-color .2s}
+.theme-toggle:hover{border-color:var(--coral)}
+.theme-toggle svg{width:18px; height:18px}
+.theme-toggle .i-sun{display:none}
+.theme-toggle .i-moon{display:block}
+:root[data-theme="dark"] .theme-toggle .i-moon{display:none}
+:root[data-theme="dark"] .theme-toggle .i-sun{display:block}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .theme-toggle .i-moon{display:none}
+  :root:not([data-theme="light"]) .theme-toggle .i-sun{display:block}
+}
+
+/* breadcrumb */
+.crumbs{font-size:13.5px; color:var(--muted); margin:26px 0 4px}
+.crumbs a{color:var(--muted)}
+.crumbs a:hover{color:var(--coral-d)}
+
+/* article */
+article{padding:6px 0 8px}
+article h1{font-family:Lora,Georgia,serif; font-weight:600; line-height:1.18;
+  font-size:clamp(30px,5vw,42px); color:var(--ink); margin:8px 0 6px}
+article h2{font-family:Lora,Georgia,serif; font-weight:600; color:var(--ink);
+  font-size:clamp(22px,3.4vw,28px); margin:38px 0 10px; line-height:1.25}
+article h3{font-family:Lora,Georgia,serif; font-weight:600; color:var(--ink);
+  font-size:20px; margin:26px 0 8px}
+article p{margin:0 0 16px}
+article ul,article ol{margin:0 0 16px; padding-left:22px}
+article li{margin:6px 0}
+article strong{color:var(--ink)}
+.accent{width:74px; height:4px; background:var(--coral); border-radius:2px;
+  margin:14px 0 22px}
+
+/* inline code as a pill + code blocks */
+code{font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace; font-size:.88em;
+  background:var(--code-bg); color:var(--code-ink);
+  padding:.12em .42em; border-radius:6px}
+pre{background:var(--code-bg); border:1px solid var(--border); border-radius:12px;
+  padding:16px 18px; overflow-x:auto; margin:0 0 18px}
+pre code{background:none; color:var(--ink); padding:0; font-size:13.5px;
+  line-height:1.55}
+
+/* blockquote with coral left bar */
+blockquote{margin:0 0 18px; padding:2px 0 2px 18px;
+  border-left:3px solid var(--coral); color:var(--muted)}
+blockquote p{margin:0 0 8px}
+
+/* tables */
+.tablewrap{overflow-x:auto; margin:0 0 18px}
+table{border-collapse:collapse; width:100%; font-size:14.5px}
+th,td{border:1px solid var(--border); padding:9px 12px; text-align:left;
+  vertical-align:top}
+thead th{background:var(--tint); color:var(--ink); font-weight:600}
+tbody tr:nth-child(even){background:var(--tint)}
+
+/* figures (inline SVG diagrams) */
+.fig{margin:18px 0; text-align:center}
+.fig svg{max-width:100%; height:auto}
+
+/* prev / next */
+.pager{display:flex; gap:14px; justify-content:space-between; margin:36px 0 0;
+  border-top:1px solid var(--border); padding-top:20px}
+.pager a{display:block; max-width:48%; font-size:14px}
+.pager .lbl{display:block; color:var(--muted); font-size:12px;
+  text-transform:uppercase; letter-spacing:.08em; margin-bottom:3px}
+.pager .nxt{text-align:right; margin-left:auto}
+
+/* reading CTA */
+.readcta{background:var(--cta-bg); color:var(--cta-p); border-radius:18px;
+  border:1px solid var(--cta-border); padding:30px 26px; margin:34px 0 0;
+  text-align:center}
+.readcta h2{font-family:Lora,Georgia,serif; color:var(--cta-h); margin:0 0 8px;
+  font-size:24px}
+.readcta p{margin:0 0 18px; font-size:15.5px}
+.btn{display:inline-flex; align-items:center; gap:9px; font-weight:700;
+  font-size:15px; padding:12px 24px; border-radius:999px; cursor:pointer;
+  border:1.5px solid transparent}
+.btn-primary{background:var(--coral); color:#fff;
+  box-shadow:0 6px 20px rgba(217,119,87,.32)}
+.btn-primary:hover{background:var(--coral-d); color:#fff; text-decoration:none}
+
+/* reading index (leggi.html) */
+.lead{font-size:18px; color:var(--muted); margin:6px 0 26px}
+.part-h{font-family:Lora,Georgia,serif; color:var(--ink); font-weight:600;
+  font-size:22px; margin:30px 0 6px}
+.toc{list-style:none; margin:0 0 8px; padding:0}
+.toc li{border-bottom:1px solid var(--border)}
+.toc a{display:flex; gap:12px; padding:12px 4px; color:var(--ink)}
+.toc a:hover{color:var(--coral-d); text-decoration:none}
+.toc .id{font-family:Lora,Georgia,serif; color:var(--coral-d); flex:none;
+  width:54px}
+
+/* footer */
+footer{margin-top:46px; border-top:1px solid var(--border);
+  padding:28px 0 56px; font-size:13px; color:var(--muted)}
+footer a{color:var(--coral-d)}
+</style><script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"L3.2 — Projects","description":"Al termine saprai cos'è un Project, quando conviene crearne uno, come dargli istruzioni e file di riferimento che restano tra una conversazione e…","inLanguage":"it","author":{"@type":"Person","name":"Gian Angelo Geminiani"},"isPartOf":{"@type":"Book","name":"Claude: la guida completa"},"mainEntityOfPage":"https://angelogeminiani.github.io/claude-la-guida-completa/capitoli/L3-2-projects.html"}</script><script>(function(){try{var s=localStorage.getItem('theme');if(s==='dark'||s==='light')document.documentElement.setAttribute('data-theme',s);}catch(e){}})();</script></head><body><svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="ast" viewBox="0 0 32 32"><g stroke="#D97757" stroke-width="3.4" stroke-linecap="round"><line x1="16" y1="4" x2="16" y2="28"/><line x1="4" y1="16" x2="28" y2="16"/><line x1="7.5" y1="7.5" x2="24.5" y2="24.5"/><line x1="24.5" y1="7.5" x2="7.5" y2="24.5"/></g></symbol><symbol id="moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol><symbol id="sun" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><line x1="12" y1="2.5" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="21.5"/><line x1="2.5" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="21.5" y2="12"/><line x1="5.2" y1="5.2" x2="6.9" y2="6.9"/><line x1="17.1" y1="17.1" x2="18.8" y2="18.8"/><line x1="5.2" y1="18.8" x2="6.9" y2="17.1"/><line x1="17.1" y1="6.9" x2="18.8" y2="5.2"/></g></symbol></svg><header class="nav"><div class="row"><a class="brand" href="../index.html"><svg class="mark"><use href="#ast"/></svg> Claude · la guida completa</a><div class="nav-right"><a class="nav-cta" href="../leggi.html">Indice</a><a class="nav-cta" href="../manuale_produzione.pdf" download>Scarica il PDF →</a><button class="theme-toggle" id="theme-toggle" type="button" aria-label="Cambia tema chiaro/scuro" title="Cambia tema"><svg class="i-moon" aria-hidden="true"><use href="#moon"/></svg><svg class="i-sun" aria-hidden="true"><use href="#sun"/></svg></button></div></div></header><main class="wrap"><div class="crumbs"><a href="../index.html">Home</a> · <a href="../leggi.html">Leggi online</a> · Livello 3 — Lavoro quotidiano</div><article><h1 id="capitolo-l3.2-projects">Capitolo L3.2 — Projects</h1>
+<blockquote>
+<p>Livello 3 — Lavoro quotidiano. Dati di prodotto verificati il 22/06/2026 su fonti ufficiali.</p>
+</blockquote>
+<h2 id="obiettivo">Obiettivo</h2>
+<p>Al termine saprai cos’è un Project, quando conviene crearne uno, come dargli istruzioni e file di riferimento che restano tra una conversazione e l’altra, e cosa cambia quando lavori in team. Useremo come esempio il Project con cui è stato scritto questo libro.</p>
+<h2 id="prerequisiti">Prerequisiti</h2>
+<ul>
+<li>Saper conversare in chat (vedi cap. L1.2).</li>
+<li>Un’attività ricorrente: qualcosa su cui torni più volte, non una domanda secca.</li>
+</ul>
+<h2 id="cosè-un-project">Cos’è un Project</h2>
+<p>Un Project è un <strong>workspace</strong> dedicato a un’attività: raccoglie in un posto solo le istruzioni che valgono sempre, i file di riferimento (la “knowledge base”) e le conversazioni collegate. Ogni chat aperta dentro il Project parte già con quel contesto, senza che tu lo ripeta.</p>
+<p>Li avevi già incontrati di sfuggita tra le impostazioni (cap. L1.3): qui li mettiamo al lavoro. I Project sono disponibili su tutti i piani; nel <strong>Free</strong> sono limitati a <strong>5</strong>. La condivisione in team è riservata a <strong>Team ed Enterprise</strong> (vedi il ledger).</p>
+<h2 id="quando-crearne-uno">Quando crearne uno</h2>
+<p>Non tutto merita un Project. La singola domanda sta bene in una chat normale. Conviene creare un Project quando ricorrono questi segnali:</p>
+<ul>
+<li><strong>Torni più volte</strong> sullo stesso lavoro nel tempo.</li>
+<li><strong>Ripeti lo stesso contesto</strong> a ogni chat (“ricordati che lo stile è…”).</li>
+<li><strong>Hai file di riferimento</strong> che servono in ogni conversazione.</li>
+</ul>
+<p>Se ti ritrovi a incollare le stesse istruzioni o gli stessi documenti all’inizio di ogni chat, è il momento del Project.</p>
+<h2 id="istruzioni-e-knowledge-base">Istruzioni e knowledge base</h2>
+<p>Due cose rendono utile un Project:</p>
+<ul>
+<li><strong>Istruzioni:</strong> valgono per ogni chat del Project. Tono, vincoli, formato, cose da fare e da non fare. È il “chi sei e come lavori” del progetto.</li>
+<li><strong>Knowledge base:</strong> i file che Claude può consultare — documenti, esempi, materiale di riferimento. Diventano parte del contesto disponibile.</li>
+</ul>
+<p>La differenza con <code>CLAUDE.md</code> (cap. L2.4) è il contesto d’uso: <code>CLAUDE.md</code> governa Claude Code sui file del progetto; le istruzioni del Project governano le <strong>conversazioni</strong> dentro quel Project. Stessa idea — scrivi una volta il contesto stabile — applicata a strumenti diversi.</p>
+<blockquote>
+<p><strong>Nota:</strong> i file della knowledge base hanno un limite per file (intorno ai 30 MB) ma numero non vincolato, purché il contenuto stia nel contesto di Claude. È un limite diverso da quello degli allegati in chat (cap. L1.1): la knowledge base è pensata per molti file di riferimento, non per pochi file enormi.</p>
+</blockquote>
+<h2 id="memoria-e-scope">Memoria e scope</h2>
+<p>Il Project dà ai tuoi lavori un confine. Le istruzioni e i file restano <strong>circoscritti</strong> a quel Project: non si mescolano con le altre chat. Questo è un vantaggio doppio — il contesto giusto è sempre lì, e quello sbagliato resta fuori. Quando cambi attività, cambi Project, e il modello non trascina dietro materiale che non c’entra.</p>
+<h2 id="esempio-il-project-di-questo-libro">Esempio: il Project di questo libro</h2>
+<p>Questo manuale è stato scritto dentro un Project. La sua forma mostra bene il pattern:</p>
+<ul>
+<li><strong>Istruzioni:</strong> regole di progetto — dove salvare i capitoli, niente note prudenziali nei testi pubblicati, voce e vincoli di impaginazione.</li>
+<li><strong>Knowledge base:</strong> il piano editoriale, il ledger dei fatti, i file di contesto su voce e pubblico.</li>
+<li><strong>Conversazioni:</strong> una per blocco di capitoli, tutte già allineate alle stesse regole senza ripeterle.</li>
+</ul>
+<p>Risultato: ogni sessione di scrittura parte sapendo com’è fatto il libro. È la differenza tra spiegare il progetto da capo ogni volta e averlo scritto una volta sola.</p>
+<h2 id="in-pratica-crea-il-tuo-project">In pratica: crea il tuo Project</h2>
+<ol type="1">
+<li>In Claude, apri la sezione <strong>Projects</strong> e creane uno nuovo.</li>
+<li>Dagli un nome che dice di cosa si tratta.</li>
+<li>Scrivi le <strong>istruzioni</strong>: il contesto stabile, i vincoli, il formato che vuoi.</li>
+<li>Carica nella <strong>knowledge base</strong> i file di riferimento ricorrenti.</li>
+<li>Apri una chat dentro il Project e lavora: il contesto è già attivo.</li>
+<li>Quando una regola si ripete in più chat, spostala nelle istruzioni del Project.</li>
+</ol>
+<h2 id="errori-comuni">Errori comuni</h2>
+<ul>
+<li><strong>Un Project per ogni chat.</strong> Sono per il lavoro ricorrente, non per la domanda singola. Troppi Project diventano disordine.</li>
+<li><strong>Istruzioni-fiume.</strong> Vale come per <code>CLAUDE.md</code>: poco e mirato. L’eccesso si diluisce.</li>
+<li><strong>Knowledge base obsoleta.</strong> I file di riferimento invecchiano. Aggiornali, o Claude lavora su materiale vecchio.</li>
+<li><strong>Aspettarsi la condivisione nel Free/Pro.</strong> Condividere un Project in team è da Team/Enterprise.</li>
+</ul>
+<h2 id="riepilogo">Riepilogo</h2>
+<ol type="1">
+<li>Un Project è un workspace con istruzioni, file di riferimento e chat collegate, tutto in un posto.</li>
+<li>Crealo quando torni più volte su un lavoro e ripeti lo stesso contesto.</li>
+<li>Le istruzioni valgono per ogni chat del Project; la knowledge base è il materiale che Claude consulta.</li>
+<li>Lo scope tiene dentro il contesto giusto e fuori quello che non c’entra.</li>
+<li>Free fino a 5 Project; condivisione in team su Team/Enterprise.</li>
+</ol>
+<h2 id="prossimo-passo">Prossimo passo</h2>
+<p>Nel <strong>cap. L3.3 — Connettori</strong> colleghiamo Claude alle app che già usi — Drive, Slack, gestori di task — così può leggere i tuoi dati e agire al loro interno.</p>
+<p><em>Dati sui Project (limiti Free, condivisione team) dal ledger, verificati il 22/06/2026 su support.claude.com. L’esempio del Project di questo libro è reale; i passaggi operativi non sono stati eseguiti in questa sede.</em></p>
+</article><nav class="pager"><a href="./L3-1-cowork-primi-passi.html"><span class="lbl">← Precedente</span>L3.1 — Cowork: primi passi</a><a class="nxt" href="./L3-3-connettori.html"><span class="lbl">Successivo →</span>L3.3 — Connettori</a></nav><div class="readcta"><h2>Ti è utile? Prendi tutto il manuale</h2><p>33 capitoli in un unico PDF A5, gratis e senza registrazione.</p><a class="btn btn-primary" href="../manuale_produzione.pdf" download>↓ Scarica il PDF gratis</a></div></main><footer><div class="wrap">© 2026 Gian Angelo Geminiani. Pubblicazione <strong>indipendente e non ufficiale</strong>: non affiliata, sponsorizzata né approvata da Anthropic. «Claude» e «Anthropic» sono marchi dei rispettivi titolari, citati a solo scopo identificativo. Dati verificati alla data indicata e soggetti a modifica.</div></footer><script>(function(){var r=document.documentElement;function eff(){var f=r.getAttribute('data-theme');return f?f:(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');}function meta(t){var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',t==='dark'?'#1F1E1D':'#FAF9F5');}meta(eff());var b=document.getElementById('theme-toggle');if(b)b.addEventListener('click',function(){var n=eff()==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem('theme',n);}catch(e){}meta(n);});})();</script></body></html>

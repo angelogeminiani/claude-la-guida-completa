@@ -1,0 +1,240 @@
+<!DOCTYPE html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>L4.3 — Da Design a codice (/design-sync) · Claude: la guida completa</title><meta name="description" content="Al termine capirai il ponte tra Claude Design e Claude Code: come /design-sync collega canvas e codice nei due versi, come passare un design a Claude…"><link rel="canonical" href="https://angelogeminiani.github.io/claude-la-guida-completa/capitoli/L4-3-da-design-a-codice.html"><meta name="theme-color" content="#FAF9F5"><meta name="author" content="Gian Angelo Geminiani"><meta property="og:type" content="article"><meta property="og:site_name" content="Claude: la guida completa"><meta property="og:title" content="L4.3 — Da Design a codice (/design-sync) · Claude: la guida completa"><meta property="og:description" content="Al termine capirai il ponte tra Claude Design e Claude Code: come /design-sync collega canvas e codice nei due versi, come passare un design a Claude…"><meta property="og:url" content="https://angelogeminiani.github.io/claude-la-guida-completa/capitoli/L4-3-da-design-a-codice.html"><meta property="og:image" content="https://angelogeminiani.github.io/claude-la-guida-completa/og-image.png"><meta property="og:locale" content="it_IT"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="L4.3 — Da Design a codice (/design-sync) · Claude: la guida completa"><meta name="twitter:description" content="Al termine capirai il ponte tra Claude Design e Claude Code: come /design-sync collega canvas e codice nei due versi, come passare un design a Claude…"><meta name="twitter:image" content="https://angelogeminiani.github.io/claude-la-guida-completa/og-image.png"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cg stroke='%23D97757' stroke-width='3' stroke-linecap='round'%3E%3Cline x1='16' y1='5' x2='16' y2='27'/%3E%3Cline x1='5' y1='16' x2='27' y2='16'/%3E%3Cline x1='8' y1='8' x2='24' y2='24'/%3E%3Cline x1='24' y1='8' x2='8' y2='24'/%3E%3C/g%3E%3C/svg%3E"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,600;1,500&display=swap" rel="stylesheet"><style>/* book.css — shared styles for the online chapter pages (docs/capitoli/*.html)
+   and the reading index (docs/leggi.html). Same Claude.ai palette as the
+   landing page, with the light/dark theme system. */
+
+:root{
+  color-scheme:light;
+  --cream:#FAF9F5; --ink:#1F1E1D; --coral:#D97757; --coral-d:#B65A3C;
+  --muted:#6B6760; --border:#E9E2D6; --card:#FFFFFF; --tint:#F4ECE3;
+  --body:#322f2a; --code-bg:#F1EADF; --code-ink:#7A3E27;
+  --nav-bg:rgba(250,249,245,.86);
+  --cta-bg:#1F1E1D; --cta-h:#ffffff; --cta-p:#cdc6ba; --cta-border:#5a554d;
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --cream:#1F1E1D; --ink:#EDEAE2; --coral:#D97757; --coral-d:#E7A184;
+  --muted:#A39E95; --border:#393732; --card:#2A2926; --tint:#242320;
+  --body:#C9C3B8; --code-bg:#2E2C28; --code-ink:#E7A184;
+  --nav-bg:rgba(31,30,29,.86);
+  --cta-bg:#2A2926; --cta-h:#ffffff; --cta-p:#BDB7AC; --cta-border:#4A463F;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --cream:#1F1E1D; --ink:#EDEAE2; --coral:#D97757; --coral-d:#E7A184;
+    --muted:#A39E95; --border:#393732; --card:#2A2926; --tint:#242320;
+    --body:#C9C3B8; --code-bg:#2E2C28; --code-ink:#E7A184;
+    --nav-bg:rgba(31,30,29,.86);
+    --cta-bg:#2A2926; --cta-h:#ffffff; --cta-p:#BDB7AC; --cta-border:#4A463F;
+  }
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--cream); color:var(--body);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  line-height:1.7; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:760px; margin:0 auto; padding:0 24px}
+a{color:var(--coral-d); text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* header / nav */
+header.nav{position:sticky; top:0; z-index:10;
+  background:var(--nav-bg); backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border)}
+.nav .row{max-width:1080px; margin:0 auto; padding:0 24px;
+  display:flex; align-items:center; justify-content:space-between; height:62px}
+.brand{display:flex; align-items:center; gap:10px; font-family:Lora,Georgia,serif;
+  font-weight:600; font-size:18px; color:var(--ink)}
+.brand:hover{text-decoration:none}
+.mark{width:22px; height:22px; flex:none}
+.nav-right{display:flex; align-items:center; gap:16px}
+.nav-cta{font-weight:600; font-size:14px}
+.theme-toggle{display:inline-flex; align-items:center; justify-content:center;
+  width:40px; height:40px; border-radius:999px; border:1px solid var(--border);
+  background:transparent; color:var(--ink); cursor:pointer; flex:none;
+  transition:border-color .2s}
+.theme-toggle:hover{border-color:var(--coral)}
+.theme-toggle svg{width:18px; height:18px}
+.theme-toggle .i-sun{display:none}
+.theme-toggle .i-moon{display:block}
+:root[data-theme="dark"] .theme-toggle .i-moon{display:none}
+:root[data-theme="dark"] .theme-toggle .i-sun{display:block}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .theme-toggle .i-moon{display:none}
+  :root:not([data-theme="light"]) .theme-toggle .i-sun{display:block}
+}
+
+/* breadcrumb */
+.crumbs{font-size:13.5px; color:var(--muted); margin:26px 0 4px}
+.crumbs a{color:var(--muted)}
+.crumbs a:hover{color:var(--coral-d)}
+
+/* article */
+article{padding:6px 0 8px}
+article h1{font-family:Lora,Georgia,serif; font-weight:600; line-height:1.18;
+  font-size:clamp(30px,5vw,42px); color:var(--ink); margin:8px 0 6px}
+article h2{font-family:Lora,Georgia,serif; font-weight:600; color:var(--ink);
+  font-size:clamp(22px,3.4vw,28px); margin:38px 0 10px; line-height:1.25}
+article h3{font-family:Lora,Georgia,serif; font-weight:600; color:var(--ink);
+  font-size:20px; margin:26px 0 8px}
+article p{margin:0 0 16px}
+article ul,article ol{margin:0 0 16px; padding-left:22px}
+article li{margin:6px 0}
+article strong{color:var(--ink)}
+.accent{width:74px; height:4px; background:var(--coral); border-radius:2px;
+  margin:14px 0 22px}
+
+/* inline code as a pill + code blocks */
+code{font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace; font-size:.88em;
+  background:var(--code-bg); color:var(--code-ink);
+  padding:.12em .42em; border-radius:6px}
+pre{background:var(--code-bg); border:1px solid var(--border); border-radius:12px;
+  padding:16px 18px; overflow-x:auto; margin:0 0 18px}
+pre code{background:none; color:var(--ink); padding:0; font-size:13.5px;
+  line-height:1.55}
+
+/* blockquote with coral left bar */
+blockquote{margin:0 0 18px; padding:2px 0 2px 18px;
+  border-left:3px solid var(--coral); color:var(--muted)}
+blockquote p{margin:0 0 8px}
+
+/* tables */
+.tablewrap{overflow-x:auto; margin:0 0 18px}
+table{border-collapse:collapse; width:100%; font-size:14.5px}
+th,td{border:1px solid var(--border); padding:9px 12px; text-align:left;
+  vertical-align:top}
+thead th{background:var(--tint); color:var(--ink); font-weight:600}
+tbody tr:nth-child(even){background:var(--tint)}
+
+/* figures (inline SVG diagrams) */
+.fig{margin:18px 0; text-align:center}
+.fig svg{max-width:100%; height:auto}
+
+/* prev / next */
+.pager{display:flex; gap:14px; justify-content:space-between; margin:36px 0 0;
+  border-top:1px solid var(--border); padding-top:20px}
+.pager a{display:block; max-width:48%; font-size:14px}
+.pager .lbl{display:block; color:var(--muted); font-size:12px;
+  text-transform:uppercase; letter-spacing:.08em; margin-bottom:3px}
+.pager .nxt{text-align:right; margin-left:auto}
+
+/* reading CTA */
+.readcta{background:var(--cta-bg); color:var(--cta-p); border-radius:18px;
+  border:1px solid var(--cta-border); padding:30px 26px; margin:34px 0 0;
+  text-align:center}
+.readcta h2{font-family:Lora,Georgia,serif; color:var(--cta-h); margin:0 0 8px;
+  font-size:24px}
+.readcta p{margin:0 0 18px; font-size:15.5px}
+.btn{display:inline-flex; align-items:center; gap:9px; font-weight:700;
+  font-size:15px; padding:12px 24px; border-radius:999px; cursor:pointer;
+  border:1.5px solid transparent}
+.btn-primary{background:var(--coral); color:#fff;
+  box-shadow:0 6px 20px rgba(217,119,87,.32)}
+.btn-primary:hover{background:var(--coral-d); color:#fff; text-decoration:none}
+
+/* reading index (leggi.html) */
+.lead{font-size:18px; color:var(--muted); margin:6px 0 26px}
+.part-h{font-family:Lora,Georgia,serif; color:var(--ink); font-weight:600;
+  font-size:22px; margin:30px 0 6px}
+.toc{list-style:none; margin:0 0 8px; padding:0}
+.toc li{border-bottom:1px solid var(--border)}
+.toc a{display:flex; gap:12px; padding:12px 4px; color:var(--ink)}
+.toc a:hover{color:var(--coral-d); text-decoration:none}
+.toc .id{font-family:Lora,Georgia,serif; color:var(--coral-d); flex:none;
+  width:54px}
+
+/* footer */
+footer{margin-top:46px; border-top:1px solid var(--border);
+  padding:28px 0 56px; font-size:13px; color:var(--muted)}
+footer a{color:var(--coral-d)}
+</style><script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"L4.3 — Da Design a codice (/design-sync)","description":"Al termine capirai il ponte tra Claude Design e Claude Code: come /design-sync collega canvas e codice nei due versi, come passare un design a Claude…","inLanguage":"it","author":{"@type":"Person","name":"Gian Angelo Geminiani"},"isPartOf":{"@type":"Book","name":"Claude: la guida completa"},"mainEntityOfPage":"https://angelogeminiani.github.io/claude-la-guida-completa/capitoli/L4-3-da-design-a-codice.html"}</script><script>(function(){try{var s=localStorage.getItem('theme');if(s==='dark'||s==='light')document.documentElement.setAttribute('data-theme',s);}catch(e){}})();</script></head><body><svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="ast" viewBox="0 0 32 32"><g stroke="#D97757" stroke-width="3.4" stroke-linecap="round"><line x1="16" y1="4" x2="16" y2="28"/><line x1="4" y1="16" x2="28" y2="16"/><line x1="7.5" y1="7.5" x2="24.5" y2="24.5"/><line x1="24.5" y1="7.5" x2="7.5" y2="24.5"/></g></symbol><symbol id="moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol><symbol id="sun" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><line x1="12" y1="2.5" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="21.5"/><line x1="2.5" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="21.5" y2="12"/><line x1="5.2" y1="5.2" x2="6.9" y2="6.9"/><line x1="17.1" y1="17.1" x2="18.8" y2="18.8"/><line x1="5.2" y1="18.8" x2="6.9" y2="17.1"/><line x1="17.1" y1="6.9" x2="18.8" y2="5.2"/></g></symbol></svg><header class="nav"><div class="row"><a class="brand" href="../index.html"><svg class="mark"><use href="#ast"/></svg> Claude · la guida completa</a><div class="nav-right"><a class="nav-cta" href="../leggi.html">Indice</a><a class="nav-cta" href="../manuale_produzione.pdf" download>Scarica il PDF →</a><button class="theme-toggle" id="theme-toggle" type="button" aria-label="Cambia tema chiaro/scuro" title="Cambia tema"><svg class="i-moon" aria-hidden="true"><use href="#moon"/></svg><svg class="i-sun" aria-hidden="true"><use href="#sun"/></svg></button></div></div></header><main class="wrap"><div class="crumbs"><a href="../index.html">Home</a> · <a href="../leggi.html">Leggi online</a> · Livello 4 — Design</div><article><h1 id="capitolo-l4.3-da-design-a-codice-design-sync">Capitolo L4.3 — Da Design a codice (/design-sync)</h1>
+<blockquote>
+<p>Livello 4 — Design. Dati di prodotto verificati il 24/06/2026 su fonti ufficiali.</p>
+</blockquote>
+<h2 id="obiettivo">Obiettivo</h2>
+<p>Al termine capirai il ponte tra Claude Design e Claude Code: come <code>/design-sync</code> collega canvas e codice nei due versi, come passare un design a Claude Code perché diventi software vero senza ripartire da uno screenshot, e come avviare un progetto Design direttamente dal terminale. È il capitolo che fa di Design e Code un ciclo unico invece di due strumenti separati.</p>
+<h2 id="prerequisiti">Prerequisiti</h2>
+<ul>
+<li>Claude Code installato e configurato (cap. L2.2, L2.4).</li>
+<li>Aver usato il canvas (cap. L4.1) e, idealmente, importato un design system (cap. L4.2).</li>
+</ul>
+<h2 id="il-problema-che-risolve">Il problema che risolve</h2>
+<p>Il punto dolente classico del lavoro design→sviluppo è il salto: il designer consegna uno screenshot o un file, e chi sviluppa <strong>ricostruisce tutto da capo</strong>. Si perde tempo e fedeltà. Il ponte tra Design e Code elimina questo passaggio: Claude Code continua dal lavoro esistente, non da una foto del risultato.</p>
+<h2 id="il-ciclo-design-code">Il ciclo Design ↔︎ Code</h2>
+<p>Design e Code non sono una catena a senso unico, ma un anello. Il design genera codice; il codice, evolvendo, aggiorna il design. <code>/design-sync</code> tiene allineati i due lati.</p>
+<p><em>Figura L4.3.1 — Il ciclo a due vie tra Design e Code.</em> Alt-text: diagramma verticale che mostra il canvas e il codice collegati da pull e push, con l’handoff verso Claude Code.</p>
+<div class="fig">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 268" width="100%" font-family="Inter, &#39;Helvetica Neue&#39;, Arial, sans-serif">
+<defs><marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#D97757"/></marker></defs> <line x1="300.0" y1="68.0" x2="300.0" y2="106.0" stroke="#D97757" stroke-width="1.5" marker-end="url(#ah)"/> <rect x="272.5" y="79.0" width="55.0" height="15" rx="3" fill="#FAF9F5"/> <text x="300.0" y="90.0" font-size="11" fill="#6B6760" text-anchor="middle">handoff</text> <path d="M359.5,134.0 C397.5,134.0 397.5,42.0 359.5,42.0" fill="none" stroke="#D97757" stroke-width="1.5" marker-end="url(#ah)"/> <text x="401.5" y="88.0" font-size="11" fill="#6B6760">/design-sync push</text> <line x1="300.0" y1="68.0" x2="300.0" y2="106.0" stroke="#D97757" stroke-width="1.5" marker-end="url(#ah)"/> <rect x="237.5" y="79.0" width="125.0" height="15" rx="3" fill="#FAF9F5"/> <text x="300.0" y="90.0" font-size="11" fill="#6B6760" text-anchor="middle">/design-sync pull</text> <line x1="300.0" y1="160.0" x2="300.0" y2="198.0" stroke="#D97757" stroke-width="1.5" marker-end="url(#ah)"/> <rect x="240.5" y="16.0" width="119.0" height="52" rx="7" fill="#FFFFFF" stroke="#E5DED2" stroke-width="1.2"/> <text x="300.0" y="38.0" font-size="13" fill="#1F1E1D" text-anchor="middle">Claude Design</text> <text x="300.0" y="54.0" font-size="13" fill="#1F1E1D" text-anchor="middle">canvas</text> <rect x="240.5" y="108.0" width="119.0" height="52" rx="7" fill="#FFFFFF" stroke="#E5DED2" stroke-width="1.2"/> <text x="300.0" y="130.0" font-size="13" fill="#1F1E1D" text-anchor="middle">Claude Code</text> <text x="300.0" y="146.0" font-size="13" fill="#1F1E1D" text-anchor="middle">software vero</text> <rect x="230.0" y="200.0" width="140.0" height="52" rx="7" fill="#FFFFFF" stroke="#E5DED2" stroke-width="1.2"/> <text x="300.0" y="222.0" font-size="13" fill="#1F1E1D" text-anchor="middle">Componenti reali</text> <text x="300.0" y="238.0" font-size="13" fill="#1F1E1D" text-anchor="middle">nel codebase</text>
+</svg>
+</div>
+<h2 id="design-sync-nei-due-versi">/design-sync nei due versi</h2>
+<p>Il comando <code>/design-sync</code> si esegue <strong>dentro Claude Code</strong> e funziona in due direzioni.</p>
+<ul>
+<li><strong>Pull (codice → canvas):</strong> importa il design system del tuo codebase locale in Claude Design, così ogni schermata che generi parte dai tuoi componenti reali.</li>
+<li><strong>Push (canvas → codice):</strong> dopo che hai implementato un design nel codice, <code>/design-sync</code> rimanda nel canvas lo stato attuale, tenendo Design allineato a ciò che hai davvero costruito.</li>
+</ul>
+<p>In pratica: parti dal codice per dare a Design le fondamenta giuste (pull), costruisci e iteri, poi rimandi indietro il risultato per non far divergere canvas e prodotto (push).</p>
+<p>Tabella L4.3.1 — Le due direzioni di <code>/design-sync</code>.</p>
+<div class="tablewrap"><table>
+<thead>
+<tr class="header">
+<th>Verso</th>
+<th>Da → A</th>
+<th>A cosa serve</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Pull</td>
+<td>codice → canvas</td>
+<td>design su componenti reali</td>
+</tr>
+<tr class="even">
+<td>Push</td>
+<td>canvas → codice</td>
+<td>canvas allineato al build</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="lhandoff-a-claude-code">L’handoff a Claude Code</h2>
+<p>Quando un design è pronto a diventare software, lo <strong>passi</strong> a Claude Code (handoff). Code continua dal lavoro esistente invece di ricostruirlo da uno screenshot. L’handoff si avvia anche dal pulsante <strong>Export</strong> di Design (vedi cap. L4.5) e può puntare al coding agent locale o a Claude Code Web.</p>
+<h2 id="partire-da-claude-code-design">Partire da Claude Code: /design</h2>
+<p>Se preferisci restare nel terminale, non sei obbligato ad aprire il canvas. Con il comando <code>/design</code> avvii, modifichi e sincronizzi un progetto Design <strong>senza lasciare Claude Code</strong>: importi un design nel codebase, esporti il codice come prototipo live, o lasci che Claude costruisca tutto da capo.</p>
+<blockquote>
+<p><strong>Nota:</strong> se in Claude Code non vedi <code>/design</code> o <code>/design-sync</code>, esegui <code>/update</code> per aggiornare le skill. I comandi compaiono solo nelle <strong>sessioni nuove</strong>, non in quella già aperta.</p>
+</blockquote>
+<h2 id="in-pratica-dal-codebase-al-canvas-e-ritorno">In pratica: dal codebase al canvas e ritorno</h2>
+<ol type="1">
+<li><p>In Claude Code, dentro il tuo progetto, esegui:</p>
+<pre class="text"><code>/design-sync</code></pre></li>
+<li><p>Scegli <strong>pull</strong>: importi il design system del codebase in Design.</p></li>
+<li><p>In Design, genera e itera le schermate: useranno i tuoi componenti reali.</p></li>
+<li><p>Quando una schermata è pronta, fai <strong>handoff</strong> a Claude Code e costruisci.</p></li>
+<li><p>Dopo l’implementazione, di nuovo <code>/design-sync</code> in <strong>push</strong> per riallineare il canvas al codice.</p></li>
+</ol>
+<blockquote>
+<p><strong>Tip:</strong> se i comandi non compaiono, <code>/update</code> e poi apri una sessione nuova.</p>
+</blockquote>
+<h2 id="errori-comuni">Errori comuni</h2>
+<ul>
+<li><strong>Aspettarsi i comandi nella sessione corrente.</strong> Dopo <code>/update</code>, <code>/design</code> e <code>/design-sync</code> ci sono solo nelle sessioni nuove.</li>
+<li><strong>Handoff da screenshot.</strong> Non serve: l’handoff porta il lavoro reale, non una foto. Passa il progetto, non un’immagine.</li>
+<li><strong>Canvas e codice che divergono.</strong> Dopo aver costruito, ricordati il <strong>push</strong>: senza, Design resta indietro rispetto al prodotto.</li>
+<li><strong>Saltare il pull iniziale.</strong> Senza, Design genera con lo stile di default e non con i tuoi componenti.</li>
+</ul>
+<h2 id="riepilogo">Riepilogo</h2>
+<ol type="1">
+<li>Il ponte Design↔︎Code elimina il “ricostruisci da screenshot”.</li>
+<li><code>/design-sync</code> gira in Claude Code in due versi: <strong>pull</strong> (codice→canvas) e <strong>push</strong> (canvas→codice).</li>
+<li>L’<strong>handoff</strong> passa il design a Code, che continua dal lavoro reale.</li>
+<li>Con <code>/design</code> avvii e sincronizzi un progetto Design <strong>dal terminale</strong>.</li>
+<li>Se i comandi mancano, <code>/update</code> e apri una <strong>sessione nuova</strong>.</li>
+</ol>
+<h2 id="prossimo-passo">Prossimo passo</h2>
+<p>Nel <strong>cap. L4.4 — Design dentro Cowork</strong> vediamo come usare gli output di Design come materiale per i task agentici, e come le Skills rendono ripetibile il lavoro visuale.</p>
+<p><em>Dati su <code>/design-sync</code>, handoff e <code>/design</code> verificati il 24/06/2026 su support.claude.com/en/articles/14604416. I comandi richiedono Claude Code con un account a pagamento, quindi non sono stati eseguiti in questa sede.</em></p>
+</article><nav class="pager"><a href="./L4-2-design-system-import.html"><span class="lbl">← Precedente</span>L4.2 — Design system import</a><a class="nxt" href="./L4-4-design-dentro-cowork.html"><span class="lbl">Successivo →</span>L4.4 — Design dentro Cowork</a></nav><div class="readcta"><h2>Ti è utile? Prendi tutto il manuale</h2><p>33 capitoli in un unico PDF A5, gratis e senza registrazione.</p><a class="btn btn-primary" href="../manuale_produzione.pdf" download>↓ Scarica il PDF gratis</a></div></main><footer><div class="wrap">© 2026 Gian Angelo Geminiani. Pubblicazione <strong>indipendente e non ufficiale</strong>: non affiliata, sponsorizzata né approvata da Anthropic. «Claude» e «Anthropic» sono marchi dei rispettivi titolari, citati a solo scopo identificativo. Dati verificati alla data indicata e soggetti a modifica.</div></footer><script>(function(){var r=document.documentElement;function eff(){var f=r.getAttribute('data-theme');return f?f:(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');}function meta(t){var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',t==='dark'?'#1F1E1D':'#FAF9F5');}meta(eff());var b=document.getElementById('theme-toggle');if(b)b.addEventListener('click',function(){var n=eff()==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem('theme',n);}catch(e){}meta(n);});})();</script></body></html>

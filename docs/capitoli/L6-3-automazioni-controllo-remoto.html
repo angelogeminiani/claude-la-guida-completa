@@ -1,0 +1,233 @@
+<!DOCTYPE html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>L6.3 — Automazioni e controllo remoto · Claude: la guida completa</title><meta name="description" content="Al termine saprai far lavorare Claude nel tempo senza starci davanti: i Scheduled Tasks in Cowork, le Routines cloud di Claude Code, e il Dispatch che…"><link rel="canonical" href="https://angelogeminiani.github.io/claude-la-guida-completa/capitoli/L6-3-automazioni-controllo-remoto.html"><meta name="theme-color" content="#FAF9F5"><meta name="author" content="Gian Angelo Geminiani"><meta property="og:type" content="article"><meta property="og:site_name" content="Claude: la guida completa"><meta property="og:title" content="L6.3 — Automazioni e controllo remoto · Claude: la guida completa"><meta property="og:description" content="Al termine saprai far lavorare Claude nel tempo senza starci davanti: i Scheduled Tasks in Cowork, le Routines cloud di Claude Code, e il Dispatch che…"><meta property="og:url" content="https://angelogeminiani.github.io/claude-la-guida-completa/capitoli/L6-3-automazioni-controllo-remoto.html"><meta property="og:image" content="https://angelogeminiani.github.io/claude-la-guida-completa/og-image.png"><meta property="og:locale" content="it_IT"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="L6.3 — Automazioni e controllo remoto · Claude: la guida completa"><meta name="twitter:description" content="Al termine saprai far lavorare Claude nel tempo senza starci davanti: i Scheduled Tasks in Cowork, le Routines cloud di Claude Code, e il Dispatch che…"><meta name="twitter:image" content="https://angelogeminiani.github.io/claude-la-guida-completa/og-image.png"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cg stroke='%23D97757' stroke-width='3' stroke-linecap='round'%3E%3Cline x1='16' y1='5' x2='16' y2='27'/%3E%3Cline x1='5' y1='16' x2='27' y2='16'/%3E%3Cline x1='8' y1='8' x2='24' y2='24'/%3E%3Cline x1='24' y1='8' x2='8' y2='24'/%3E%3C/g%3E%3C/svg%3E"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,600;1,500&display=swap" rel="stylesheet"><style>/* book.css — shared styles for the online chapter pages (docs/capitoli/*.html)
+   and the reading index (docs/leggi.html). Same Claude.ai palette as the
+   landing page, with the light/dark theme system. */
+
+:root{
+  color-scheme:light;
+  --cream:#FAF9F5; --ink:#1F1E1D; --coral:#D97757; --coral-d:#B65A3C;
+  --muted:#6B6760; --border:#E9E2D6; --card:#FFFFFF; --tint:#F4ECE3;
+  --body:#322f2a; --code-bg:#F1EADF; --code-ink:#7A3E27;
+  --nav-bg:rgba(250,249,245,.86);
+  --cta-bg:#1F1E1D; --cta-h:#ffffff; --cta-p:#cdc6ba; --cta-border:#5a554d;
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --cream:#1F1E1D; --ink:#EDEAE2; --coral:#D97757; --coral-d:#E7A184;
+  --muted:#A39E95; --border:#393732; --card:#2A2926; --tint:#242320;
+  --body:#C9C3B8; --code-bg:#2E2C28; --code-ink:#E7A184;
+  --nav-bg:rgba(31,30,29,.86);
+  --cta-bg:#2A2926; --cta-h:#ffffff; --cta-p:#BDB7AC; --cta-border:#4A463F;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --cream:#1F1E1D; --ink:#EDEAE2; --coral:#D97757; --coral-d:#E7A184;
+    --muted:#A39E95; --border:#393732; --card:#2A2926; --tint:#242320;
+    --body:#C9C3B8; --code-bg:#2E2C28; --code-ink:#E7A184;
+    --nav-bg:rgba(31,30,29,.86);
+    --cta-bg:#2A2926; --cta-h:#ffffff; --cta-p:#BDB7AC; --cta-border:#4A463F;
+  }
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--cream); color:var(--body);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  line-height:1.7; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:760px; margin:0 auto; padding:0 24px}
+a{color:var(--coral-d); text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* header / nav */
+header.nav{position:sticky; top:0; z-index:10;
+  background:var(--nav-bg); backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border)}
+.nav .row{max-width:1080px; margin:0 auto; padding:0 24px;
+  display:flex; align-items:center; justify-content:space-between; height:62px}
+.brand{display:flex; align-items:center; gap:10px; font-family:Lora,Georgia,serif;
+  font-weight:600; font-size:18px; color:var(--ink)}
+.brand:hover{text-decoration:none}
+.mark{width:22px; height:22px; flex:none}
+.nav-right{display:flex; align-items:center; gap:16px}
+.nav-cta{font-weight:600; font-size:14px}
+.theme-toggle{display:inline-flex; align-items:center; justify-content:center;
+  width:40px; height:40px; border-radius:999px; border:1px solid var(--border);
+  background:transparent; color:var(--ink); cursor:pointer; flex:none;
+  transition:border-color .2s}
+.theme-toggle:hover{border-color:var(--coral)}
+.theme-toggle svg{width:18px; height:18px}
+.theme-toggle .i-sun{display:none}
+.theme-toggle .i-moon{display:block}
+:root[data-theme="dark"] .theme-toggle .i-moon{display:none}
+:root[data-theme="dark"] .theme-toggle .i-sun{display:block}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .theme-toggle .i-moon{display:none}
+  :root:not([data-theme="light"]) .theme-toggle .i-sun{display:block}
+}
+
+/* breadcrumb */
+.crumbs{font-size:13.5px; color:var(--muted); margin:26px 0 4px}
+.crumbs a{color:var(--muted)}
+.crumbs a:hover{color:var(--coral-d)}
+
+/* article */
+article{padding:6px 0 8px}
+article h1{font-family:Lora,Georgia,serif; font-weight:600; line-height:1.18;
+  font-size:clamp(30px,5vw,42px); color:var(--ink); margin:8px 0 6px}
+article h2{font-family:Lora,Georgia,serif; font-weight:600; color:var(--ink);
+  font-size:clamp(22px,3.4vw,28px); margin:38px 0 10px; line-height:1.25}
+article h3{font-family:Lora,Georgia,serif; font-weight:600; color:var(--ink);
+  font-size:20px; margin:26px 0 8px}
+article p{margin:0 0 16px}
+article ul,article ol{margin:0 0 16px; padding-left:22px}
+article li{margin:6px 0}
+article strong{color:var(--ink)}
+.accent{width:74px; height:4px; background:var(--coral); border-radius:2px;
+  margin:14px 0 22px}
+
+/* inline code as a pill + code blocks */
+code{font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace; font-size:.88em;
+  background:var(--code-bg); color:var(--code-ink);
+  padding:.12em .42em; border-radius:6px}
+pre{background:var(--code-bg); border:1px solid var(--border); border-radius:12px;
+  padding:16px 18px; overflow-x:auto; margin:0 0 18px}
+pre code{background:none; color:var(--ink); padding:0; font-size:13.5px;
+  line-height:1.55}
+
+/* blockquote with coral left bar */
+blockquote{margin:0 0 18px; padding:2px 0 2px 18px;
+  border-left:3px solid var(--coral); color:var(--muted)}
+blockquote p{margin:0 0 8px}
+
+/* tables */
+.tablewrap{overflow-x:auto; margin:0 0 18px}
+table{border-collapse:collapse; width:100%; font-size:14.5px}
+th,td{border:1px solid var(--border); padding:9px 12px; text-align:left;
+  vertical-align:top}
+thead th{background:var(--tint); color:var(--ink); font-weight:600}
+tbody tr:nth-child(even){background:var(--tint)}
+
+/* figures (inline SVG diagrams) */
+.fig{margin:18px 0; text-align:center}
+.fig svg{max-width:100%; height:auto}
+
+/* prev / next */
+.pager{display:flex; gap:14px; justify-content:space-between; margin:36px 0 0;
+  border-top:1px solid var(--border); padding-top:20px}
+.pager a{display:block; max-width:48%; font-size:14px}
+.pager .lbl{display:block; color:var(--muted); font-size:12px;
+  text-transform:uppercase; letter-spacing:.08em; margin-bottom:3px}
+.pager .nxt{text-align:right; margin-left:auto}
+
+/* reading CTA */
+.readcta{background:var(--cta-bg); color:var(--cta-p); border-radius:18px;
+  border:1px solid var(--cta-border); padding:30px 26px; margin:34px 0 0;
+  text-align:center}
+.readcta h2{font-family:Lora,Georgia,serif; color:var(--cta-h); margin:0 0 8px;
+  font-size:24px}
+.readcta p{margin:0 0 18px; font-size:15.5px}
+.btn{display:inline-flex; align-items:center; gap:9px; font-weight:700;
+  font-size:15px; padding:12px 24px; border-radius:999px; cursor:pointer;
+  border:1.5px solid transparent}
+.btn-primary{background:var(--coral); color:#fff;
+  box-shadow:0 6px 20px rgba(217,119,87,.32)}
+.btn-primary:hover{background:var(--coral-d); color:#fff; text-decoration:none}
+
+/* reading index (leggi.html) */
+.lead{font-size:18px; color:var(--muted); margin:6px 0 26px}
+.part-h{font-family:Lora,Georgia,serif; color:var(--ink); font-weight:600;
+  font-size:22px; margin:30px 0 6px}
+.toc{list-style:none; margin:0 0 8px; padding:0}
+.toc li{border-bottom:1px solid var(--border)}
+.toc a{display:flex; gap:12px; padding:12px 4px; color:var(--ink)}
+.toc a:hover{color:var(--coral-d); text-decoration:none}
+.toc .id{font-family:Lora,Georgia,serif; color:var(--coral-d); flex:none;
+  width:54px}
+
+/* footer */
+footer{margin-top:46px; border-top:1px solid var(--border);
+  padding:28px 0 56px; font-size:13px; color:var(--muted)}
+footer a{color:var(--coral-d)}
+</style><script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"L6.3 — Automazioni e controllo remoto","description":"Al termine saprai far lavorare Claude nel tempo senza starci davanti: i Scheduled Tasks in Cowork, le Routines cloud di Claude Code, e il Dispatch che…","inLanguage":"it","author":{"@type":"Person","name":"Gian Angelo Geminiani"},"isPartOf":{"@type":"Book","name":"Claude: la guida completa"},"mainEntityOfPage":"https://angelogeminiani.github.io/claude-la-guida-completa/capitoli/L6-3-automazioni-controllo-remoto.html"}</script><script>(function(){try{var s=localStorage.getItem('theme');if(s==='dark'||s==='light')document.documentElement.setAttribute('data-theme',s);}catch(e){}})();</script></head><body><svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="ast" viewBox="0 0 32 32"><g stroke="#D97757" stroke-width="3.4" stroke-linecap="round"><line x1="16" y1="4" x2="16" y2="28"/><line x1="4" y1="16" x2="28" y2="16"/><line x1="7.5" y1="7.5" x2="24.5" y2="24.5"/><line x1="24.5" y1="7.5" x2="7.5" y2="24.5"/></g></symbol><symbol id="moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol><symbol id="sun" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><line x1="12" y1="2.5" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="21.5"/><line x1="2.5" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="21.5" y2="12"/><line x1="5.2" y1="5.2" x2="6.9" y2="6.9"/><line x1="17.1" y1="17.1" x2="18.8" y2="18.8"/><line x1="5.2" y1="18.8" x2="6.9" y2="17.1"/><line x1="17.1" y1="6.9" x2="18.8" y2="5.2"/></g></symbol></svg><header class="nav"><div class="row"><a class="brand" href="../index.html"><svg class="mark"><use href="#ast"/></svg> Claude · la guida completa</a><div class="nav-right"><a class="nav-cta" href="../leggi.html">Indice</a><a class="nav-cta" href="../manuale_produzione.pdf" download>Scarica il PDF →</a><button class="theme-toggle" id="theme-toggle" type="button" aria-label="Cambia tema chiaro/scuro" title="Cambia tema"><svg class="i-moon" aria-hidden="true"><use href="#moon"/></svg><svg class="i-sun" aria-hidden="true"><use href="#sun"/></svg></button></div></div></header><main class="wrap"><div class="crumbs"><a href="../index.html">Home</a> · <a href="../leggi.html">Leggi online</a> · Livello 6 — Avanzato</div><article><h1 id="capitolo-l6.3-automazioni-e-controllo-remoto">Capitolo L6.3 — Automazioni e controllo remoto</h1>
+<blockquote>
+<p>Livello 6 — Avanzato. Dati di prodotto verificati il 24/06/2026 su fonti ufficiali.</p>
+</blockquote>
+<h2 id="obiettivo">Obiettivo</h2>
+<p>Al termine saprai far lavorare Claude nel tempo senza starci davanti: i <strong>Scheduled Tasks</strong> in Cowork, le <strong>Routines</strong> cloud di Claude Code, e il <strong>Dispatch</strong> che trasforma il telefono in telecomando. Capirai soprattutto quale scegliere, perché girano in posti diversi.</p>
+<h2 id="prerequisiti">Prerequisiti</h2>
+<ul>
+<li>Cowork (cap. L3.1) per i task pianificati; Claude Code (cap. L2.2) per le routine.</li>
+<li>Un piano a pagamento.</li>
+</ul>
+<h2 id="tre-strumenti-tre-posti">Tre strumenti, tre posti</h2>
+<p>La differenza che conta non è cosa fanno, ma <strong>dove girano</strong>: dipende da questo se funzionano a computer spento, e quanto sono adatti al lavoro non tecnico.</p>
+<p>Tabella L6.3.1 — Dove gira ciascuno strumento.</p>
+<div class="tablewrap"><table>
+<thead>
+<tr class="header">
+<th>Strumento</th>
+<th>Dove gira</th>
+<th>A computer spento</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Scheduled Task</td>
+<td>Cowork, Desktop</td>
+<td>no</td>
+</tr>
+<tr class="even">
+<td>Routine</td>
+<td>cloud Anthropic</td>
+<td>sì</td>
+</tr>
+<tr class="odd">
+<td>Dispatch</td>
+<td>il tuo computer</td>
+<td>no</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="scheduled-tasks">Scheduled Tasks</h2>
+<p>I <strong>Scheduled Tasks</strong> fanno girare un task di Cowork in automatico, su pianificazione o su richiesta: «ogni mattina controlla la posta», «ogni venerdì prepara il report». Vivono in <strong>Cowork su Desktop</strong>, sui piani a pagamento.</p>
+<p>Il limite da conoscere: girano <strong>solo a computer acceso e app Desktop aperta</strong>. Se il computer è spento o l’app è chiusa all’ora prevista, il task viene <strong>saltato</strong> e parte da solo appena riaccendi o riapri l’app. Sono perfetti per chi lascia il computer acceso, meno per chi vuole garanzia di esecuzione a ogni costo.</p>
+<h2 id="routines">Routines</h2>
+<p>Le <strong>Routines</strong> di Claude Code sono configurazioni salvate — un prompt, uno o più repository e i tuoi connettori — che girano sul <strong>cloud di Anthropic</strong>, non sul tuo computer. Per questo funzionano anche a macchina spenta.</p>
+<p>Il loro punto di forza sono i <strong>trigger</strong> combinabili: la stessa routine può partire su pianificazione, in risposta a una chiamata API e a un evento GitHub, tutto insieme. Sono lo strumento per le automazioni di sviluppo che devono essere affidabili e indipendenti dalla tua macchina.</p>
+<h2 id="dispatch">Dispatch</h2>
+<p>Il <strong>Dispatch</strong> trasforma il telefono in un telecomando per Claude sul tuo computer. Mandi un messaggio dall’app mobile e Claude esegue il task <strong>sulla tua macchina</strong>: legge i file locali, tira dati dai connettori, cerca sul web e ti riporta il risultato. Tra l’app mobile e il Desktop si apre un <strong>thread unico e persistente</strong>, come un walkie-talkie: tu assegni da remoto, Claude lavora in locale.</p>
+<p>È la risposta al «vorrei far partire quel lavoro mentre sono fuori»: il computer deve essere acceso, ma tu no.</p>
+<h2 id="quale-scegliere">Quale scegliere</h2>
+<ul>
+<li>Lavoro <strong>non tecnico, ricorrente</strong>, e tieni il computer acceso → <strong>Scheduled Task</strong>.</li>
+<li>Automazione di <strong>sviluppo</strong> che deve girare <strong>sempre</strong>, anche a macchina spenta, con trigger vari → <strong>Routine</strong> cloud.</li>
+<li>Vuoi <strong>avviare da remoto</strong> un lavoro che usa i tuoi file locali → <strong>Dispatch</strong>.</li>
+</ul>
+<h2 id="in-pratica-pianifica-un-task-ricorrente">In pratica: pianifica un task ricorrente</h2>
+<ol type="1">
+<li>In Cowork, descrivi il task come faresti per un lavoro normale (cap. L3.1).</li>
+<li>Imposta la ricorrenza (per esempio «ogni mattina alle 8»).</li>
+<li>Lascia il computer acceso e l’app Desktop aperta all’orario previsto.</li>
+<li>Per le automazioni di sviluppo indipendenti, valuta invece una <strong>Routine</strong> in Claude Code.</li>
+<li>Per avviare da fuori, usa il <strong>Dispatch</strong> dall’app mobile.</li>
+</ol>
+<h2 id="errori-comuni">Errori comuni</h2>
+<ul>
+<li><strong>Scheduled Task a computer spento.</strong> Viene saltato e parte alla riapertura: per l’esecuzione garantita usa una Routine cloud.</li>
+<li><strong>Confondere Routine e Scheduled Task.</strong> Le Routine girano sul cloud (Code), i task in Cowork sul tuo Desktop.</li>
+<li><strong>Aspettarsi il Dispatch a macchina spenta.</strong> Esegue in locale: il computer deve essere acceso.</li>
+</ul>
+<h2 id="riepilogo">Riepilogo</h2>
+<ol type="1">
+<li>La differenza chiave è <strong>dove gira</strong> lo strumento.</li>
+<li><strong>Scheduled Tasks</strong>: Cowork su Desktop; solo a computer acceso e app aperta.</li>
+<li><strong>Routines</strong>: cloud di Anthropic (Code); girano sempre, trigger combinabili.</li>
+<li><strong>Dispatch</strong>: avvii dal telefono, Claude esegue sul tuo computer acceso.</li>
+<li>Scegli in base ad affidabilità richiesta e tipo di lavoro.</li>
+</ol>
+<h2 id="prossimo-passo">Prossimo passo</h2>
+<p>Nel <strong>cap. L6.4 — Gestire i limiti d’uso</strong> vediamo da cosa dipende il consumo e come lavorare a lungo senza sbattere contro i limiti.</p>
+<p><em>Dati su Scheduled Tasks, Routines e Dispatch verificati il 24/06/2026 su support.claude.com (scheduled tasks, dispatch) e code.claude.com/docs (scheduled-tasks/routines). Le funzioni richiedono un account a pagamento, quindi non sono state eseguite in questa sede.</em></p>
+</article><nav class="pager"><a href="./L6-2-mcp-custom.html"><span class="lbl">← Precedente</span>L6.2 — MCP custom</a><a class="nxt" href="./L6-4-gestire-i-limiti-uso.html"><span class="lbl">Successivo →</span>L6.4 — Gestire i limiti d&#x27;uso</a></nav><div class="readcta"><h2>Ti è utile? Prendi tutto il manuale</h2><p>33 capitoli in un unico PDF A5, gratis e senza registrazione.</p><a class="btn btn-primary" href="../manuale_produzione.pdf" download>↓ Scarica il PDF gratis</a></div></main><footer><div class="wrap">© 2026 Gian Angelo Geminiani. Pubblicazione <strong>indipendente e non ufficiale</strong>: non affiliata, sponsorizzata né approvata da Anthropic. «Claude» e «Anthropic» sono marchi dei rispettivi titolari, citati a solo scopo identificativo. Dati verificati alla data indicata e soggetti a modifica.</div></footer><script>(function(){var r=document.documentElement;function eff(){var f=r.getAttribute('data-theme');return f?f:(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');}function meta(t){var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',t==='dark'?'#1F1E1D':'#FAF9F5');}meta(eff());var b=document.getElementById('theme-toggle');if(b)b.addEventListener('click',function(){var n=eff()==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem('theme',n);}catch(e){}meta(n);});})();</script></body></html>

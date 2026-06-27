@@ -1,0 +1,245 @@
+<!DOCTYPE html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>L3.5 — Slide ed Excel · Claude: la guida completa</title><meta name="description" content="Al termine saprai costruire una presentazione con un metodo a tre tempi (struttura, contenuti, stile), impostare un foglio di calcolo passando da dati…"><link rel="canonical" href="https://angelogeminiani.github.io/claude-la-guida-completa/capitoli/L3-5-slide-ed-excel.html"><meta name="theme-color" content="#FAF9F5"><meta name="author" content="Gian Angelo Geminiani"><meta property="og:type" content="article"><meta property="og:site_name" content="Claude: la guida completa"><meta property="og:title" content="L3.5 — Slide ed Excel · Claude: la guida completa"><meta property="og:description" content="Al termine saprai costruire una presentazione con un metodo a tre tempi (struttura, contenuti, stile), impostare un foglio di calcolo passando da dati…"><meta property="og:url" content="https://angelogeminiani.github.io/claude-la-guida-completa/capitoli/L3-5-slide-ed-excel.html"><meta property="og:image" content="https://angelogeminiani.github.io/claude-la-guida-completa/og-image.png"><meta property="og:locale" content="it_IT"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="L3.5 — Slide ed Excel · Claude: la guida completa"><meta name="twitter:description" content="Al termine saprai costruire una presentazione con un metodo a tre tempi (struttura, contenuti, stile), impostare un foglio di calcolo passando da dati…"><meta name="twitter:image" content="https://angelogeminiani.github.io/claude-la-guida-completa/og-image.png"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cg stroke='%23D97757' stroke-width='3' stroke-linecap='round'%3E%3Cline x1='16' y1='5' x2='16' y2='27'/%3E%3Cline x1='5' y1='16' x2='27' y2='16'/%3E%3Cline x1='8' y1='8' x2='24' y2='24'/%3E%3Cline x1='24' y1='8' x2='8' y2='24'/%3E%3C/g%3E%3C/svg%3E"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,600;1,500&display=swap" rel="stylesheet"><style>/* book.css — shared styles for the online chapter pages (docs/capitoli/*.html)
+   and the reading index (docs/leggi.html). Same Claude.ai palette as the
+   landing page, with the light/dark theme system. */
+
+:root{
+  color-scheme:light;
+  --cream:#FAF9F5; --ink:#1F1E1D; --coral:#D97757; --coral-d:#B65A3C;
+  --muted:#6B6760; --border:#E9E2D6; --card:#FFFFFF; --tint:#F4ECE3;
+  --body:#322f2a; --code-bg:#F1EADF; --code-ink:#7A3E27;
+  --nav-bg:rgba(250,249,245,.86);
+  --cta-bg:#1F1E1D; --cta-h:#ffffff; --cta-p:#cdc6ba; --cta-border:#5a554d;
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --cream:#1F1E1D; --ink:#EDEAE2; --coral:#D97757; --coral-d:#E7A184;
+  --muted:#A39E95; --border:#393732; --card:#2A2926; --tint:#242320;
+  --body:#C9C3B8; --code-bg:#2E2C28; --code-ink:#E7A184;
+  --nav-bg:rgba(31,30,29,.86);
+  --cta-bg:#2A2926; --cta-h:#ffffff; --cta-p:#BDB7AC; --cta-border:#4A463F;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --cream:#1F1E1D; --ink:#EDEAE2; --coral:#D97757; --coral-d:#E7A184;
+    --muted:#A39E95; --border:#393732; --card:#2A2926; --tint:#242320;
+    --body:#C9C3B8; --code-bg:#2E2C28; --code-ink:#E7A184;
+    --nav-bg:rgba(31,30,29,.86);
+    --cta-bg:#2A2926; --cta-h:#ffffff; --cta-p:#BDB7AC; --cta-border:#4A463F;
+  }
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--cream); color:var(--body);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  line-height:1.7; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:760px; margin:0 auto; padding:0 24px}
+a{color:var(--coral-d); text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* header / nav */
+header.nav{position:sticky; top:0; z-index:10;
+  background:var(--nav-bg); backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border)}
+.nav .row{max-width:1080px; margin:0 auto; padding:0 24px;
+  display:flex; align-items:center; justify-content:space-between; height:62px}
+.brand{display:flex; align-items:center; gap:10px; font-family:Lora,Georgia,serif;
+  font-weight:600; font-size:18px; color:var(--ink)}
+.brand:hover{text-decoration:none}
+.mark{width:22px; height:22px; flex:none}
+.nav-right{display:flex; align-items:center; gap:16px}
+.nav-cta{font-weight:600; font-size:14px}
+.theme-toggle{display:inline-flex; align-items:center; justify-content:center;
+  width:40px; height:40px; border-radius:999px; border:1px solid var(--border);
+  background:transparent; color:var(--ink); cursor:pointer; flex:none;
+  transition:border-color .2s}
+.theme-toggle:hover{border-color:var(--coral)}
+.theme-toggle svg{width:18px; height:18px}
+.theme-toggle .i-sun{display:none}
+.theme-toggle .i-moon{display:block}
+:root[data-theme="dark"] .theme-toggle .i-moon{display:none}
+:root[data-theme="dark"] .theme-toggle .i-sun{display:block}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .theme-toggle .i-moon{display:none}
+  :root:not([data-theme="light"]) .theme-toggle .i-sun{display:block}
+}
+
+/* breadcrumb */
+.crumbs{font-size:13.5px; color:var(--muted); margin:26px 0 4px}
+.crumbs a{color:var(--muted)}
+.crumbs a:hover{color:var(--coral-d)}
+
+/* article */
+article{padding:6px 0 8px}
+article h1{font-family:Lora,Georgia,serif; font-weight:600; line-height:1.18;
+  font-size:clamp(30px,5vw,42px); color:var(--ink); margin:8px 0 6px}
+article h2{font-family:Lora,Georgia,serif; font-weight:600; color:var(--ink);
+  font-size:clamp(22px,3.4vw,28px); margin:38px 0 10px; line-height:1.25}
+article h3{font-family:Lora,Georgia,serif; font-weight:600; color:var(--ink);
+  font-size:20px; margin:26px 0 8px}
+article p{margin:0 0 16px}
+article ul,article ol{margin:0 0 16px; padding-left:22px}
+article li{margin:6px 0}
+article strong{color:var(--ink)}
+.accent{width:74px; height:4px; background:var(--coral); border-radius:2px;
+  margin:14px 0 22px}
+
+/* inline code as a pill + code blocks */
+code{font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace; font-size:.88em;
+  background:var(--code-bg); color:var(--code-ink);
+  padding:.12em .42em; border-radius:6px}
+pre{background:var(--code-bg); border:1px solid var(--border); border-radius:12px;
+  padding:16px 18px; overflow-x:auto; margin:0 0 18px}
+pre code{background:none; color:var(--ink); padding:0; font-size:13.5px;
+  line-height:1.55}
+
+/* blockquote with coral left bar */
+blockquote{margin:0 0 18px; padding:2px 0 2px 18px;
+  border-left:3px solid var(--coral); color:var(--muted)}
+blockquote p{margin:0 0 8px}
+
+/* tables */
+.tablewrap{overflow-x:auto; margin:0 0 18px}
+table{border-collapse:collapse; width:100%; font-size:14.5px}
+th,td{border:1px solid var(--border); padding:9px 12px; text-align:left;
+  vertical-align:top}
+thead th{background:var(--tint); color:var(--ink); font-weight:600}
+tbody tr:nth-child(even){background:var(--tint)}
+
+/* figures (inline SVG diagrams) */
+.fig{margin:18px 0; text-align:center}
+.fig svg{max-width:100%; height:auto}
+
+/* prev / next */
+.pager{display:flex; gap:14px; justify-content:space-between; margin:36px 0 0;
+  border-top:1px solid var(--border); padding-top:20px}
+.pager a{display:block; max-width:48%; font-size:14px}
+.pager .lbl{display:block; color:var(--muted); font-size:12px;
+  text-transform:uppercase; letter-spacing:.08em; margin-bottom:3px}
+.pager .nxt{text-align:right; margin-left:auto}
+
+/* reading CTA */
+.readcta{background:var(--cta-bg); color:var(--cta-p); border-radius:18px;
+  border:1px solid var(--cta-border); padding:30px 26px; margin:34px 0 0;
+  text-align:center}
+.readcta h2{font-family:Lora,Georgia,serif; color:var(--cta-h); margin:0 0 8px;
+  font-size:24px}
+.readcta p{margin:0 0 18px; font-size:15.5px}
+.btn{display:inline-flex; align-items:center; gap:9px; font-weight:700;
+  font-size:15px; padding:12px 24px; border-radius:999px; cursor:pointer;
+  border:1.5px solid transparent}
+.btn-primary{background:var(--coral); color:#fff;
+  box-shadow:0 6px 20px rgba(217,119,87,.32)}
+.btn-primary:hover{background:var(--coral-d); color:#fff; text-decoration:none}
+
+/* reading index (leggi.html) */
+.lead{font-size:18px; color:var(--muted); margin:6px 0 26px}
+.part-h{font-family:Lora,Georgia,serif; color:var(--ink); font-weight:600;
+  font-size:22px; margin:30px 0 6px}
+.toc{list-style:none; margin:0 0 8px; padding:0}
+.toc li{border-bottom:1px solid var(--border)}
+.toc a{display:flex; gap:12px; padding:12px 4px; color:var(--ink)}
+.toc a:hover{color:var(--coral-d); text-decoration:none}
+.toc .id{font-family:Lora,Georgia,serif; color:var(--coral-d); flex:none;
+  width:54px}
+
+/* footer */
+footer{margin-top:46px; border-top:1px solid var(--border);
+  padding:28px 0 56px; font-size:13px; color:var(--muted)}
+footer a{color:var(--coral-d)}
+</style><script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"L3.5 — Slide ed Excel","description":"Al termine saprai costruire una presentazione con un metodo a tre tempi (struttura, contenuti, stile), impostare un foglio di calcolo passando da dati…","inLanguage":"it","author":{"@type":"Person","name":"Gian Angelo Geminiani"},"isPartOf":{"@type":"Book","name":"Claude: la guida completa"},"mainEntityOfPage":"https://angelogeminiani.github.io/claude-la-guida-completa/capitoli/L3-5-slide-ed-excel.html"}</script><script>(function(){try{var s=localStorage.getItem('theme');if(s==='dark'||s==='light')document.documentElement.setAttribute('data-theme',s);}catch(e){}})();</script></head><body><svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="ast" viewBox="0 0 32 32"><g stroke="#D97757" stroke-width="3.4" stroke-linecap="round"><line x1="16" y1="4" x2="16" y2="28"/><line x1="4" y1="16" x2="28" y2="16"/><line x1="7.5" y1="7.5" x2="24.5" y2="24.5"/><line x1="24.5" y1="7.5" x2="7.5" y2="24.5"/></g></symbol><symbol id="moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol><symbol id="sun" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><line x1="12" y1="2.5" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="21.5"/><line x1="2.5" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="21.5" y2="12"/><line x1="5.2" y1="5.2" x2="6.9" y2="6.9"/><line x1="17.1" y1="17.1" x2="18.8" y2="18.8"/><line x1="5.2" y1="18.8" x2="6.9" y2="17.1"/><line x1="17.1" y1="6.9" x2="18.8" y2="5.2"/></g></symbol></svg><header class="nav"><div class="row"><a class="brand" href="../index.html"><svg class="mark"><use href="#ast"/></svg> Claude · la guida completa</a><div class="nav-right"><a class="nav-cta" href="../leggi.html">Indice</a><a class="nav-cta" href="../manuale_produzione.pdf" download>Scarica il PDF →</a><button class="theme-toggle" id="theme-toggle" type="button" aria-label="Cambia tema chiaro/scuro" title="Cambia tema"><svg class="i-moon" aria-hidden="true"><use href="#moon"/></svg><svg class="i-sun" aria-hidden="true"><use href="#sun"/></svg></button></div></div></header><main class="wrap"><div class="crumbs"><a href="../index.html">Home</a> · <a href="../leggi.html">Leggi online</a> · Livello 3 — Lavoro quotidiano</div><article><h1 id="capitolo-l3.5-slide-ed-excel">Capitolo L3.5 — Slide ed Excel</h1>
+<blockquote>
+<p>Livello 3 — Lavoro quotidiano. Dati di prodotto verificati il 22/06/2026 su fonti ufficiali.</p>
+</blockquote>
+<h2 id="obiettivo">Obiettivo</h2>
+<p>Al termine saprai costruire una presentazione con un metodo a tre tempi (struttura, contenuti, stile), impostare un foglio di calcolo passando da dati a formule a grafici, e capire quando conviene l’add-in dentro Office invece della generazione in chat.</p>
+<h2 id="prerequisiti">Prerequisiti</h2>
+<ul>
+<li>Aver letto come si chiedono i documenti (cap. L3.4).</li>
+<li>Code execution / file creation attiva (vedi cap. L1.3).</li>
+</ul>
+<h2 id="slide-struttura-poi-contenuti-poi-stile">Slide: struttura, poi contenuti, poi stile</h2>
+<p>Una presentazione fatta tutta in un colpo viene quasi sempre confusa. Il metodo che funziona è in tre tempi, e segue lo stesso principio “prima il contenuto” del capitolo precedente:</p>
+<ol type="1">
+<li><strong>Struttura.</strong> Decidi prima la sequenza delle slide: quante, con quale titolo, in che ordine. È l’ossatura del discorso. Falla rivedere finché il filo regge.</li>
+<li><strong>Contenuti.</strong> Riempi ogni slide: pochi punti per slide, un’idea per slide. Qui conta cosa dici, non come appare.</li>
+<li><strong>Stile.</strong> Solo alla fine, l’aspetto: tema, colori, coerenza visiva.</li>
+</ol>
+<p>Invertire l’ordine costa caro: rifinire lo stile di slide che poi riscrivi è lavoro buttato. Esempio di prima mossa:</p>
+<pre class="text"><code>Prepara la SCALETTA di una presentazione di 8
+slide sul progetto X per la direzione: solo
+titoli e una riga di contenuto per slide.</code></pre>
+<p>Quando la scaletta tiene, passi ai contenuti slide per slide, e per ultimo chiedi il <code>.pptx</code> con il tema.</p>
+<h2 id="excel-dati-poi-formule-poi-grafici">Excel: dati, poi formule, poi grafici</h2>
+<p>Per i fogli di calcolo l’ordine giusto è altrettanto netto:</p>
+<ol type="1">
+<li><strong>Dati.</strong> Prima i dati puliti e ben strutturati: colonne con intestazioni chiare, una riga per record. Tutto il resto poggia qui.</li>
+<li><strong>Formule.</strong> Poi i calcoli: totali, percentuali, aggregazioni. Su dati ben strutturati le formule vengono semplici e corrette.</li>
+<li><strong>Grafici.</strong> Infine la visualizzazione, costruita sui dati e sui calcoli già a posto.</li>
+</ol>
+<p>Se i dati sono disordinati, formule e grafici erediteranno il disordine. Vale la pena spendere il primo tempo a sistemare le colonne.</p>
+<blockquote>
+<p><strong>Tip:</strong> chiedi a Claude di <strong>spiegare le formule</strong> che inserisce. Un foglio che non capisci è un foglio di cui non puoi fidarti: fartele commentare ti fa da controllo.</p>
+</blockquote>
+<p>Tabella L3.5.1 — L’ordine giusto, a colpo d’occhio.</p>
+<div class="tablewrap"><table>
+<thead>
+<tr class="header">
+<th>Output</th>
+<th>Prima</th>
+<th>Ultimo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Slide</td>
+<td>Struttura</td>
+<td>Stile</td>
+</tr>
+<tr class="even">
+<td>Excel</td>
+<td>Dati</td>
+<td>Grafici</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="ladd-in-dentro-office">L’add-in dentro Office</h2>
+<p>Oltre a generare file in chat, Claude vive <strong>dentro</strong> Office come add-in per <strong>Excel, Word e PowerPoint</strong> (Claude per Microsoft 365). È in beta (research preview) per i piani <strong>Max, Team ed Enterprise</strong>.</p>
+<p>La differenza pratica è dove lavori:</p>
+<ul>
+<li><strong>In chat:</strong> Claude <strong>crea</strong> il file da zero. Comodo quando parti dal nulla o produci molti documenti simili.</li>
+<li><strong>Nell’add-in:</strong> Claude lavora <strong>sul documento aperto</strong> in Office. Comodo quando il file esiste già, è grande, o vuoi restare nello strumento dove poi lo rifinisci a mano.</li>
+</ul>
+<p>Regola spiccia: se il documento nasce ora, la chat va benissimo; se stai modificando qualcosa che è già in Excel o PowerPoint, l’add-in ti evita il viavai tra app.</p>
+<h2 id="in-pratica-una-presentazione-in-tre-tempi">In pratica: una presentazione in tre tempi</h2>
+<ol type="1">
+<li><p>Chiedi la <strong>scaletta</strong> (solo titoli + una riga). Aggiustala.</p></li>
+<li><p>Per ogni slide, chiedi i <strong>contenuti</strong>: pochi punti, uno per idea.</p></li>
+<li><p>Chiedi il <strong>.pptx</strong> con un tema coerente:</p>
+<pre class="text"><code>Genera il .pptx dalla scaletta approvata, tema
+sobrio, un colore d&#39;accento, titoli uniformi.</code></pre></li>
+<li><p>Apri il file. Per i ritocchi, modifiche puntuali (cap. L3.4) o, se ce l’hai, l’add-in di PowerPoint.</p></li>
+</ol>
+<h2 id="errori-comuni">Errori comuni</h2>
+<ul>
+<li><strong>Partire dallo stile.</strong> Tema e colori vengono per ultimi. Prima struttura e contenuti.</li>
+<li><strong>Troppo per slide.</strong> Un’idea per slide. I muri di testo non si presentano.</li>
+<li><strong>Dati sporchi in Excel.</strong> Formule e grafici ereditano il disordine: sistema prima le colonne.</li>
+<li><strong>Fidarsi di formule che non capisci.</strong> Fattele spiegare: è il tuo controllo.</li>
+<li><strong>Cercare l’add-in nel piano sbagliato.</strong> È beta su Max/Team/Enterprise.</li>
+</ul>
+<h2 id="riepilogo">Riepilogo</h2>
+<ol type="1">
+<li>Slide in tre tempi: <strong>struttura → contenuti → stile</strong>. Lo stile per ultimo.</li>
+<li>Excel in tre tempi: <strong>dati → formule → grafici</strong>. Dati puliti prima di tutto.</li>
+<li>Fatti spiegare le formule: un foglio che non capisci non è affidabile.</li>
+<li>In chat Claude <strong>crea</strong> i file; nell’add-in lavora <strong>sul documento aperto</strong> in Office.</li>
+<li>L’add-in M365 è beta su Max/Team/Enterprise.</li>
+</ol>
+<h2 id="prossimo-passo">Prossimo passo</h2>
+<p>Chiuso il lavoro quotidiano, il <strong>Livello 4 — Design</strong> apre il canvas: generare e iterare interfacce, partire dal proprio brand e portare il risultato in Claude Code. Si comincia dal <strong>cap. L4.1 — Design: il canvas</strong>.</p>
+<p><em>Dati sull’add-in Microsoft 365 (prodotti, beta, piani) dal ledger, verificati il 22/06/2026 su claude.com e support.claude.com. Gli esempi non sono stati eseguiti in questa sede.</em></p>
+</article><nav class="pager"><a href="./L3-4-documenti.html"><span class="lbl">← Precedente</span>L3.4 — Documenti (Word, PowerPoint, Excel, PDF)</a><a class="nxt" href="./L4-1-design-il-canvas.html"><span class="lbl">Successivo →</span>L4.1 — Design: il canvas</a></nav><div class="readcta"><h2>Ti è utile? Prendi tutto il manuale</h2><p>33 capitoli in un unico PDF A5, gratis e senza registrazione.</p><a class="btn btn-primary" href="../manuale_produzione.pdf" download>↓ Scarica il PDF gratis</a></div></main><footer><div class="wrap">© 2026 Gian Angelo Geminiani. Pubblicazione <strong>indipendente e non ufficiale</strong>: non affiliata, sponsorizzata né approvata da Anthropic. «Claude» e «Anthropic» sono marchi dei rispettivi titolari, citati a solo scopo identificativo. Dati verificati alla data indicata e soggetti a modifica.</div></footer><script>(function(){var r=document.documentElement;function eff(){var f=r.getAttribute('data-theme');return f?f:(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');}function meta(t){var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',t==='dark'?'#1F1E1D':'#FAF9F5');}meta(eff());var b=document.getElementById('theme-toggle');if(b)b.addEventListener('click',function(){var n=eff()==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem('theme',n);}catch(e){}meta(n);});})();</script></body></html>

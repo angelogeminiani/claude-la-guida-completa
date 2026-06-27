@@ -1,0 +1,213 @@
+<!DOCTYPE html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>L5.2 — La tua prima skill · Claude: la guida completa</title><meta name="description" content="Al termine avrai creato una skill funzionante: la struttura della cartella, una description che &quot;scatta&quot; quando deve, e il modo di testarla. Vedremo…"><link rel="canonical" href="https://angelogeminiani.github.io/claude-la-guida-completa/capitoli/L5-2-la-tua-prima-skill.html"><meta name="theme-color" content="#FAF9F5"><meta name="author" content="Gian Angelo Geminiani"><meta property="og:type" content="article"><meta property="og:site_name" content="Claude: la guida completa"><meta property="og:title" content="L5.2 — La tua prima skill · Claude: la guida completa"><meta property="og:description" content="Al termine avrai creato una skill funzionante: la struttura della cartella, una description che &quot;scatta&quot; quando deve, e il modo di testarla. Vedremo…"><meta property="og:url" content="https://angelogeminiani.github.io/claude-la-guida-completa/capitoli/L5-2-la-tua-prima-skill.html"><meta property="og:image" content="https://angelogeminiani.github.io/claude-la-guida-completa/og-image.png"><meta property="og:locale" content="it_IT"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="L5.2 — La tua prima skill · Claude: la guida completa"><meta name="twitter:description" content="Al termine avrai creato una skill funzionante: la struttura della cartella, una description che &quot;scatta&quot; quando deve, e il modo di testarla. Vedremo…"><meta name="twitter:image" content="https://angelogeminiani.github.io/claude-la-guida-completa/og-image.png"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cg stroke='%23D97757' stroke-width='3' stroke-linecap='round'%3E%3Cline x1='16' y1='5' x2='16' y2='27'/%3E%3Cline x1='5' y1='16' x2='27' y2='16'/%3E%3Cline x1='8' y1='8' x2='24' y2='24'/%3E%3Cline x1='24' y1='8' x2='8' y2='24'/%3E%3C/g%3E%3C/svg%3E"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,600;1,500&display=swap" rel="stylesheet"><style>/* book.css — shared styles for the online chapter pages (docs/capitoli/*.html)
+   and the reading index (docs/leggi.html). Same Claude.ai palette as the
+   landing page, with the light/dark theme system. */
+
+:root{
+  color-scheme:light;
+  --cream:#FAF9F5; --ink:#1F1E1D; --coral:#D97757; --coral-d:#B65A3C;
+  --muted:#6B6760; --border:#E9E2D6; --card:#FFFFFF; --tint:#F4ECE3;
+  --body:#322f2a; --code-bg:#F1EADF; --code-ink:#7A3E27;
+  --nav-bg:rgba(250,249,245,.86);
+  --cta-bg:#1F1E1D; --cta-h:#ffffff; --cta-p:#cdc6ba; --cta-border:#5a554d;
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --cream:#1F1E1D; --ink:#EDEAE2; --coral:#D97757; --coral-d:#E7A184;
+  --muted:#A39E95; --border:#393732; --card:#2A2926; --tint:#242320;
+  --body:#C9C3B8; --code-bg:#2E2C28; --code-ink:#E7A184;
+  --nav-bg:rgba(31,30,29,.86);
+  --cta-bg:#2A2926; --cta-h:#ffffff; --cta-p:#BDB7AC; --cta-border:#4A463F;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --cream:#1F1E1D; --ink:#EDEAE2; --coral:#D97757; --coral-d:#E7A184;
+    --muted:#A39E95; --border:#393732; --card:#2A2926; --tint:#242320;
+    --body:#C9C3B8; --code-bg:#2E2C28; --code-ink:#E7A184;
+    --nav-bg:rgba(31,30,29,.86);
+    --cta-bg:#2A2926; --cta-h:#ffffff; --cta-p:#BDB7AC; --cta-border:#4A463F;
+  }
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--cream); color:var(--body);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  line-height:1.7; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:760px; margin:0 auto; padding:0 24px}
+a{color:var(--coral-d); text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* header / nav */
+header.nav{position:sticky; top:0; z-index:10;
+  background:var(--nav-bg); backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border)}
+.nav .row{max-width:1080px; margin:0 auto; padding:0 24px;
+  display:flex; align-items:center; justify-content:space-between; height:62px}
+.brand{display:flex; align-items:center; gap:10px; font-family:Lora,Georgia,serif;
+  font-weight:600; font-size:18px; color:var(--ink)}
+.brand:hover{text-decoration:none}
+.mark{width:22px; height:22px; flex:none}
+.nav-right{display:flex; align-items:center; gap:16px}
+.nav-cta{font-weight:600; font-size:14px}
+.theme-toggle{display:inline-flex; align-items:center; justify-content:center;
+  width:40px; height:40px; border-radius:999px; border:1px solid var(--border);
+  background:transparent; color:var(--ink); cursor:pointer; flex:none;
+  transition:border-color .2s}
+.theme-toggle:hover{border-color:var(--coral)}
+.theme-toggle svg{width:18px; height:18px}
+.theme-toggle .i-sun{display:none}
+.theme-toggle .i-moon{display:block}
+:root[data-theme="dark"] .theme-toggle .i-moon{display:none}
+:root[data-theme="dark"] .theme-toggle .i-sun{display:block}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .theme-toggle .i-moon{display:none}
+  :root:not([data-theme="light"]) .theme-toggle .i-sun{display:block}
+}
+
+/* breadcrumb */
+.crumbs{font-size:13.5px; color:var(--muted); margin:26px 0 4px}
+.crumbs a{color:var(--muted)}
+.crumbs a:hover{color:var(--coral-d)}
+
+/* article */
+article{padding:6px 0 8px}
+article h1{font-family:Lora,Georgia,serif; font-weight:600; line-height:1.18;
+  font-size:clamp(30px,5vw,42px); color:var(--ink); margin:8px 0 6px}
+article h2{font-family:Lora,Georgia,serif; font-weight:600; color:var(--ink);
+  font-size:clamp(22px,3.4vw,28px); margin:38px 0 10px; line-height:1.25}
+article h3{font-family:Lora,Georgia,serif; font-weight:600; color:var(--ink);
+  font-size:20px; margin:26px 0 8px}
+article p{margin:0 0 16px}
+article ul,article ol{margin:0 0 16px; padding-left:22px}
+article li{margin:6px 0}
+article strong{color:var(--ink)}
+.accent{width:74px; height:4px; background:var(--coral); border-radius:2px;
+  margin:14px 0 22px}
+
+/* inline code as a pill + code blocks */
+code{font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace; font-size:.88em;
+  background:var(--code-bg); color:var(--code-ink);
+  padding:.12em .42em; border-radius:6px}
+pre{background:var(--code-bg); border:1px solid var(--border); border-radius:12px;
+  padding:16px 18px; overflow-x:auto; margin:0 0 18px}
+pre code{background:none; color:var(--ink); padding:0; font-size:13.5px;
+  line-height:1.55}
+
+/* blockquote with coral left bar */
+blockquote{margin:0 0 18px; padding:2px 0 2px 18px;
+  border-left:3px solid var(--coral); color:var(--muted)}
+blockquote p{margin:0 0 8px}
+
+/* tables */
+.tablewrap{overflow-x:auto; margin:0 0 18px}
+table{border-collapse:collapse; width:100%; font-size:14.5px}
+th,td{border:1px solid var(--border); padding:9px 12px; text-align:left;
+  vertical-align:top}
+thead th{background:var(--tint); color:var(--ink); font-weight:600}
+tbody tr:nth-child(even){background:var(--tint)}
+
+/* figures (inline SVG diagrams) */
+.fig{margin:18px 0; text-align:center}
+.fig svg{max-width:100%; height:auto}
+
+/* prev / next */
+.pager{display:flex; gap:14px; justify-content:space-between; margin:36px 0 0;
+  border-top:1px solid var(--border); padding-top:20px}
+.pager a{display:block; max-width:48%; font-size:14px}
+.pager .lbl{display:block; color:var(--muted); font-size:12px;
+  text-transform:uppercase; letter-spacing:.08em; margin-bottom:3px}
+.pager .nxt{text-align:right; margin-left:auto}
+
+/* reading CTA */
+.readcta{background:var(--cta-bg); color:var(--cta-p); border-radius:18px;
+  border:1px solid var(--cta-border); padding:30px 26px; margin:34px 0 0;
+  text-align:center}
+.readcta h2{font-family:Lora,Georgia,serif; color:var(--cta-h); margin:0 0 8px;
+  font-size:24px}
+.readcta p{margin:0 0 18px; font-size:15.5px}
+.btn{display:inline-flex; align-items:center; gap:9px; font-weight:700;
+  font-size:15px; padding:12px 24px; border-radius:999px; cursor:pointer;
+  border:1.5px solid transparent}
+.btn-primary{background:var(--coral); color:#fff;
+  box-shadow:0 6px 20px rgba(217,119,87,.32)}
+.btn-primary:hover{background:var(--coral-d); color:#fff; text-decoration:none}
+
+/* reading index (leggi.html) */
+.lead{font-size:18px; color:var(--muted); margin:6px 0 26px}
+.part-h{font-family:Lora,Georgia,serif; color:var(--ink); font-weight:600;
+  font-size:22px; margin:30px 0 6px}
+.toc{list-style:none; margin:0 0 8px; padding:0}
+.toc li{border-bottom:1px solid var(--border)}
+.toc a{display:flex; gap:12px; padding:12px 4px; color:var(--ink)}
+.toc a:hover{color:var(--coral-d); text-decoration:none}
+.toc .id{font-family:Lora,Georgia,serif; color:var(--coral-d); flex:none;
+  width:54px}
+
+/* footer */
+footer{margin-top:46px; border-top:1px solid var(--border);
+  padding:28px 0 56px; font-size:13px; color:var(--muted)}
+footer a{color:var(--coral-d)}
+</style><script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"L5.2 — La tua prima skill","description":"Al termine avrai creato una skill funzionante: la struttura della cartella, una description che \"scatta\" quando deve, e il modo di testarla. Vedremo…","inLanguage":"it","author":{"@type":"Person","name":"Gian Angelo Geminiani"},"isPartOf":{"@type":"Book","name":"Claude: la guida completa"},"mainEntityOfPage":"https://angelogeminiani.github.io/claude-la-guida-completa/capitoli/L5-2-la-tua-prima-skill.html"}</script><script>(function(){try{var s=localStorage.getItem('theme');if(s==='dark'||s==='light')document.documentElement.setAttribute('data-theme',s);}catch(e){}})();</script></head><body><svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="ast" viewBox="0 0 32 32"><g stroke="#D97757" stroke-width="3.4" stroke-linecap="round"><line x1="16" y1="4" x2="16" y2="28"/><line x1="4" y1="16" x2="28" y2="16"/><line x1="7.5" y1="7.5" x2="24.5" y2="24.5"/><line x1="24.5" y1="7.5" x2="7.5" y2="24.5"/></g></symbol><symbol id="moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol><symbol id="sun" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><line x1="12" y1="2.5" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="21.5"/><line x1="2.5" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="21.5" y2="12"/><line x1="5.2" y1="5.2" x2="6.9" y2="6.9"/><line x1="17.1" y1="17.1" x2="18.8" y2="18.8"/><line x1="5.2" y1="18.8" x2="6.9" y2="17.1"/><line x1="17.1" y1="6.9" x2="18.8" y2="5.2"/></g></symbol></svg><header class="nav"><div class="row"><a class="brand" href="../index.html"><svg class="mark"><use href="#ast"/></svg> Claude · la guida completa</a><div class="nav-right"><a class="nav-cta" href="../leggi.html">Indice</a><a class="nav-cta" href="../manuale_produzione.pdf" download>Scarica il PDF →</a><button class="theme-toggle" id="theme-toggle" type="button" aria-label="Cambia tema chiaro/scuro" title="Cambia tema"><svg class="i-moon" aria-hidden="true"><use href="#moon"/></svg><svg class="i-sun" aria-hidden="true"><use href="#sun"/></svg></button></div></div></header><main class="wrap"><div class="crumbs"><a href="../index.html">Home</a> · <a href="../leggi.html">Leggi online</a> · Livello 5 — Skills e identità</div><article><h1 id="capitolo-l5.2-la-tua-prima-skill">Capitolo L5.2 — La tua prima skill</h1>
+<blockquote>
+<p>Livello 5 — Skills e identità. Dati di prodotto verificati il 24/06/2026 su fonti ufficiali.</p>
+</blockquote>
+<h2 id="obiettivo">Obiettivo</h2>
+<p>Al termine avrai creato una skill funzionante: la struttura della cartella, una <code>description</code> che “scatta” quando deve, e il modo di testarla. Vedremo sia la via manuale sia l’aiuto di <strong>skill-creator</strong>, la skill che assiste a costruirne altre.</p>
+<h2 id="prerequisiti">Prerequisiti</h2>
+<ul>
+<li>Capire l’anatomia di una skill (cap. L5.1).</li>
+<li><strong>Code execution</strong> attiva (cap. L1.3).</li>
+</ul>
+<h2 id="la-struttura-della-cartella">La struttura della cartella</h2>
+<p>Una skill è una cartella il cui nome coincide con il nome della skill, con dentro almeno il file <code>SKILL.md</code>. Se aggiungi risorse o script, stanno nella stessa cartella.</p>
+<p><em>Figura L5.2.1 — Struttura di una cartella skill.</em> Alt-text: diagramma verticale della cartella skill con SKILL.md e una sottocartella di risorse.</p>
+<div class="fig">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 162" width="100%" font-family="Inter, &#39;Helvetica Neue&#39;, Arial, sans-serif">
+<defs><marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#D97757"/></marker></defs> <line x1="300.0" y1="54.0" x2="161.0" y2="92.0" stroke="#D97757" stroke-width="1.5" marker-end="url(#ah)"/> <line x1="300.0" y1="54.0" x2="307.0" y2="92.0" stroke="#D97757" stroke-width="1.5" marker-end="url(#ah)"/> <line x1="300.0" y1="54.0" x2="446.0" y2="92.0" stroke="#D97757" stroke-width="1.5" marker-end="url(#ah)"/> <rect x="226.5" y="16.0" width="147.0" height="38" rx="7" fill="#FFFFFF" stroke="#E5DED2" stroke-width="1.2"/> <text x="300.0" y="38.0" font-size="13" fill="#1F1E1D" text-anchor="middle">verbale-riunione/</text> <rect x="105.0" y="94.0" width="112.0" height="52" rx="7" fill="#FFFFFF" stroke="#E5DED2" stroke-width="1.2"/> <text x="161.0" y="116.0" font-size="13" fill="#1F1E1D" text-anchor="middle">SKILL.md</text> <text x="161.0" y="132.0" font-size="13" fill="#1F1E1D" text-anchor="middle">obbligatorio</text> <rect x="251.0" y="94.0" width="112.0" height="52" rx="7" fill="#FFFFFF" stroke="#E5DED2" stroke-width="1.2"/> <text x="307.0" y="116.0" font-size="13" fill="#1F1E1D" text-anchor="middle">REFERENCE.md</text> <text x="307.0" y="132.0" font-size="13" fill="#1F1E1D" text-anchor="middle">opzionale</text> <rect x="397.0" y="94.0" width="98.0" height="52" rx="7" fill="#FFFFFF" stroke="#E5DED2" stroke-width="1.2"/> <text x="446.0" y="116.0" font-size="13" fill="#1F1E1D" text-anchor="middle">resources/</text> <text x="446.0" y="132.0" font-size="13" fill="#1F1E1D" text-anchor="middle">opzionale</text>
+</svg>
+</div>
+<p>Per usarla in chat o in Cowork, la cartella va compressa in uno <strong>ZIP</strong> con la cartella stessa come radice (non i file sciolti nello ZIP), e poi caricata. In Claude Code, invece, la metti sotto <code>.claude/skills/</code> del progetto (cap. L2.4).</p>
+<h2 id="scrivere-una-description-che-scatta">Scrivere una description che scatta</h2>
+<p>È il passo che decide tutto. La <code>description</code> deve dire <strong>cosa</strong> fa la skill e <strong>quando</strong> Claude deve usarla, in massimo 200 caratteri. Due esempi a confronto:</p>
+<ul>
+<li><strong>Debole:</strong> “Aiuta con le email.” — troppo generica, scatta a caso o mai.</li>
+<li><strong>Forte:</strong> “Scrive risposte email cortesi e brevi a clienti, a partire dal messaggio ricevuto.” — dice il compito e il contesto d’uso.</li>
+</ul>
+<p>La regola: includi i segnali che vuoi facciano scattare la skill. Se deve attivarsi sui verbali, nomina i verbali; se sui clienti, nomina i clienti.</p>
+<h2 id="costruirla-con-skill-creator">Costruirla con skill-creator</h2>
+<p>Non sei costretto a partire dal foglio bianco. <strong>skill-creator</strong> è una skill ufficiale che ti guida a crearne una: imposta la struttura, ti aiuta a scrivere la description e può generare prompt di prova (eval) per controllare che la skill scatti quando deve — e, importante, che <strong>non</strong> scatti quando non deve.</p>
+<p>È il modo più rapido per una prima skill solida: descrivi il workflow che vuoi automatizzare, e skill-creator produce lo scheletro che poi rifinisci.</p>
+<h2 id="testare-prima-e-dopo-lupload">Testare prima e dopo l’upload</h2>
+<p>Una skill si valuta sul campo. Prima di caricarla, rileggi il <code>SKILL.md</code>, controlla che la description rifletta davvero quando serve, e verifica che i file richiamati esistano. Dopo averla caricata e abilitata in <strong>Customize &gt; Skills</strong>, provala con più prompt che dovrebbero attivarla, e controlla nel “thinking” di Claude che la stia caricando. Se non scatta quando te lo aspetti, il punto da correggere è quasi sempre la <strong>description</strong>.</p>
+<h2 id="in-pratica-crea-e-prova-una-skill">In pratica: crea e prova una skill</h2>
+<ol type="1">
+<li>Crea una cartella con il nome della skill (es. <code>verbale-riunione</code>).</li>
+<li>Dentro, scrivi <code>SKILL.md</code> con frontmatter (name, description) e corpo.</li>
+<li>Cura la <strong>description</strong>: cosa fa e quando usarla, sotto i 200 caratteri.</li>
+<li>Per la chat/Cowork, comprimi la cartella in <strong>ZIP</strong> (cartella come radice) e caricala; abilitala in <strong>Customize &gt; Skills</strong>.</li>
+<li>Prova con prompt che devono attivarla; controlla che si carichi.</li>
+<li>Se non scatta, <strong>itera sulla description</strong> e riprova.</li>
+</ol>
+<h2 id="errori-comuni">Errori comuni</h2>
+<ul>
+<li><strong>ZIP con i file sciolti.</strong> Lo ZIP deve contenere la <strong>cartella</strong> come radice, non i file direttamente.</li>
+<li><strong>Nome cartella diverso dal nome skill.</strong> Falli coincidere.</li>
+<li><strong>Description che non scatta.</strong> Aggiungi i segnali del “quando”; non descrivere solo il “cosa”.</li>
+<li><strong>Provarla una volta sola.</strong> Testa con più prompt, inclusi alcuni che <strong>non</strong> devono attivarla.</li>
+<li><strong>Hardcodare segreti.</strong> Mai chiavi o password dentro una skill.</li>
+</ul>
+<h2 id="riepilogo">Riepilogo</h2>
+<ol type="1">
+<li>Una skill è una <strong>cartella</strong> (nome = nome skill) con dentro <code>SKILL.md</code>.</li>
+<li>Per chat/Cowork si carica come <strong>ZIP</strong> con la cartella come radice; in Code va in <code>.claude/skills/</code>.</li>
+<li>La <strong>description</strong> che scatta nomina cosa fa <strong>e</strong> quando usarla.</li>
+<li><strong>skill-creator</strong> scaffolda la skill e genera prove di attivazione.</li>
+<li>Testa prima e dopo l’upload; se non scatta, itera sulla description.</li>
+</ol>
+<h2 id="prossimo-passo">Prossimo passo</h2>
+<p>Nel <strong>cap. L5.3 — Skills operative in Cowork</strong> vediamo le Skills al lavoro nei task autonomi: differenze tra chat e Cowork, come spezzarle, e la condivisione in team. Useremo come esempio le tre skill con cui è scritto questo libro.</p>
+<p><em>Dati su struttura, packaging ZIP, test e skill-creator verificati il 24/06/2026 su support.claude.com/en/articles/12512198. Nessuna skill è stata creata o eseguita in questa sede.</em></p>
+</article><nav class="pager"><a href="./L5-1-anatomia-di-una-skill.html"><span class="lbl">← Precedente</span>L5.1 — Anatomia di una skill</a><a class="nxt" href="./L5-3-skills-operative-in-cowork.html"><span class="lbl">Successivo →</span>L5.3 — Skills operative in Cowork</a></nav><div class="readcta"><h2>Ti è utile? Prendi tutto il manuale</h2><p>33 capitoli in un unico PDF A5, gratis e senza registrazione.</p><a class="btn btn-primary" href="../manuale_produzione.pdf" download>↓ Scarica il PDF gratis</a></div></main><footer><div class="wrap">© 2026 Gian Angelo Geminiani. Pubblicazione <strong>indipendente e non ufficiale</strong>: non affiliata, sponsorizzata né approvata da Anthropic. «Claude» e «Anthropic» sono marchi dei rispettivi titolari, citati a solo scopo identificativo. Dati verificati alla data indicata e soggetti a modifica.</div></footer><script>(function(){var r=document.documentElement;function eff(){var f=r.getAttribute('data-theme');return f?f:(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');}function meta(t){var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',t==='dark'?'#1F1E1D':'#FAF9F5');}meta(eff());var b=document.getElementById('theme-toggle');if(b)b.addEventListener('click',function(){var n=eff()==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem('theme',n);}catch(e){}meta(n);});})();</script></body></html>
