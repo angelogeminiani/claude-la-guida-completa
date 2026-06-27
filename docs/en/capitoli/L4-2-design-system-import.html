@@ -1,0 +1,250 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>L4.2 — Design system import · Claude: la guida completa</title><meta name="description" content="By the end you&#x27;ll know why to make Claude Design start from your brand instead of from scratch, which sources to import a design system from, what…"><link rel="canonical" href="https://angelogeminiani.github.io/claude-la-guida-completa/en/capitoli/L4-2-design-system-import.html"><link rel="alternate" hreflang="it" href="https://angelogeminiani.github.io/claude-la-guida-completa/capitoli/L4-2-design-system-import.html"><link rel="alternate" hreflang="en" href="https://angelogeminiani.github.io/claude-la-guida-completa/en/capitoli/L4-2-design-system-import.html"><link rel="alternate" hreflang="x-default" href="https://angelogeminiani.github.io/claude-la-guida-completa/capitoli/L4-2-design-system-import.html"><meta name="theme-color" content="#FAF9F5"><meta name="author" content="Gian Angelo Geminiani"><meta property="og:type" content="article"><meta property="og:title" content="L4.2 — Design system import · Claude: la guida completa"><meta property="og:description" content="By the end you&#x27;ll know why to make Claude Design start from your brand instead of from scratch, which sources to import a design system from, what…"><meta property="og:url" content="https://angelogeminiani.github.io/claude-la-guida-completa/en/capitoli/L4-2-design-system-import.html"><meta property="og:image" content="https://angelogeminiani.github.io/claude-la-guida-completa/og-image-en.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="L4.2 — Design system import · Claude: la guida completa"><meta name="twitter:image" content="https://angelogeminiani.github.io/claude-la-guida-completa/og-image-en.png"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cg stroke='%23D97757' stroke-width='3' stroke-linecap='round'%3E%3Cline x1='16' y1='5' x2='16' y2='27'/%3E%3Cline x1='5' y1='16' x2='27' y2='16'/%3E%3Cline x1='8' y1='8' x2='24' y2='24'/%3E%3Cline x1='24' y1='8' x2='8' y2='24'/%3E%3C/g%3E%3C/svg%3E"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,600;1,500&display=swap" rel="stylesheet"><style>/* book.css — shared styles for the online chapter pages (docs/capitoli/*.html)
+   and the reading index (docs/leggi.html). Same Claude.ai palette as the
+   landing page, with the light/dark theme system. */
+
+:root{
+  color-scheme:light;
+  --cream:#FAF9F5; --ink:#1F1E1D; --coral:#D97757; --coral-d:#B65A3C;
+  --muted:#6B6760; --border:#E9E2D6; --card:#FFFFFF; --tint:#F4ECE3;
+  --body:#322f2a; --code-bg:#F1EADF; --code-ink:#7A3E27;
+  --nav-bg:rgba(250,249,245,.86);
+  --cta-bg:#1F1E1D; --cta-h:#ffffff; --cta-p:#cdc6ba; --cta-border:#5a554d;
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --cream:#1F1E1D; --ink:#EDEAE2; --coral:#D97757; --coral-d:#E7A184;
+  --muted:#A39E95; --border:#393732; --card:#2A2926; --tint:#242320;
+  --body:#C9C3B8; --code-bg:#2E2C28; --code-ink:#E7A184;
+  --nav-bg:rgba(31,30,29,.86);
+  --cta-bg:#2A2926; --cta-h:#ffffff; --cta-p:#BDB7AC; --cta-border:#4A463F;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --cream:#1F1E1D; --ink:#EDEAE2; --coral:#D97757; --coral-d:#E7A184;
+    --muted:#A39E95; --border:#393732; --card:#2A2926; --tint:#242320;
+    --body:#C9C3B8; --code-bg:#2E2C28; --code-ink:#E7A184;
+    --nav-bg:rgba(31,30,29,.86);
+    --cta-bg:#2A2926; --cta-h:#ffffff; --cta-p:#BDB7AC; --cta-border:#4A463F;
+  }
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--cream); color:var(--body);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  line-height:1.7; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:760px; margin:0 auto; padding:0 24px}
+a{color:var(--coral-d); text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* header / nav */
+header.nav{position:sticky; top:0; z-index:10;
+  background:var(--nav-bg); backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border)}
+.nav .row{max-width:1080px; margin:0 auto; padding:0 24px;
+  display:flex; align-items:center; justify-content:space-between; height:62px}
+.brand{display:flex; align-items:center; gap:10px; font-family:Lora,Georgia,serif;
+  font-weight:600; font-size:18px; color:var(--ink)}
+.brand:hover{text-decoration:none}
+.mark{width:22px; height:22px; flex:none}
+.nav-right{display:flex; align-items:center; gap:16px}
+.nav-cta{font-weight:600; font-size:14px}
+.theme-toggle{display:inline-flex; align-items:center; justify-content:center;
+  width:40px; height:40px; border-radius:999px; border:1px solid var(--border);
+  background:transparent; color:var(--ink); cursor:pointer; flex:none;
+  transition:border-color .2s}
+.theme-toggle:hover{border-color:var(--coral)}
+.theme-toggle svg{width:18px; height:18px}
+.theme-toggle .i-sun{display:none}
+.theme-toggle .i-moon{display:block}
+:root[data-theme="dark"] .theme-toggle .i-moon{display:none}
+:root[data-theme="dark"] .theme-toggle .i-sun{display:block}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .theme-toggle .i-moon{display:none}
+  :root:not([data-theme="light"]) .theme-toggle .i-sun{display:block}
+}
+
+/* breadcrumb */
+.crumbs{font-size:13.5px; color:var(--muted); margin:26px 0 4px}
+.crumbs a{color:var(--muted)}
+.crumbs a:hover{color:var(--coral-d)}
+
+/* article */
+article{padding:6px 0 8px}
+article h1{font-family:Lora,Georgia,serif; font-weight:600; line-height:1.18;
+  font-size:clamp(30px,5vw,42px); color:var(--ink); margin:8px 0 6px}
+article h2{font-family:Lora,Georgia,serif; font-weight:600; color:var(--ink);
+  font-size:clamp(22px,3.4vw,28px); margin:38px 0 10px; line-height:1.25}
+article h3{font-family:Lora,Georgia,serif; font-weight:600; color:var(--ink);
+  font-size:20px; margin:26px 0 8px}
+article p{margin:0 0 16px}
+article ul,article ol{margin:0 0 16px; padding-left:22px}
+article li{margin:6px 0}
+article strong{color:var(--ink)}
+.accent{width:74px; height:4px; background:var(--coral); border-radius:2px;
+  margin:14px 0 22px}
+
+/* inline code as a pill + code blocks */
+code{font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace; font-size:.88em;
+  background:var(--code-bg); color:var(--code-ink);
+  padding:.12em .42em; border-radius:6px}
+pre{background:var(--code-bg); border:1px solid var(--border); border-radius:12px;
+  padding:16px 18px; overflow-x:auto; margin:0 0 18px}
+pre code{background:none; color:var(--ink); padding:0; font-size:13.5px;
+  line-height:1.55}
+
+/* blockquote with coral left bar */
+blockquote{margin:0 0 18px; padding:2px 0 2px 18px;
+  border-left:3px solid var(--coral); color:var(--muted)}
+blockquote p{margin:0 0 8px}
+
+/* tables */
+.tablewrap{overflow-x:auto; margin:0 0 18px}
+table{border-collapse:collapse; width:100%; font-size:14.5px}
+th,td{border:1px solid var(--border); padding:9px 12px; text-align:left;
+  vertical-align:top}
+thead th{background:var(--tint); color:var(--ink); font-weight:600}
+tbody tr:nth-child(even){background:var(--tint)}
+
+/* figures (inline SVG diagrams) */
+.fig{margin:18px 0; text-align:center}
+.fig svg{max-width:100%; height:auto}
+
+/* prev / next */
+.pager{display:flex; gap:14px; justify-content:space-between; margin:36px 0 0;
+  border-top:1px solid var(--border); padding-top:20px}
+.pager a{display:block; max-width:48%; font-size:14px}
+.pager .lbl{display:block; color:var(--muted); font-size:12px;
+  text-transform:uppercase; letter-spacing:.08em; margin-bottom:3px}
+.pager .nxt{text-align:right; margin-left:auto}
+
+/* reading CTA */
+.readcta{background:var(--cta-bg); color:var(--cta-p); border-radius:18px;
+  border:1px solid var(--cta-border); padding:30px 26px; margin:34px 0 0;
+  text-align:center}
+.readcta h2{font-family:Lora,Georgia,serif; color:var(--cta-h); margin:0 0 8px;
+  font-size:24px}
+.readcta p{margin:0 0 18px; font-size:15.5px}
+.btn{display:inline-flex; align-items:center; gap:9px; font-weight:700;
+  font-size:15px; padding:12px 24px; border-radius:999px; cursor:pointer;
+  border:1.5px solid transparent}
+.btn-primary{background:var(--coral); color:#fff;
+  box-shadow:0 6px 20px rgba(217,119,87,.32)}
+.btn-primary:hover{background:var(--coral-d); color:#fff; text-decoration:none}
+
+/* reading index (leggi.html) */
+.lead{font-size:18px; color:var(--muted); margin:6px 0 26px}
+.part-h{font-family:Lora,Georgia,serif; color:var(--ink); font-weight:600;
+  font-size:22px; margin:30px 0 6px}
+.toc{list-style:none; margin:0 0 8px; padding:0}
+.toc li{border-bottom:1px solid var(--border)}
+.toc a{display:flex; gap:12px; padding:12px 4px; color:var(--ink)}
+.toc a:hover{color:var(--coral-d); text-decoration:none}
+.toc .id{font-family:Lora,Georgia,serif; color:var(--coral-d); flex:none;
+  width:54px}
+
+/* footer */
+footer{margin-top:46px; border-top:1px solid var(--border);
+  padding:28px 0 56px; font-size:13px; color:var(--muted)}
+footer a{color:var(--coral-d)}
+</style><script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"L4.2 — Design system import","description":"By the end you'll know why to make Claude Design start from your brand instead of from scratch, which sources to import a design system from, what…","inLanguage":"en","author":{"@type":"Person","name":"Gian Angelo Geminiani"},"isPartOf":{"@type":"Book","name":"Claude: la guida completa"},"mainEntityOfPage":"https://angelogeminiani.github.io/claude-la-guida-completa/en/capitoli/L4-2-design-system-import.html"}</script><script>(function(){try{var s=localStorage.getItem('theme');if(s==='dark'||s==='light')document.documentElement.setAttribute('data-theme',s);}catch(e){}})();</script></head><body><svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="ast" viewBox="0 0 32 32"><g stroke="#D97757" stroke-width="3.4" stroke-linecap="round"><line x1="16" y1="4" x2="16" y2="28"/><line x1="4" y1="16" x2="28" y2="16"/><line x1="7.5" y1="7.5" x2="24.5" y2="24.5"/><line x1="24.5" y1="7.5" x2="7.5" y2="24.5"/></g></symbol><symbol id="moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol><symbol id="sun" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><line x1="12" y1="2.5" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="21.5"/><line x1="2.5" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="21.5" y2="12"/><line x1="5.2" y1="5.2" x2="6.9" y2="6.9"/><line x1="17.1" y1="17.1" x2="18.8" y2="18.8"/><line x1="5.2" y1="18.8" x2="6.9" y2="17.1"/><line x1="17.1" y1="6.9" x2="18.8" y2="5.2"/></g></symbol></svg><header class="nav"><div class="row"><a class="brand" href="../index.html"><svg class="mark"><use href="#ast"/></svg> Claude · the complete guide</a><div class="nav-right"><a class="nav-cta" href="../leggi.html">Read online</a><a class="nav-cta" href="../manuale_en.pdf" download>Download the PDF →</a><a class="nav-cta" href="../../capitoli/L4-2-design-system-import.html">IT</a><button class="theme-toggle" id="theme-toggle" type="button" aria-label="theme" title="Theme"><svg class="i-moon" aria-hidden="true"><use href="#moon"/></svg><svg class="i-sun" aria-hidden="true"><use href="#sun"/></svg></button></div></div></header><main class="wrap"><div class="crumbs"><a href="../index.html">Home</a> · <a href="../leggi.html">Read online</a> · Level 4 — Design</div><article><h1 id="chapter-l4.2-design-system-import">Chapter L4.2 — Design system import</h1>
+<blockquote>
+<p>Level 4 — Design. Product details verified on 24/06/2026 against official sources.</p>
+</blockquote>
+<h2 id="goal">Goal</h2>
+<p>By the end you’ll know why to make Claude Design start from your brand instead of from scratch, which sources to import a design system from, what Claude extracts from it, and how to avoid the anonymous, generic output — the so-called “AI slop”.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>Having used the canvas (ch. L4.1).</li>
+<li>Having at least one source of your brand: a codebase, a deck, or graphic assets.</li>
+</ul>
+<h2 id="why-import-the-brand">Why import the brand</h2>
+<p>Without a design system, Claude generates with a default style: correct but neutral, recognizable as “made by AI”. It’s the problem of <strong>AI slop</strong>: plausible results with no identity, all looking the same. The cure is to give Claude your brand as a foundation, so every screen starts with your colors, fonts and components instead of the defaults.</p>
+<p>Importing a design system is the step that turns Design from a generator of generic drafts into a tool that produces material that’s already “yours”.</p>
+<h2 id="what-claude-extracts-and-from-where">What Claude extracts and from where</h2>
+<p>Claude analyzes the sources you give it and extracts a <strong>reusable design system</strong>:</p>
+<ul>
+<li><strong>Color palette:</strong> primary, secondary and accent colors.</li>
+<li><strong>Typography:</strong> font families, sizes, weights.</li>
+<li><strong>Components:</strong> buttons, cards, navigation elements and other patterns.</li>
+<li><strong>Layout:</strong> spacing, grids, page structures.</li>
+</ul>
+<p>The possible sources are more than one, and just one is enough to start from:</p>
+<p>Table L4.2.1 — Sources to import from and what they give.</p>
+<div class="tablewrap"><table>
+<thead>
+<tr class="header">
+<th>Source</th>
+<th>What it contains</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Codebase</td>
+<td>real components</td>
+<td>the most faithful</td>
+</tr>
+<tr class="even">
+<td>Deck / PDF</td>
+<td>colors, layout</td>
+<td>good for the look</td>
+</tr>
+<tr class="odd">
+<td>Brand assets</td>
+<td>logo, palette</td>
+<td>minimal base</td>
+</tr>
+</tbody>
+</table></div>
+<p>A <strong>codebase</strong> (for example a React component library) is the richest source: Claude reads the real components and reuses them. A well-made <strong>deck</strong> or PDF is enough to extract colors and layout. Even just a logo and a palette give a starting point. The more sources you provide, the more Claude has to work from.</p>
+<h2 id="how-to-set-it-up">How to set it up</h2>
+<p>Configuring the design system is an operation for a <strong>brand owner or designer</strong>, to be done <strong>once</strong>: afterwards, the team’s projects inherit it automatically (Team/Enterprise). The steps, in brief:</p>
+<ol type="1">
+<li>In Claude Design, select or create your <strong>organization</strong>.</li>
+<li>Upload the brand <strong>assets</strong> (codebase, deck, graphic assets).</li>
+<li>Claude generates a <strong>UI kit</strong>: review it by creating a test project.</li>
+<li>When you’re satisfied, turn on the <strong>“Published” toggle</strong>: from then on, the org’s new projects use your design system.</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> in teams, the <strong>Claude Design Admin</strong> role lets you approve a standard design system and lock down changes, so the output always stays within the company guidelines.</p>
+</blockquote>
+<h2 id="importing-from-claude-code">Importing from Claude Code</h2>
+<p>If your design system lives in code, you can import it <strong>from the terminal</strong> with Claude Code’s <code>/design-sync</code> command: it brings the local codebase’s design system into Design, so every screen starts from your real components. It’s the bridge between code and canvas, which we go deeper into in ch. L4.3.</p>
+<h2 id="reducing-ai-slop">Reducing AI slop</h2>
+<p>The import is worth only as much as its source: a messy codebase or an incomplete file shows in the output. A few moves raise the quality:</p>
+<ul>
+<li><strong>Give real examples, not just specs.</strong> A finished landing page says more than an isolated color palette: it conveys the “feel” of the brand.</li>
+<li><strong>Iterate on the extraction.</strong> If the first result doesn’t capture the brand, upload different or additional assets.</li>
+<li><strong>Name the components in the prompt.</strong> “Use the Primary Button component” or “Apply the Card pattern” guides Claude toward your system instead of toward a default.</li>
+</ul>
+<h2 id="in-practice-bring-in-your-brand">In practice: bring in your brand</h2>
+<ol type="1">
+<li>Gather the best source you have: ideally the codebase, otherwise a curated deck.</li>
+<li>Create/select the organization in Claude Design and upload the assets.</li>
+<li>Review the generated UI kit with a test project (“Create a landing page for our product”).</li>
+<li>If it doesn’t capture the brand, add assets and iterate.</li>
+<li>Turn on <strong>Published</strong> and check that new projects use your style.</li>
+</ol>
+<h2 id="common-mistakes">Common mistakes</h2>
+<ul>
+<li><strong>Starting without a design system.</strong> You get AI slop: anonymous style. Import the brand first.</li>
+<li><strong>Messy source.</strong> A confused codebase or incomplete file is reflected in the output: clean the source or pick a better one.</li>
+<li><strong>Only specs, no examples.</strong> A palette alone says little: add a real page.</li>
+<li><strong>Not naming the components.</strong> If you know a component exists, call it by name in the prompt.</li>
+</ul>
+<h2 id="summary">Summary</h2>
+<ol type="1">
+<li>Without a design system the output is anonymous (<strong>AI slop</strong>); importing the brand is the cure.</li>
+<li>Claude extracts <strong>colors, typography, components and layout</strong> from the sources.</li>
+<li>The most faithful source is a <strong>codebase</strong>; decks and assets give a base.</li>
+<li>The setup is for a brand owner, <strong>once</strong>: the team inherits the system.</li>
+<li>The import is worth as much as the source: give real examples and iterate to reduce AI slop.</li>
+</ol>
+<h2 id="next-step">Next step</h2>
+<p>In <strong>ch. L4.3 — From Design to code</strong> we walk the complete bridge: the <code>/design-sync</code> command in both directions and the handoff to Claude Code that builds real software starting from the canvas.</p>
+<p><em>Data on the design system import (sources, extraction, setup, admin role) verified on 24/06/2026 on support.claude.com/en/articles/14604397. The setup requires a paid account and was not executed here.</em></p>
+</article><nav class="pager"><a href="./L4-1-design-il-canvas.html"><span class="lbl">← Previous</span>L4.1 — Design: the canvas</a><a class="nxt" href="./L4-3-da-design-a-codice.html"><span class="lbl">Next →</span>L4.3 — From Design to code (/design-sync)</a></nav><div class="readcta"><h2>Found it useful? Get the whole manual</h2><p>33 chapters in a single A5 PDF, free and no signup.</p><a class="btn btn-primary" href="../manuale_en.pdf" download>↓ Download the free PDF</a></div></main><footer><div class="wrap">© 2026 Gian Angelo Geminiani. An <strong>independent, unofficial</strong> publication: not affiliated with, sponsored or endorsed by Anthropic. "Claude" and "Anthropic" are trademarks of their respective owners, used for identification only. Data verified on the date shown and subject to change.</div></footer><script>(function(){var r=document.documentElement;function eff(){var f=r.getAttribute('data-theme');return f?f:(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');}var b=document.getElementById('theme-toggle');if(b)b.addEventListener('click',function(){var n=eff()==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem('theme',n);}catch(e){}});})();</script></body></html>

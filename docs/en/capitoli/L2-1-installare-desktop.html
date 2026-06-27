@@ -1,0 +1,262 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>L2.1 — Installing Claude Desktop · Claude: la guida completa</title><meta name="description" content="By the end you will have the Claude Desktop app installed on your computer, you will know how to sign in, and you will understand what its three tabs…"><link rel="canonical" href="https://angelogeminiani.github.io/claude-la-guida-completa/en/capitoli/L2-1-installare-desktop.html"><link rel="alternate" hreflang="it" href="https://angelogeminiani.github.io/claude-la-guida-completa/capitoli/L2-1-installare-desktop.html"><link rel="alternate" hreflang="en" href="https://angelogeminiani.github.io/claude-la-guida-completa/en/capitoli/L2-1-installare-desktop.html"><link rel="alternate" hreflang="x-default" href="https://angelogeminiani.github.io/claude-la-guida-completa/capitoli/L2-1-installare-desktop.html"><meta name="theme-color" content="#FAF9F5"><meta name="author" content="Gian Angelo Geminiani"><meta property="og:type" content="article"><meta property="og:title" content="L2.1 — Installing Claude Desktop · Claude: la guida completa"><meta property="og:description" content="By the end you will have the Claude Desktop app installed on your computer, you will know how to sign in, and you will understand what its three tabs…"><meta property="og:url" content="https://angelogeminiani.github.io/claude-la-guida-completa/en/capitoli/L2-1-installare-desktop.html"><meta property="og:image" content="https://angelogeminiani.github.io/claude-la-guida-completa/og-image-en.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="L2.1 — Installing Claude Desktop · Claude: la guida completa"><meta name="twitter:image" content="https://angelogeminiani.github.io/claude-la-guida-completa/og-image-en.png"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cg stroke='%23D97757' stroke-width='3' stroke-linecap='round'%3E%3Cline x1='16' y1='5' x2='16' y2='27'/%3E%3Cline x1='5' y1='16' x2='27' y2='16'/%3E%3Cline x1='8' y1='8' x2='24' y2='24'/%3E%3Cline x1='24' y1='8' x2='8' y2='24'/%3E%3C/g%3E%3C/svg%3E"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,600;1,500&display=swap" rel="stylesheet"><style>/* book.css — shared styles for the online chapter pages (docs/capitoli/*.html)
+   and the reading index (docs/leggi.html). Same Claude.ai palette as the
+   landing page, with the light/dark theme system. */
+
+:root{
+  color-scheme:light;
+  --cream:#FAF9F5; --ink:#1F1E1D; --coral:#D97757; --coral-d:#B65A3C;
+  --muted:#6B6760; --border:#E9E2D6; --card:#FFFFFF; --tint:#F4ECE3;
+  --body:#322f2a; --code-bg:#F1EADF; --code-ink:#7A3E27;
+  --nav-bg:rgba(250,249,245,.86);
+  --cta-bg:#1F1E1D; --cta-h:#ffffff; --cta-p:#cdc6ba; --cta-border:#5a554d;
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --cream:#1F1E1D; --ink:#EDEAE2; --coral:#D97757; --coral-d:#E7A184;
+  --muted:#A39E95; --border:#393732; --card:#2A2926; --tint:#242320;
+  --body:#C9C3B8; --code-bg:#2E2C28; --code-ink:#E7A184;
+  --nav-bg:rgba(31,30,29,.86);
+  --cta-bg:#2A2926; --cta-h:#ffffff; --cta-p:#BDB7AC; --cta-border:#4A463F;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --cream:#1F1E1D; --ink:#EDEAE2; --coral:#D97757; --coral-d:#E7A184;
+    --muted:#A39E95; --border:#393732; --card:#2A2926; --tint:#242320;
+    --body:#C9C3B8; --code-bg:#2E2C28; --code-ink:#E7A184;
+    --nav-bg:rgba(31,30,29,.86);
+    --cta-bg:#2A2926; --cta-h:#ffffff; --cta-p:#BDB7AC; --cta-border:#4A463F;
+  }
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--cream); color:var(--body);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  line-height:1.7; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:760px; margin:0 auto; padding:0 24px}
+a{color:var(--coral-d); text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* header / nav */
+header.nav{position:sticky; top:0; z-index:10;
+  background:var(--nav-bg); backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border)}
+.nav .row{max-width:1080px; margin:0 auto; padding:0 24px;
+  display:flex; align-items:center; justify-content:space-between; height:62px}
+.brand{display:flex; align-items:center; gap:10px; font-family:Lora,Georgia,serif;
+  font-weight:600; font-size:18px; color:var(--ink)}
+.brand:hover{text-decoration:none}
+.mark{width:22px; height:22px; flex:none}
+.nav-right{display:flex; align-items:center; gap:16px}
+.nav-cta{font-weight:600; font-size:14px}
+.theme-toggle{display:inline-flex; align-items:center; justify-content:center;
+  width:40px; height:40px; border-radius:999px; border:1px solid var(--border);
+  background:transparent; color:var(--ink); cursor:pointer; flex:none;
+  transition:border-color .2s}
+.theme-toggle:hover{border-color:var(--coral)}
+.theme-toggle svg{width:18px; height:18px}
+.theme-toggle .i-sun{display:none}
+.theme-toggle .i-moon{display:block}
+:root[data-theme="dark"] .theme-toggle .i-moon{display:none}
+:root[data-theme="dark"] .theme-toggle .i-sun{display:block}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .theme-toggle .i-moon{display:none}
+  :root:not([data-theme="light"]) .theme-toggle .i-sun{display:block}
+}
+
+/* breadcrumb */
+.crumbs{font-size:13.5px; color:var(--muted); margin:26px 0 4px}
+.crumbs a{color:var(--muted)}
+.crumbs a:hover{color:var(--coral-d)}
+
+/* article */
+article{padding:6px 0 8px}
+article h1{font-family:Lora,Georgia,serif; font-weight:600; line-height:1.18;
+  font-size:clamp(30px,5vw,42px); color:var(--ink); margin:8px 0 6px}
+article h2{font-family:Lora,Georgia,serif; font-weight:600; color:var(--ink);
+  font-size:clamp(22px,3.4vw,28px); margin:38px 0 10px; line-height:1.25}
+article h3{font-family:Lora,Georgia,serif; font-weight:600; color:var(--ink);
+  font-size:20px; margin:26px 0 8px}
+article p{margin:0 0 16px}
+article ul,article ol{margin:0 0 16px; padding-left:22px}
+article li{margin:6px 0}
+article strong{color:var(--ink)}
+.accent{width:74px; height:4px; background:var(--coral); border-radius:2px;
+  margin:14px 0 22px}
+
+/* inline code as a pill + code blocks */
+code{font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace; font-size:.88em;
+  background:var(--code-bg); color:var(--code-ink);
+  padding:.12em .42em; border-radius:6px}
+pre{background:var(--code-bg); border:1px solid var(--border); border-radius:12px;
+  padding:16px 18px; overflow-x:auto; margin:0 0 18px}
+pre code{background:none; color:var(--ink); padding:0; font-size:13.5px;
+  line-height:1.55}
+
+/* blockquote with coral left bar */
+blockquote{margin:0 0 18px; padding:2px 0 2px 18px;
+  border-left:3px solid var(--coral); color:var(--muted)}
+blockquote p{margin:0 0 8px}
+
+/* tables */
+.tablewrap{overflow-x:auto; margin:0 0 18px}
+table{border-collapse:collapse; width:100%; font-size:14.5px}
+th,td{border:1px solid var(--border); padding:9px 12px; text-align:left;
+  vertical-align:top}
+thead th{background:var(--tint); color:var(--ink); font-weight:600}
+tbody tr:nth-child(even){background:var(--tint)}
+
+/* figures (inline SVG diagrams) */
+.fig{margin:18px 0; text-align:center}
+.fig svg{max-width:100%; height:auto}
+
+/* prev / next */
+.pager{display:flex; gap:14px; justify-content:space-between; margin:36px 0 0;
+  border-top:1px solid var(--border); padding-top:20px}
+.pager a{display:block; max-width:48%; font-size:14px}
+.pager .lbl{display:block; color:var(--muted); font-size:12px;
+  text-transform:uppercase; letter-spacing:.08em; margin-bottom:3px}
+.pager .nxt{text-align:right; margin-left:auto}
+
+/* reading CTA */
+.readcta{background:var(--cta-bg); color:var(--cta-p); border-radius:18px;
+  border:1px solid var(--cta-border); padding:30px 26px; margin:34px 0 0;
+  text-align:center}
+.readcta h2{font-family:Lora,Georgia,serif; color:var(--cta-h); margin:0 0 8px;
+  font-size:24px}
+.readcta p{margin:0 0 18px; font-size:15.5px}
+.btn{display:inline-flex; align-items:center; gap:9px; font-weight:700;
+  font-size:15px; padding:12px 24px; border-radius:999px; cursor:pointer;
+  border:1.5px solid transparent}
+.btn-primary{background:var(--coral); color:#fff;
+  box-shadow:0 6px 20px rgba(217,119,87,.32)}
+.btn-primary:hover{background:var(--coral-d); color:#fff; text-decoration:none}
+
+/* reading index (leggi.html) */
+.lead{font-size:18px; color:var(--muted); margin:6px 0 26px}
+.part-h{font-family:Lora,Georgia,serif; color:var(--ink); font-weight:600;
+  font-size:22px; margin:30px 0 6px}
+.toc{list-style:none; margin:0 0 8px; padding:0}
+.toc li{border-bottom:1px solid var(--border)}
+.toc a{display:flex; gap:12px; padding:12px 4px; color:var(--ink)}
+.toc a:hover{color:var(--coral-d); text-decoration:none}
+.toc .id{font-family:Lora,Georgia,serif; color:var(--coral-d); flex:none;
+  width:54px}
+
+/* footer */
+footer{margin-top:46px; border-top:1px solid var(--border);
+  padding:28px 0 56px; font-size:13px; color:var(--muted)}
+footer a{color:var(--coral-d)}
+</style><script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"L2.1 — Installing Claude Desktop","description":"By the end you will have the Claude Desktop app installed on your computer, you will know how to sign in, and you will understand what its three tabs…","inLanguage":"en","author":{"@type":"Person","name":"Gian Angelo Geminiani"},"isPartOf":{"@type":"Book","name":"Claude: la guida completa"},"mainEntityOfPage":"https://angelogeminiani.github.io/claude-la-guida-completa/en/capitoli/L2-1-installare-desktop.html"}</script><script>(function(){try{var s=localStorage.getItem('theme');if(s==='dark'||s==='light')document.documentElement.setAttribute('data-theme',s);}catch(e){}})();</script></head><body><svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="ast" viewBox="0 0 32 32"><g stroke="#D97757" stroke-width="3.4" stroke-linecap="round"><line x1="16" y1="4" x2="16" y2="28"/><line x1="4" y1="16" x2="28" y2="16"/><line x1="7.5" y1="7.5" x2="24.5" y2="24.5"/><line x1="24.5" y1="7.5" x2="7.5" y2="24.5"/></g></symbol><symbol id="moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol><symbol id="sun" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><line x1="12" y1="2.5" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="21.5"/><line x1="2.5" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="21.5" y2="12"/><line x1="5.2" y1="5.2" x2="6.9" y2="6.9"/><line x1="17.1" y1="17.1" x2="18.8" y2="18.8"/><line x1="5.2" y1="18.8" x2="6.9" y2="17.1"/><line x1="17.1" y1="6.9" x2="18.8" y2="5.2"/></g></symbol></svg><header class="nav"><div class="row"><a class="brand" href="../index.html"><svg class="mark"><use href="#ast"/></svg> Claude · the complete guide</a><div class="nav-right"><a class="nav-cta" href="../leggi.html">Read online</a><a class="nav-cta" href="../manuale_en.pdf" download>Download the PDF →</a><a class="nav-cta" href="../../capitoli/L2-1-installare-desktop.html">IT</a><button class="theme-toggle" id="theme-toggle" type="button" aria-label="theme" title="Theme"><svg class="i-moon" aria-hidden="true"><use href="#moon"/></svg><svg class="i-sun" aria-hidden="true"><use href="#sun"/></svg></button></div></div></header><main class="wrap"><div class="crumbs"><a href="../index.html">Home</a> · <a href="../leggi.html">Read online</a> · Level 2 — Local installation</div><article><h1 id="chapter-l2.1-installing-claude-desktop">Chapter L2.1 — Installing Claude Desktop</h1>
+<blockquote>
+<p>Level 2 — Local installation. Product details verified on 22/06/2026 against official sources.</p>
+</blockquote>
+<h2 id="goal">Goal</h2>
+<p>By the end you will have the Claude Desktop app installed on your computer, you will know how to sign in, and you will understand what its three tabs are for: Chat, Cowork and Code. Claude Desktop is the application that brings Claude straight to the desktop, without going through the browser.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>A Claude account (see ch. F.3). For <strong>Chat</strong> alone, signing in is enough; for <strong>Cowork</strong> you need a paid plan.</li>
+<li>A <strong>macOS or Windows</strong> computer. There is no Linux app: you use the CLI instead (see ch. L2.2).</li>
+<li>An active internet connection.</li>
+</ul>
+<h2 id="system-requirements">System requirements</h2>
+<p>The app runs on recent systems. On Mac a single build covers both Intel and Apple Silicon processors; on Windows there is a separate version for ARM64.</p>
+<p>Table L2.1.1 — Supported systems.</p>
+<div class="tablewrap"><table>
+<thead>
+<tr class="header">
+<th>System</th>
+<th>Minimum version</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>macOS</td>
+<td>11 (Big Sur)</td>
+<td>Universal build</td>
+</tr>
+<tr class="even">
+<td>Windows</td>
+<td>10</td>
+<td>x64; ARM64 separate</td>
+</tr>
+<tr class="odd">
+<td>Linux</td>
+<td>—</td>
+<td>none: use the CLI</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="download-and-install">Download and install</h2>
+<p>The path is the same for everyone: a download page, a file to open, a sign-in. Figure L2.1.1 sums up the flow, including the Linux case.</p>
+<p><em>Figure L2.1.1 — Claude Desktop installation flow.</em> Alt text: vertical diagram from download to choosing the tab.</p>
+<div class="fig">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 464" width="100%" font-family="Inter, &#39;Helvetica Neue&#39;, Arial, sans-serif">
+<defs><marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#D97757"/></marker></defs> <line x1="300.0" y1="68.0" x2="300.0" y2="106.0" stroke="#D97757" stroke-width="1.5" marker-end="url(#ah)"/> <line x1="300.0" y1="186.0" x2="220.0" y2="224.0" stroke="#D97757" stroke-width="1.5" marker-end="url(#ah)"/> <rect x="211.5" y="197.0" width="97.0" height="15" rx="3" fill="#FAF9F5"/> <text x="260.0" y="208.0" font-size="11" fill="#6B6760" text-anchor="middle">Mac / Windows</text> <line x1="300.0" y1="186.0" x2="383.5" y2="224.0" stroke="#D97757" stroke-width="1.5" marker-end="url(#ah)"/> <rect x="321.25" y="197.0" width="41.0" height="15" rx="3" fill="#FAF9F5"/> <text x="341.75" y="208.0" font-size="11" fill="#6B6760" text-anchor="middle">Linux</text> <line x1="220.0" y1="278.0" x2="300.0" y2="316.0" stroke="#D97757" stroke-width="1.5" marker-end="url(#ah)"/> <line x1="300.0" y1="356.0" x2="300.0" y2="394.0" stroke="#D97757" stroke-width="1.5" marker-end="url(#ah)"/> <rect x="223.0" y="16.0" width="154.0" height="52" rx="7" fill="#FFFFFF" stroke="#E5DED2" stroke-width="1.2"/> <text x="300.0" y="38.0" font-size="13" fill="#1F1E1D" text-anchor="middle">Go to</text> <text x="300.0" y="54.0" font-size="13" fill="#1F1E1D" text-anchor="middle">claude.ai/download</text> <polygon points="300.0,108.0 361.5,147.0 300.0,186.0 238.5,147.0" fill="#FBEEE7" stroke="#D97757" stroke-width="1.5"/> <text x="300.0" y="130.0" font-size="13" fill="#1F1E1D" text-anchor="middle">Which</text> <text x="300.0" y="146.0" font-size="13" fill="#1F1E1D" text-anchor="middle">system?</text> <rect x="153.5" y="226.0" width="133.0" height="52" rx="7" fill="#FFFFFF" stroke="#E5DED2" stroke-width="1.2"/> <text x="220.0" y="248.0" font-size="13" fill="#1F1E1D" text-anchor="middle">Download and</text> <text x="220.0" y="264.0" font-size="13" fill="#1F1E1D" text-anchor="middle">install the app</text> <rect x="320.5" y="226.0" width="126.0" height="52" rx="7" fill="#FFFFFF" stroke="#E5DED2" stroke-width="1.2"/> <text x="383.5" y="248.0" font-size="13" fill="#1F1E1D" text-anchor="middle">Not available:</text> <text x="383.5" y="264.0" font-size="13" fill="#1F1E1D" text-anchor="middle">use the CLI</text> <rect x="223.0" y="318.0" width="154.0" height="38" rx="7" fill="#FFFFFF" stroke="#E5DED2" stroke-width="1.2"/> <text x="300.0" y="340.0" font-size="13" fill="#1F1E1D" text-anchor="middle">Launch and sign in</text> <rect x="216.0" y="396.0" width="168.0" height="52" rx="7" fill="#FFFFFF" stroke="#E5DED2" stroke-width="1.2"/> <text x="300.0" y="418.0" font-size="13" fill="#1F1E1D" text-anchor="middle">Choose the tab:</text> <text x="300.0" y="434.0" font-size="13" fill="#1F1E1D" text-anchor="middle">Chat / Cowork / Code</text>
+</svg>
+</div>
+<blockquote>
+<p><strong>Note:</strong> the download page detects your system, but you can always pick the macOS or Windows version manually.</p>
+</blockquote>
+<h2 id="the-apps-three-tabs">The app’s three tabs</h2>
+<p>Once you are in, the app is split into three areas. It helps to know right away which one does what, so you don’t go looking for a feature in the wrong place.</p>
+<p>Table L2.1.2 — What each tab is for.</p>
+<div class="tablewrap"><table>
+<thead>
+<tr class="header">
+<th>Tab</th>
+<th>What it is for</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Chat</td>
+<td>conversations with Claude</td>
+</tr>
+<tr class="even">
+<td>Cowork</td>
+<td>long agentic tasks and Dispatch</td>
+</tr>
+<tr class="odd">
+<td>Code</td>
+<td>software development in-app</td>
+</tr>
+</tbody>
+</table></div>
+<p>Chat is the starting point. Cowork hands Claude multi-step work on a folder on your computer (we cover it in Level 3); <strong>Dispatch</strong> also starts here (sending a task off so it continues remotely, picked up again in Level 6). Code brings the CLI’s capabilities into the app (Level 2 onward).</p>
+<h2 id="in-practice-install-and-sign-in">In practice: install and sign in</h2>
+<ol type="1">
+<li>Open <strong>claude.ai/download</strong> and choose macOS or Windows.</li>
+<li><strong>Open the file</strong> you downloaded to complete the installation.</li>
+<li>Launch Claude from <strong>Applications</strong> (Mac) or the <strong>Start menu</strong> (Windows).</li>
+<li><strong>Sign in</strong> with your account.</li>
+<li>Open the tabs and try Chat with a first message.</li>
+</ol>
+<blockquote>
+<p><strong>Tip (Windows + Code):</strong> the first time you open the <strong>Code</strong> tab on Windows you need <strong>Git for Windows</strong> installed. Install it and <strong>restart</strong> the app.</p>
+</blockquote>
+<h2 id="cowork-what-to-know-first">Cowork: what to know first</h2>
+<p>Cowork is included in the paid plans (Pro, Max, Team, Enterprise) and runs in an <strong>isolated VM</strong> (virtual machine) on your computer. It reads and writes only in the folders you connect, and the network follows your egress (outbound traffic) settings. On Windows you have to enable the <strong>Virtual Machine Platform</strong>.</p>
+<h2 id="common-mistakes">Common mistakes</h2>
+<ul>
+<li><strong>I’m on Linux and can’t find the app.</strong> Correct: it doesn’t exist. Use the CLI (ch. L2.2).</li>
+<li><strong>Windows ARM PC.</strong> Download the dedicated <strong>ARM64 installer</strong>, not the x64.</li>
+<li><strong>Cowork won’t start (Windows).</strong> Check the paid plan and that the <strong>Virtual Machine Platform</strong> is enabled.</li>
+<li><strong>The Code tab errors on first launch (Windows).</strong> Git for Windows is missing: install it and restart the app.</li>
+</ul>
+<h2 id="summary">Summary</h2>
+<ol type="1">
+<li>Claude Desktop is available on <strong>macOS 11+</strong> and <strong>Windows 10+</strong>, not on Linux.</li>
+<li>You install it from <strong>claude.ai/download</strong>: download, open, sign in.</li>
+<li>The app has three tabs: <strong>Chat</strong>, <strong>Cowork</strong>, <strong>Code</strong>.</li>
+<li><strong>Cowork</strong> requires a paid plan and runs in an isolated VM.</li>
+<li>On Windows, the <strong>Code</strong> tab requires <strong>Git for Windows</strong> on first launch.</li>
+</ol>
+<h2 id="next-step">Next step</h2>
+<p>In <strong>ch. L2.2 — Installing Claude Code</strong> we look at the command-line version (CLI), useful on Linux and for anyone automating, and the installation methods along with their upkeep.</p>
+<p><em>Details verified on 22/06/2026 on support.claude.com (Install Claude Desktop) and code.claude.com/docs/en/desktop. The installation is graphical and tied to the account, so it was not run in the VM; the steps are reported faithfully from the official documentation.</em></p>
+</article><nav class="pager"><a href="./L1-3-impostazioni-e-stili.html"><span class="lbl">← Previous</span>L1.3 — Settings and styles</a><a class="nxt" href="./L2-2-installare-code.html"><span class="lbl">Next →</span>L2.2 — Installing Claude Code</a></nav><div class="readcta"><h2>Found it useful? Get the whole manual</h2><p>33 chapters in a single A5 PDF, free and no signup.</p><a class="btn btn-primary" href="../manuale_en.pdf" download>↓ Download the free PDF</a></div></main><footer><div class="wrap">© 2026 Gian Angelo Geminiani. An <strong>independent, unofficial</strong> publication: not affiliated with, sponsored or endorsed by Anthropic. "Claude" and "Anthropic" are trademarks of their respective owners, used for identification only. Data verified on the date shown and subject to change.</div></footer><script>(function(){var r=document.documentElement;function eff(){var f=r.getAttribute('data-theme');return f?f:(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');}var b=document.getElementById('theme-toggle');if(b)b.addEventListener('click',function(){var n=eff()==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem('theme',n);}catch(e){}});})();</script></body></html>

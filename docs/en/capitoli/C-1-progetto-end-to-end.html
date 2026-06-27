@@ -1,0 +1,199 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>C.1 — End-to-end project · Claude: la guida completa</title><meta name="description" content="This chapter runs through all the levels of the book on a real case: from an idea to a small product, passing through Design, Claude Code, Cowork, and…"><link rel="canonical" href="https://angelogeminiani.github.io/claude-la-guida-completa/en/capitoli/C-1-progetto-end-to-end.html"><link rel="alternate" hreflang="it" href="https://angelogeminiani.github.io/claude-la-guida-completa/capitoli/C-1-progetto-end-to-end.html"><link rel="alternate" hreflang="en" href="https://angelogeminiani.github.io/claude-la-guida-completa/en/capitoli/C-1-progetto-end-to-end.html"><link rel="alternate" hreflang="x-default" href="https://angelogeminiani.github.io/claude-la-guida-completa/capitoli/C-1-progetto-end-to-end.html"><meta name="theme-color" content="#FAF9F5"><meta name="author" content="Gian Angelo Geminiani"><meta property="og:type" content="article"><meta property="og:title" content="C.1 — End-to-end project · Claude: la guida completa"><meta property="og:description" content="This chapter runs through all the levels of the book on a real case: from an idea to a small product, passing through Design, Claude Code, Cowork, and…"><meta property="og:url" content="https://angelogeminiani.github.io/claude-la-guida-completa/en/capitoli/C-1-progetto-end-to-end.html"><meta property="og:image" content="https://angelogeminiani.github.io/claude-la-guida-completa/og-image-en.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="C.1 — End-to-end project · Claude: la guida completa"><meta name="twitter:image" content="https://angelogeminiani.github.io/claude-la-guida-completa/og-image-en.png"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cg stroke='%23D97757' stroke-width='3' stroke-linecap='round'%3E%3Cline x1='16' y1='5' x2='16' y2='27'/%3E%3Cline x1='5' y1='16' x2='27' y2='16'/%3E%3Cline x1='8' y1='8' x2='24' y2='24'/%3E%3Cline x1='24' y1='8' x2='8' y2='24'/%3E%3C/g%3E%3C/svg%3E"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,600;1,500&display=swap" rel="stylesheet"><style>/* book.css — shared styles for the online chapter pages (docs/capitoli/*.html)
+   and the reading index (docs/leggi.html). Same Claude.ai palette as the
+   landing page, with the light/dark theme system. */
+
+:root{
+  color-scheme:light;
+  --cream:#FAF9F5; --ink:#1F1E1D; --coral:#D97757; --coral-d:#B65A3C;
+  --muted:#6B6760; --border:#E9E2D6; --card:#FFFFFF; --tint:#F4ECE3;
+  --body:#322f2a; --code-bg:#F1EADF; --code-ink:#7A3E27;
+  --nav-bg:rgba(250,249,245,.86);
+  --cta-bg:#1F1E1D; --cta-h:#ffffff; --cta-p:#cdc6ba; --cta-border:#5a554d;
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --cream:#1F1E1D; --ink:#EDEAE2; --coral:#D97757; --coral-d:#E7A184;
+  --muted:#A39E95; --border:#393732; --card:#2A2926; --tint:#242320;
+  --body:#C9C3B8; --code-bg:#2E2C28; --code-ink:#E7A184;
+  --nav-bg:rgba(31,30,29,.86);
+  --cta-bg:#2A2926; --cta-h:#ffffff; --cta-p:#BDB7AC; --cta-border:#4A463F;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --cream:#1F1E1D; --ink:#EDEAE2; --coral:#D97757; --coral-d:#E7A184;
+    --muted:#A39E95; --border:#393732; --card:#2A2926; --tint:#242320;
+    --body:#C9C3B8; --code-bg:#2E2C28; --code-ink:#E7A184;
+    --nav-bg:rgba(31,30,29,.86);
+    --cta-bg:#2A2926; --cta-h:#ffffff; --cta-p:#BDB7AC; --cta-border:#4A463F;
+  }
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--cream); color:var(--body);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  line-height:1.7; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:760px; margin:0 auto; padding:0 24px}
+a{color:var(--coral-d); text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* header / nav */
+header.nav{position:sticky; top:0; z-index:10;
+  background:var(--nav-bg); backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border)}
+.nav .row{max-width:1080px; margin:0 auto; padding:0 24px;
+  display:flex; align-items:center; justify-content:space-between; height:62px}
+.brand{display:flex; align-items:center; gap:10px; font-family:Lora,Georgia,serif;
+  font-weight:600; font-size:18px; color:var(--ink)}
+.brand:hover{text-decoration:none}
+.mark{width:22px; height:22px; flex:none}
+.nav-right{display:flex; align-items:center; gap:16px}
+.nav-cta{font-weight:600; font-size:14px}
+.theme-toggle{display:inline-flex; align-items:center; justify-content:center;
+  width:40px; height:40px; border-radius:999px; border:1px solid var(--border);
+  background:transparent; color:var(--ink); cursor:pointer; flex:none;
+  transition:border-color .2s}
+.theme-toggle:hover{border-color:var(--coral)}
+.theme-toggle svg{width:18px; height:18px}
+.theme-toggle .i-sun{display:none}
+.theme-toggle .i-moon{display:block}
+:root[data-theme="dark"] .theme-toggle .i-moon{display:none}
+:root[data-theme="dark"] .theme-toggle .i-sun{display:block}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .theme-toggle .i-moon{display:none}
+  :root:not([data-theme="light"]) .theme-toggle .i-sun{display:block}
+}
+
+/* breadcrumb */
+.crumbs{font-size:13.5px; color:var(--muted); margin:26px 0 4px}
+.crumbs a{color:var(--muted)}
+.crumbs a:hover{color:var(--coral-d)}
+
+/* article */
+article{padding:6px 0 8px}
+article h1{font-family:Lora,Georgia,serif; font-weight:600; line-height:1.18;
+  font-size:clamp(30px,5vw,42px); color:var(--ink); margin:8px 0 6px}
+article h2{font-family:Lora,Georgia,serif; font-weight:600; color:var(--ink);
+  font-size:clamp(22px,3.4vw,28px); margin:38px 0 10px; line-height:1.25}
+article h3{font-family:Lora,Georgia,serif; font-weight:600; color:var(--ink);
+  font-size:20px; margin:26px 0 8px}
+article p{margin:0 0 16px}
+article ul,article ol{margin:0 0 16px; padding-left:22px}
+article li{margin:6px 0}
+article strong{color:var(--ink)}
+.accent{width:74px; height:4px; background:var(--coral); border-radius:2px;
+  margin:14px 0 22px}
+
+/* inline code as a pill + code blocks */
+code{font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace; font-size:.88em;
+  background:var(--code-bg); color:var(--code-ink);
+  padding:.12em .42em; border-radius:6px}
+pre{background:var(--code-bg); border:1px solid var(--border); border-radius:12px;
+  padding:16px 18px; overflow-x:auto; margin:0 0 18px}
+pre code{background:none; color:var(--ink); padding:0; font-size:13.5px;
+  line-height:1.55}
+
+/* blockquote with coral left bar */
+blockquote{margin:0 0 18px; padding:2px 0 2px 18px;
+  border-left:3px solid var(--coral); color:var(--muted)}
+blockquote p{margin:0 0 8px}
+
+/* tables */
+.tablewrap{overflow-x:auto; margin:0 0 18px}
+table{border-collapse:collapse; width:100%; font-size:14.5px}
+th,td{border:1px solid var(--border); padding:9px 12px; text-align:left;
+  vertical-align:top}
+thead th{background:var(--tint); color:var(--ink); font-weight:600}
+tbody tr:nth-child(even){background:var(--tint)}
+
+/* figures (inline SVG diagrams) */
+.fig{margin:18px 0; text-align:center}
+.fig svg{max-width:100%; height:auto}
+
+/* prev / next */
+.pager{display:flex; gap:14px; justify-content:space-between; margin:36px 0 0;
+  border-top:1px solid var(--border); padding-top:20px}
+.pager a{display:block; max-width:48%; font-size:14px}
+.pager .lbl{display:block; color:var(--muted); font-size:12px;
+  text-transform:uppercase; letter-spacing:.08em; margin-bottom:3px}
+.pager .nxt{text-align:right; margin-left:auto}
+
+/* reading CTA */
+.readcta{background:var(--cta-bg); color:var(--cta-p); border-radius:18px;
+  border:1px solid var(--cta-border); padding:30px 26px; margin:34px 0 0;
+  text-align:center}
+.readcta h2{font-family:Lora,Georgia,serif; color:var(--cta-h); margin:0 0 8px;
+  font-size:24px}
+.readcta p{margin:0 0 18px; font-size:15.5px}
+.btn{display:inline-flex; align-items:center; gap:9px; font-weight:700;
+  font-size:15px; padding:12px 24px; border-radius:999px; cursor:pointer;
+  border:1.5px solid transparent}
+.btn-primary{background:var(--coral); color:#fff;
+  box-shadow:0 6px 20px rgba(217,119,87,.32)}
+.btn-primary:hover{background:var(--coral-d); color:#fff; text-decoration:none}
+
+/* reading index (leggi.html) */
+.lead{font-size:18px; color:var(--muted); margin:6px 0 26px}
+.part-h{font-family:Lora,Georgia,serif; color:var(--ink); font-weight:600;
+  font-size:22px; margin:30px 0 6px}
+.toc{list-style:none; margin:0 0 8px; padding:0}
+.toc li{border-bottom:1px solid var(--border)}
+.toc a{display:flex; gap:12px; padding:12px 4px; color:var(--ink)}
+.toc a:hover{color:var(--coral-d); text-decoration:none}
+.toc .id{font-family:Lora,Georgia,serif; color:var(--coral-d); flex:none;
+  width:54px}
+
+/* footer */
+footer{margin-top:46px; border-top:1px solid var(--border);
+  padding:28px 0 56px; font-size:13px; color:var(--muted)}
+footer a{color:var(--coral-d)}
+</style><script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"C.1 — End-to-end project","description":"This chapter runs through all the levels of the book on a real case: from an idea to a small product, passing through Design, Claude Code, Cowork, and…","inLanguage":"en","author":{"@type":"Person","name":"Gian Angelo Geminiani"},"isPartOf":{"@type":"Book","name":"Claude: la guida completa"},"mainEntityOfPage":"https://angelogeminiani.github.io/claude-la-guida-completa/en/capitoli/C-1-progetto-end-to-end.html"}</script><script>(function(){try{var s=localStorage.getItem('theme');if(s==='dark'||s==='light')document.documentElement.setAttribute('data-theme',s);}catch(e){}})();</script></head><body><svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="ast" viewBox="0 0 32 32"><g stroke="#D97757" stroke-width="3.4" stroke-linecap="round"><line x1="16" y1="4" x2="16" y2="28"/><line x1="4" y1="16" x2="28" y2="16"/><line x1="7.5" y1="7.5" x2="24.5" y2="24.5"/><line x1="24.5" y1="7.5" x2="7.5" y2="24.5"/></g></symbol><symbol id="moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol><symbol id="sun" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><line x1="12" y1="2.5" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="21.5"/><line x1="2.5" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="21.5" y2="12"/><line x1="5.2" y1="5.2" x2="6.9" y2="6.9"/><line x1="17.1" y1="17.1" x2="18.8" y2="18.8"/><line x1="5.2" y1="18.8" x2="6.9" y2="17.1"/><line x1="17.1" y1="6.9" x2="18.8" y2="5.2"/></g></symbol></svg><header class="nav"><div class="row"><a class="brand" href="../index.html"><svg class="mark"><use href="#ast"/></svg> Claude · the complete guide</a><div class="nav-right"><a class="nav-cta" href="../leggi.html">Read online</a><a class="nav-cta" href="../manuale_en.pdf" download>Download the PDF →</a><a class="nav-cta" href="../../capitoli/C-1-progetto-end-to-end.html">IT</a><button class="theme-toggle" id="theme-toggle" type="button" aria-label="theme" title="Theme"><svg class="i-moon" aria-hidden="true"><use href="#moon"/></svg><svg class="i-sun" aria-hidden="true"><use href="#sun"/></svg></button></div></div></header><main class="wrap"><div class="crumbs"><a href="../index.html">Home</a> · <a href="../leggi.html">Read online</a> · Closing</div><article><h1 id="chapter-c.1-end-to-end-project">Chapter C.1 — End-to-end project</h1>
+<blockquote>
+<p>Closing — variable level. Synthesis concepts; product details from the ledger (verified 24/06/2026).</p>
+</blockquote>
+<h2 id="goal">Goal</h2>
+<p>This chapter runs through all the levels of the book on a real case: from an idea to a small product, passing through Design, Claude Code, Cowork, and automation. It introduces nothing new: it shows the pieces you’ve already seen working <strong>together</strong>.</p>
+<h2 id="the-case">The case</h2>
+<p>Imagine you want to build a small internal app: a page where the team logs customer requests and tracks their status. We’ll take it from the idea all the way to a report that updates on its own. Each stage points back to the chapter where you learned it.</p>
+<p><em>Figure C.1.1 — The complete flow, from idea to automation.</em> Alt text: vertical diagram connecting idea, Design, /design-sync, Code, Cowork, and automation in sequence.</p>
+<div class="fig">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 516" width="100%" font-family="Inter, &#39;Helvetica Neue&#39;, Arial, sans-serif">
+<defs><marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#D97757"/></marker></defs> <line x1="300.0" y1="54.0" x2="300.0" y2="92.0" stroke="#D97757" stroke-width="1.5" marker-end="url(#ah)"/> <line x1="300.0" y1="146.0" x2="300.0" y2="184.0" stroke="#D97757" stroke-width="1.5" marker-end="url(#ah)"/> <line x1="300.0" y1="224.0" x2="300.0" y2="262.0" stroke="#D97757" stroke-width="1.5" marker-end="url(#ah)"/> <line x1="300.0" y1="316.0" x2="300.0" y2="354.0" stroke="#D97757" stroke-width="1.5" marker-end="url(#ah)"/> <line x1="300.0" y1="408.0" x2="300.0" y2="446.0" stroke="#D97757" stroke-width="1.5" marker-end="url(#ah)"/> <rect x="265.0" y="16.0" width="70" height="38" rx="7" fill="#FFFFFF" stroke="#E5DED2" stroke-width="1.2"/> <text x="300.0" y="38.0" font-size="13" fill="#1F1E1D" text-anchor="middle">Idea</text> <rect x="261.5" y="94.0" width="77.0" height="52" rx="7" fill="#FFFFFF" stroke="#E5DED2" stroke-width="1.2"/> <text x="300.0" y="116.0" font-size="13" fill="#1F1E1D" text-anchor="middle">Design:</text> <text x="300.0" y="132.0" font-size="13" fill="#1F1E1D" text-anchor="middle">canvas</text> <rect x="244.0" y="186.0" width="112.0" height="38" rx="7" fill="#FFFFFF" stroke="#E5DED2" stroke-width="1.2"/> <text x="300.0" y="208.0" font-size="13" fill="#1F1E1D" text-anchor="middle">/design-sync</text> <rect x="244.0" y="264.0" width="112.0" height="52" rx="7" fill="#FFFFFF" stroke="#E5DED2" stroke-width="1.2"/> <text x="300.0" y="286.0" font-size="13" fill="#1F1E1D" text-anchor="middle">Claude Code:</text> <text x="300.0" y="302.0" font-size="13" fill="#1F1E1D" text-anchor="middle">software</text> <rect x="233.5" y="356.0" width="133.0" height="52" rx="7" fill="#FFFFFF" stroke="#E5DED2" stroke-width="1.2"/> <text x="300.0" y="378.0" font-size="13" fill="#1F1E1D" text-anchor="middle">Cowork:</text> <text x="300.0" y="394.0" font-size="13" fill="#1F1E1D" text-anchor="middle">docs and slides</text> <rect x="247.5" y="448.0" width="105.0" height="52" rx="7" fill="#FFFFFF" stroke="#E5DED2" stroke-width="1.2"/> <text x="300.0" y="470.0" font-size="13" fill="#1F1E1D" text-anchor="middle">Automation:</text> <text x="300.0" y="486.0" font-size="13" fill="#1F1E1D" text-anchor="middle">report</text>
+</svg>
+</div>
+<h2 id="idea-and-foundations">1. Idea and foundations</h2>
+<p>You start from chat (Level 1). Describe the idea and get help bringing it into focus: what the page should do, for whom, with which fields. The rule from ch. L1.2 applies — purpose, audience, format — and so does the one from ch. L1.1: the first answer is a draft to refine. Out of this comes a short requirements document.</p>
+<h2 id="from-design-to-code">2. From design to code</h2>
+<p>You open <strong>Claude Design</strong> (ch. L4.1) and generate the page on the canvas, starting from your design system if you’ve imported it (ch. L4.2). You refine with chat, comments, and direct edits. When the look holds up, you use <code>/design-sync</code> and the <strong>handoff</strong> to <strong>Claude Code</strong> (ch. L4.3): the design becomes real software, without rebuilding it from a screenshot.</p>
+<p>In Claude Code you work on the real project, with <code>CLAUDE.md</code> and permissions configured (ch. L2.4). For the delicate steps, a <strong>hook</strong> enforces the checks and a <strong>sub-agent</strong> reviews the code before the commit (ch. L6.1). If the app needs to read from one of your internal tools, you connect it via <strong>MCP</strong> (ch. L6.2).</p>
+<h2 id="documents-and-organization">3. Documents and organization</h2>
+<p>With the app up and running, you need supporting material: a usage guide, a presentation for the team. Here <strong>Cowork</strong> comes in (ch. L3.1): you connect the project folder and hand it the work as an <strong>end-state</strong> — “from these files, generate a <code>.docx</code> guide and a <code>.pptx</code> presentation.” The methods from Level 3 apply: content first, then the file (ch. L3.4), and structure→content→style for the slides (ch. L3.5).</p>
+<p>A project <strong>skill</strong> (Level 5) holds the rules together — voice, structure, file names — so the output is consistent every time (ch. L5.3).</p>
+<h2 id="automation">4. Automation</h2>
+<p>Finally, the report that updates on its own. With a <strong>Scheduled Task</strong> in Cowork (ch. L6.3) you have Claude reread the requests every Friday and produce a summary. If you need it independent of your machine, you use a cloud <strong>Routine</strong>; if you want to kick it off from outside, <strong>Dispatch</strong> from your phone. And if the app grows to the point of needing a real integration, you move to the <strong>API</strong> (ch. L6.6).</p>
+<p>Throughout the journey you keep an eye on the <strong>usage limits</strong> (ch. L6.4): Projects for context, clean sessions, tools on only when they’re needed.</p>
+<h2 id="what-it-demonstrates">What it demonstrates</h2>
+<p>The value isn’t in the individual tool, but in the handoff: Design passes to Code, Code works with Cowork on the same folder, a skill makes it all repeatable, automation closes the loop. It’s the difference, seen all the way back in ch. F.2, between a sum of tools and an ecosystem.</p>
+<h2 id="in-practice-try-a-mini-project">In practice: try a mini-project</h2>
+<ol type="1">
+<li>In chat, bring a small, concrete idea into focus (ch. L1.2).</li>
+<li>Generate the interface in Design and hand it off to Code (ch. L4.3).</li>
+<li>Configure the project in Claude Code (ch. L2.4).</li>
+<li>In Cowork, generate a guide and slides from the folder (ch. L3.4, L3.5).</li>
+<li>Add an automation for the recurring report (ch. L6.3).</li>
+</ol>
+<h2 id="summary">Summary</h2>
+<ol type="1">
+<li>A real project runs through all the levels: chat, Design, Code, Cowork, automation.</li>
+<li><strong>Design → /design-sync → Code</strong> takes the interface to software without rebuilding it.</li>
+<li><strong>Cowork</strong> produces documents and slides from the project’s own folder.</li>
+<li>A <strong>skill</strong> makes the output consistent; <strong>automation</strong> keeps it up to date.</li>
+<li>The value is in the handoff between the products, not in the individual tool.</li>
+</ol>
+<h2 id="next-step">Next step</h2>
+<p>In <strong>ch. C.2 — Appendices</strong> you’ll find the glossary, a troubleshooting table, and the official links, to consult when you need them.</p>
+<p><em>Synthesis chapter: it recalls the products covered in Levels 1-6. No command run here; the cross-references point to the chapters where each step is explained.</em></p>
+</article><nav class="pager"><a href="./L6-6-integrare-via-api.html"><span class="lbl">← Previous</span>L6.6 — Integrating via API</a><a class="nxt" href="./C-2-appendici.html"><span class="lbl">Next →</span>C.2 — Appendices</a></nav><div class="readcta"><h2>Found it useful? Get the whole manual</h2><p>33 chapters in a single A5 PDF, free and no signup.</p><a class="btn btn-primary" href="../manuale_en.pdf" download>↓ Download the free PDF</a></div></main><footer><div class="wrap">© 2026 Gian Angelo Geminiani. An <strong>independent, unofficial</strong> publication: not affiliated with, sponsored or endorsed by Anthropic. "Claude" and "Anthropic" are trademarks of their respective owners, used for identification only. Data verified on the date shown and subject to change.</div></footer><script>(function(){var r=document.documentElement;function eff(){var f=r.getAttribute('data-theme');return f?f:(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');}var b=document.getElementById('theme-toggle');if(b)b.addEventListener('click',function(){var n=eff()==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem('theme',n);}catch(e){}});})();</script></body></html>

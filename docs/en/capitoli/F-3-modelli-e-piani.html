@@ -1,0 +1,254 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>F.3 — Models and plans · Claude: la guida completa</title><meta name="description" content="By the end you will be able to distinguish the families of Claude models and understand what each plan unlocks, so you can choose the right combination…"><link rel="canonical" href="https://angelogeminiani.github.io/claude-la-guida-completa/en/capitoli/F-3-modelli-e-piani.html"><link rel="alternate" hreflang="it" href="https://angelogeminiani.github.io/claude-la-guida-completa/capitoli/F-3-modelli-e-piani.html"><link rel="alternate" hreflang="en" href="https://angelogeminiani.github.io/claude-la-guida-completa/en/capitoli/F-3-modelli-e-piani.html"><link rel="alternate" hreflang="x-default" href="https://angelogeminiani.github.io/claude-la-guida-completa/capitoli/F-3-modelli-e-piani.html"><meta name="theme-color" content="#FAF9F5"><meta name="author" content="Gian Angelo Geminiani"><meta property="og:type" content="article"><meta property="og:title" content="F.3 — Models and plans · Claude: la guida completa"><meta property="og:description" content="By the end you will be able to distinguish the families of Claude models and understand what each plan unlocks, so you can choose the right combination…"><meta property="og:url" content="https://angelogeminiani.github.io/claude-la-guida-completa/en/capitoli/F-3-modelli-e-piani.html"><meta property="og:image" content="https://angelogeminiani.github.io/claude-la-guida-completa/og-image-en.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="F.3 — Models and plans · Claude: la guida completa"><meta name="twitter:image" content="https://angelogeminiani.github.io/claude-la-guida-completa/og-image-en.png"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cg stroke='%23D97757' stroke-width='3' stroke-linecap='round'%3E%3Cline x1='16' y1='5' x2='16' y2='27'/%3E%3Cline x1='5' y1='16' x2='27' y2='16'/%3E%3Cline x1='8' y1='8' x2='24' y2='24'/%3E%3Cline x1='24' y1='8' x2='8' y2='24'/%3E%3C/g%3E%3C/svg%3E"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,600;1,500&display=swap" rel="stylesheet"><style>/* book.css — shared styles for the online chapter pages (docs/capitoli/*.html)
+   and the reading index (docs/leggi.html). Same Claude.ai palette as the
+   landing page, with the light/dark theme system. */
+
+:root{
+  color-scheme:light;
+  --cream:#FAF9F5; --ink:#1F1E1D; --coral:#D97757; --coral-d:#B65A3C;
+  --muted:#6B6760; --border:#E9E2D6; --card:#FFFFFF; --tint:#F4ECE3;
+  --body:#322f2a; --code-bg:#F1EADF; --code-ink:#7A3E27;
+  --nav-bg:rgba(250,249,245,.86);
+  --cta-bg:#1F1E1D; --cta-h:#ffffff; --cta-p:#cdc6ba; --cta-border:#5a554d;
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --cream:#1F1E1D; --ink:#EDEAE2; --coral:#D97757; --coral-d:#E7A184;
+  --muted:#A39E95; --border:#393732; --card:#2A2926; --tint:#242320;
+  --body:#C9C3B8; --code-bg:#2E2C28; --code-ink:#E7A184;
+  --nav-bg:rgba(31,30,29,.86);
+  --cta-bg:#2A2926; --cta-h:#ffffff; --cta-p:#BDB7AC; --cta-border:#4A463F;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --cream:#1F1E1D; --ink:#EDEAE2; --coral:#D97757; --coral-d:#E7A184;
+    --muted:#A39E95; --border:#393732; --card:#2A2926; --tint:#242320;
+    --body:#C9C3B8; --code-bg:#2E2C28; --code-ink:#E7A184;
+    --nav-bg:rgba(31,30,29,.86);
+    --cta-bg:#2A2926; --cta-h:#ffffff; --cta-p:#BDB7AC; --cta-border:#4A463F;
+  }
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--cream); color:var(--body);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  line-height:1.7; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:760px; margin:0 auto; padding:0 24px}
+a{color:var(--coral-d); text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* header / nav */
+header.nav{position:sticky; top:0; z-index:10;
+  background:var(--nav-bg); backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border)}
+.nav .row{max-width:1080px; margin:0 auto; padding:0 24px;
+  display:flex; align-items:center; justify-content:space-between; height:62px}
+.brand{display:flex; align-items:center; gap:10px; font-family:Lora,Georgia,serif;
+  font-weight:600; font-size:18px; color:var(--ink)}
+.brand:hover{text-decoration:none}
+.mark{width:22px; height:22px; flex:none}
+.nav-right{display:flex; align-items:center; gap:16px}
+.nav-cta{font-weight:600; font-size:14px}
+.theme-toggle{display:inline-flex; align-items:center; justify-content:center;
+  width:40px; height:40px; border-radius:999px; border:1px solid var(--border);
+  background:transparent; color:var(--ink); cursor:pointer; flex:none;
+  transition:border-color .2s}
+.theme-toggle:hover{border-color:var(--coral)}
+.theme-toggle svg{width:18px; height:18px}
+.theme-toggle .i-sun{display:none}
+.theme-toggle .i-moon{display:block}
+:root[data-theme="dark"] .theme-toggle .i-moon{display:none}
+:root[data-theme="dark"] .theme-toggle .i-sun{display:block}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .theme-toggle .i-moon{display:none}
+  :root:not([data-theme="light"]) .theme-toggle .i-sun{display:block}
+}
+
+/* breadcrumb */
+.crumbs{font-size:13.5px; color:var(--muted); margin:26px 0 4px}
+.crumbs a{color:var(--muted)}
+.crumbs a:hover{color:var(--coral-d)}
+
+/* article */
+article{padding:6px 0 8px}
+article h1{font-family:Lora,Georgia,serif; font-weight:600; line-height:1.18;
+  font-size:clamp(30px,5vw,42px); color:var(--ink); margin:8px 0 6px}
+article h2{font-family:Lora,Georgia,serif; font-weight:600; color:var(--ink);
+  font-size:clamp(22px,3.4vw,28px); margin:38px 0 10px; line-height:1.25}
+article h3{font-family:Lora,Georgia,serif; font-weight:600; color:var(--ink);
+  font-size:20px; margin:26px 0 8px}
+article p{margin:0 0 16px}
+article ul,article ol{margin:0 0 16px; padding-left:22px}
+article li{margin:6px 0}
+article strong{color:var(--ink)}
+.accent{width:74px; height:4px; background:var(--coral); border-radius:2px;
+  margin:14px 0 22px}
+
+/* inline code as a pill + code blocks */
+code{font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace; font-size:.88em;
+  background:var(--code-bg); color:var(--code-ink);
+  padding:.12em .42em; border-radius:6px}
+pre{background:var(--code-bg); border:1px solid var(--border); border-radius:12px;
+  padding:16px 18px; overflow-x:auto; margin:0 0 18px}
+pre code{background:none; color:var(--ink); padding:0; font-size:13.5px;
+  line-height:1.55}
+
+/* blockquote with coral left bar */
+blockquote{margin:0 0 18px; padding:2px 0 2px 18px;
+  border-left:3px solid var(--coral); color:var(--muted)}
+blockquote p{margin:0 0 8px}
+
+/* tables */
+.tablewrap{overflow-x:auto; margin:0 0 18px}
+table{border-collapse:collapse; width:100%; font-size:14.5px}
+th,td{border:1px solid var(--border); padding:9px 12px; text-align:left;
+  vertical-align:top}
+thead th{background:var(--tint); color:var(--ink); font-weight:600}
+tbody tr:nth-child(even){background:var(--tint)}
+
+/* figures (inline SVG diagrams) */
+.fig{margin:18px 0; text-align:center}
+.fig svg{max-width:100%; height:auto}
+
+/* prev / next */
+.pager{display:flex; gap:14px; justify-content:space-between; margin:36px 0 0;
+  border-top:1px solid var(--border); padding-top:20px}
+.pager a{display:block; max-width:48%; font-size:14px}
+.pager .lbl{display:block; color:var(--muted); font-size:12px;
+  text-transform:uppercase; letter-spacing:.08em; margin-bottom:3px}
+.pager .nxt{text-align:right; margin-left:auto}
+
+/* reading CTA */
+.readcta{background:var(--cta-bg); color:var(--cta-p); border-radius:18px;
+  border:1px solid var(--cta-border); padding:30px 26px; margin:34px 0 0;
+  text-align:center}
+.readcta h2{font-family:Lora,Georgia,serif; color:var(--cta-h); margin:0 0 8px;
+  font-size:24px}
+.readcta p{margin:0 0 18px; font-size:15.5px}
+.btn{display:inline-flex; align-items:center; gap:9px; font-weight:700;
+  font-size:15px; padding:12px 24px; border-radius:999px; cursor:pointer;
+  border:1.5px solid transparent}
+.btn-primary{background:var(--coral); color:#fff;
+  box-shadow:0 6px 20px rgba(217,119,87,.32)}
+.btn-primary:hover{background:var(--coral-d); color:#fff; text-decoration:none}
+
+/* reading index (leggi.html) */
+.lead{font-size:18px; color:var(--muted); margin:6px 0 26px}
+.part-h{font-family:Lora,Georgia,serif; color:var(--ink); font-weight:600;
+  font-size:22px; margin:30px 0 6px}
+.toc{list-style:none; margin:0 0 8px; padding:0}
+.toc li{border-bottom:1px solid var(--border)}
+.toc a{display:flex; gap:12px; padding:12px 4px; color:var(--ink)}
+.toc a:hover{color:var(--coral-d); text-decoration:none}
+.toc .id{font-family:Lora,Georgia,serif; color:var(--coral-d); flex:none;
+  width:54px}
+
+/* footer */
+footer{margin-top:46px; border-top:1px solid var(--border);
+  padding:28px 0 56px; font-size:13px; color:var(--muted)}
+footer a{color:var(--coral-d)}
+</style><script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"F.3 — Models and plans","description":"By the end you will be able to distinguish the families of Claude models and understand what each plan unlocks, so you can choose the right combination…","inLanguage":"en","author":{"@type":"Person","name":"Gian Angelo Geminiani"},"isPartOf":{"@type":"Book","name":"Claude: la guida completa"},"mainEntityOfPage":"https://angelogeminiani.github.io/claude-la-guida-completa/en/capitoli/F-3-modelli-e-piani.html"}</script><script>(function(){try{var s=localStorage.getItem('theme');if(s==='dark'||s==='light')document.documentElement.setAttribute('data-theme',s);}catch(e){}})();</script></head><body><svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="ast" viewBox="0 0 32 32"><g stroke="#D97757" stroke-width="3.4" stroke-linecap="round"><line x1="16" y1="4" x2="16" y2="28"/><line x1="4" y1="16" x2="28" y2="16"/><line x1="7.5" y1="7.5" x2="24.5" y2="24.5"/><line x1="24.5" y1="7.5" x2="7.5" y2="24.5"/></g></symbol><symbol id="moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol><symbol id="sun" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><line x1="12" y1="2.5" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="21.5"/><line x1="2.5" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="21.5" y2="12"/><line x1="5.2" y1="5.2" x2="6.9" y2="6.9"/><line x1="17.1" y1="17.1" x2="18.8" y2="18.8"/><line x1="5.2" y1="18.8" x2="6.9" y2="17.1"/><line x1="17.1" y1="6.9" x2="18.8" y2="5.2"/></g></symbol></svg><header class="nav"><div class="row"><a class="brand" href="../index.html"><svg class="mark"><use href="#ast"/></svg> Claude · the complete guide</a><div class="nav-right"><a class="nav-cta" href="../leggi.html">Read online</a><a class="nav-cta" href="../manuale_en.pdf" download>Download the PDF →</a><a class="nav-cta" href="../../capitoli/F-3-modelli-e-piani.html">IT</a><button class="theme-toggle" id="theme-toggle" type="button" aria-label="theme" title="Theme"><svg class="i-moon" aria-hidden="true"><use href="#moon"/></svg><svg class="i-sun" aria-hidden="true"><use href="#sun"/></svg></button></div></div></header><main class="wrap"><div class="crumbs"><a href="../index.html">Home</a> · <a href="../leggi.html">Read online</a> · Front matter</div><article><h1 id="f.3-models-and-plans">F.3 — Models and plans</h1>
+<blockquote>
+<p>Front matter — Level 0. Product details verified on 27/06/2026 against official sources.</p>
+</blockquote>
+<h2 id="goal">Goal</h2>
+<p>By the end you will be able to distinguish the families of Claude models and understand what each plan unlocks, so you can choose the right combination for you. The specific figures here are volatile: the criteria matter more than the numbers.</p>
+<h2 id="the-three-model-families">The three model families</h2>
+<p>Claude offers three main families, designed for different balances of intelligence, speed and cost. The name stays (Opus, Sonnet, Haiku), the version number changes over time.</p>
+<p>Table F.3.1 — The families and the current version.</p>
+<div class="tablewrap"><table>
+<thead>
+<tr class="header">
+<th>Family</th>
+<th>Version</th>
+<th>When to use it</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Opus</td>
+<td>4.8</td>
+<td>complex reasoning</td>
+</tr>
+<tr class="even">
+<td>Sonnet</td>
+<td>4.6</td>
+<td>everyday use</td>
+</tr>
+<tr class="odd">
+<td>Haiku</td>
+<td>4.5</td>
+<td>quick answers</td>
+</tr>
+</tbody>
+</table></div>
+<p>In short: <strong>Opus</strong> is the most capable, suited to difficult tasks and long agentic work; <strong>Sonnet</strong> is the ideal balance between output and speed, the “everyday” choice; <strong>Haiku</strong> is the fastest, perfect for short answers and simple tasks.</p>
+<p>Above Opus there’s a class of more powerful models (the “Mythos”), designed for the most extreme reasoning and agentic work: <strong>Fable 5</strong> (a version made more widely available) and <strong>Mythos 5</strong> (with restricted access). Their availability, however, is very unstable: launched in June 2026, they were then <strong>suspended</strong> due to a government directive and, at the time of this revision, do not appear to have been reactivated. They are a good example of why it’s worth thinking in terms of families and not tying yourself to a single model: for the current status, refer to the companion repo and the official sources.</p>
+<blockquote>
+<p><strong>Warning:</strong> the names, strings and even the <em>availability</em> of the models change frequently. Don’t memorize a model as “the right one forever”: verify the current version when you need it.</p>
+</blockquote>
+<h2 id="how-to-choose-the-model">How to choose the model</h2>
+<p>A practical rule that survives version changes: start from Sonnet. If the answer can’t handle the complexity of the task, move up to Opus. If you only need speed on something simple, drop down to Haiku. Don’t pick the most powerful model “just to be safe”: you often pay more without any benefit.</p>
+<h2 id="the-plans">The plans</h2>
+<p>The plan determines which products you can access and how much you can use them. Beyond the chat, each level adds something.</p>
+<p>Table F.3.2 — What each plan unlocks.</p>
+<div class="tablewrap"><table>
+<thead>
+<tr class="header">
+<th>Plan</th>
+<th>For whom</th>
+<th>What it adds</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Free</td>
+<td>trying out</td>
+<td>Web search, files, 5 Projects</td>
+</tr>
+<tr class="even">
+<td>Pro</td>
+<td>individuals</td>
+<td>Code, Cowork, Design, Research</td>
+</tr>
+<tr class="odd">
+<td>Max</td>
+<td>heavy use</td>
+<td>5x/20x usage, priority</td>
+</tr>
+<tr class="even">
+<td>Team</td>
+<td>groups of 5-150</td>
+<td>admin, SSO, deploy</td>
+</tr>
+<tr class="odd">
+<td>Enterprise</td>
+<td>companies</td>
+<td>controls and security</td>
+</tr>
+</tbody>
+</table></div>
+<p>The <strong>Free</strong> plan covers the chat, web search, file creation, Skills and up to five Projects well, but it doesn’t include Code, Cowork or Design. <strong>Pro</strong> is the watershed: it unlocks exactly those three. <strong>Max</strong> doesn’t add products but raises the usage limits considerably. <strong>Team</strong> and <strong>Enterprise</strong> add administration, security and centralized management for organizations.</p>
+<blockquote>
+<p><strong>Note:</strong> the indicative prices (in USD) were, as of June 2026, around $17-20/month for Pro and from ~$100/month for Max. These are volatile figures: check the up-to-date value at claude.com/pricing.</p>
+</blockquote>
+<h2 id="common-mistakes">Common mistakes</h2>
+<ul>
+<li><strong>Choosing Free to use Code or Cowork.</strong> They’re not enough: you need at least Pro.</li>
+<li><strong>Paying for Max without needing it.</strong> Max is for usage limits, not for unlocking new products: if you don’t hit Pro’s limits, you don’t need it.</li>
+<li><strong>Fixing on a model name.</strong> Versions change; think in terms of families.</li>
+</ul>
+<h2 id="summary">Summary</h2>
+<ol type="1">
+<li>Three families: <strong>Opus</strong> (power), <strong>Sonnet</strong> (balance), <strong>Haiku</strong> (speed).</li>
+<li>Start from Sonnet; move up to Opus if needed, drop down to Haiku for simple tasks.</li>
+<li><strong>Free</strong> doesn’t include Code, Cowork and Design; <strong>Pro</strong> does.</li>
+<li><strong>Max</strong> raises usage limits; <strong>Team/Enterprise</strong> add management and security.</li>
+<li>Prices and versions are volatile: verify against official sources.</li>
+</ol>
+<h2 id="next-step">Next step</h2>
+<p>In <strong>ch. F.4 — Reading paths</strong> you’ll choose where to start the book based on what you need, with three ready-made itineraries.</p>
+</article><nav class="pager"><a href="./F-2-ecosistema.html"><span class="lbl">← Previous</span>F.2 — The Claude ecosystem</a><a class="nxt" href="./F-4-percorsi-di-lettura.html"><span class="lbl">Next →</span>F.4 — Reading paths</a></nav><div class="readcta"><h2>Found it useful? Get the whole manual</h2><p>33 chapters in a single A5 PDF, free and no signup.</p><a class="btn btn-primary" href="../manuale_en.pdf" download>↓ Download the free PDF</a></div></main><footer><div class="wrap">© 2026 Gian Angelo Geminiani. An <strong>independent, unofficial</strong> publication: not affiliated with, sponsored or endorsed by Anthropic. "Claude" and "Anthropic" are trademarks of their respective owners, used for identification only. Data verified on the date shown and subject to change.</div></footer><script>(function(){var r=document.documentElement;function eff(){var f=r.getAttribute('data-theme');return f?f:(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');}var b=document.getElementById('theme-toggle');if(b)b.addEventListener('click',function(){var n=eff()==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem('theme',n);}catch(e){}});})();</script></body></html>

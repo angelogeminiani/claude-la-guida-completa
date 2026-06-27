@@ -1,0 +1,221 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>L6.4 — Managing usage limits · Claude: la guida completa</title><meta name="description" content="By the end you&#x27;ll understand the difference between usage limit and length limit, what consumption depends on, and how to work for a long time without…"><link rel="canonical" href="https://angelogeminiani.github.io/claude-la-guida-completa/en/capitoli/L6-4-gestire-i-limiti-uso.html"><link rel="alternate" hreflang="it" href="https://angelogeminiani.github.io/claude-la-guida-completa/capitoli/L6-4-gestire-i-limiti-uso.html"><link rel="alternate" hreflang="en" href="https://angelogeminiani.github.io/claude-la-guida-completa/en/capitoli/L6-4-gestire-i-limiti-uso.html"><link rel="alternate" hreflang="x-default" href="https://angelogeminiani.github.io/claude-la-guida-completa/capitoli/L6-4-gestire-i-limiti-uso.html"><meta name="theme-color" content="#FAF9F5"><meta name="author" content="Gian Angelo Geminiani"><meta property="og:type" content="article"><meta property="og:title" content="L6.4 — Managing usage limits · Claude: la guida completa"><meta property="og:description" content="By the end you&#x27;ll understand the difference between usage limit and length limit, what consumption depends on, and how to work for a long time without…"><meta property="og:url" content="https://angelogeminiani.github.io/claude-la-guida-completa/en/capitoli/L6-4-gestire-i-limiti-uso.html"><meta property="og:image" content="https://angelogeminiani.github.io/claude-la-guida-completa/og-image-en.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="L6.4 — Managing usage limits · Claude: la guida completa"><meta name="twitter:image" content="https://angelogeminiani.github.io/claude-la-guida-completa/og-image-en.png"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cg stroke='%23D97757' stroke-width='3' stroke-linecap='round'%3E%3Cline x1='16' y1='5' x2='16' y2='27'/%3E%3Cline x1='5' y1='16' x2='27' y2='16'/%3E%3Cline x1='8' y1='8' x2='24' y2='24'/%3E%3Cline x1='24' y1='8' x2='8' y2='24'/%3E%3C/g%3E%3C/svg%3E"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,600;1,500&display=swap" rel="stylesheet"><style>/* book.css — shared styles for the online chapter pages (docs/capitoli/*.html)
+   and the reading index (docs/leggi.html). Same Claude.ai palette as the
+   landing page, with the light/dark theme system. */
+
+:root{
+  color-scheme:light;
+  --cream:#FAF9F5; --ink:#1F1E1D; --coral:#D97757; --coral-d:#B65A3C;
+  --muted:#6B6760; --border:#E9E2D6; --card:#FFFFFF; --tint:#F4ECE3;
+  --body:#322f2a; --code-bg:#F1EADF; --code-ink:#7A3E27;
+  --nav-bg:rgba(250,249,245,.86);
+  --cta-bg:#1F1E1D; --cta-h:#ffffff; --cta-p:#cdc6ba; --cta-border:#5a554d;
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --cream:#1F1E1D; --ink:#EDEAE2; --coral:#D97757; --coral-d:#E7A184;
+  --muted:#A39E95; --border:#393732; --card:#2A2926; --tint:#242320;
+  --body:#C9C3B8; --code-bg:#2E2C28; --code-ink:#E7A184;
+  --nav-bg:rgba(31,30,29,.86);
+  --cta-bg:#2A2926; --cta-h:#ffffff; --cta-p:#BDB7AC; --cta-border:#4A463F;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --cream:#1F1E1D; --ink:#EDEAE2; --coral:#D97757; --coral-d:#E7A184;
+    --muted:#A39E95; --border:#393732; --card:#2A2926; --tint:#242320;
+    --body:#C9C3B8; --code-bg:#2E2C28; --code-ink:#E7A184;
+    --nav-bg:rgba(31,30,29,.86);
+    --cta-bg:#2A2926; --cta-h:#ffffff; --cta-p:#BDB7AC; --cta-border:#4A463F;
+  }
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--cream); color:var(--body);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  line-height:1.7; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:760px; margin:0 auto; padding:0 24px}
+a{color:var(--coral-d); text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* header / nav */
+header.nav{position:sticky; top:0; z-index:10;
+  background:var(--nav-bg); backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border)}
+.nav .row{max-width:1080px; margin:0 auto; padding:0 24px;
+  display:flex; align-items:center; justify-content:space-between; height:62px}
+.brand{display:flex; align-items:center; gap:10px; font-family:Lora,Georgia,serif;
+  font-weight:600; font-size:18px; color:var(--ink)}
+.brand:hover{text-decoration:none}
+.mark{width:22px; height:22px; flex:none}
+.nav-right{display:flex; align-items:center; gap:16px}
+.nav-cta{font-weight:600; font-size:14px}
+.theme-toggle{display:inline-flex; align-items:center; justify-content:center;
+  width:40px; height:40px; border-radius:999px; border:1px solid var(--border);
+  background:transparent; color:var(--ink); cursor:pointer; flex:none;
+  transition:border-color .2s}
+.theme-toggle:hover{border-color:var(--coral)}
+.theme-toggle svg{width:18px; height:18px}
+.theme-toggle .i-sun{display:none}
+.theme-toggle .i-moon{display:block}
+:root[data-theme="dark"] .theme-toggle .i-moon{display:none}
+:root[data-theme="dark"] .theme-toggle .i-sun{display:block}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .theme-toggle .i-moon{display:none}
+  :root:not([data-theme="light"]) .theme-toggle .i-sun{display:block}
+}
+
+/* breadcrumb */
+.crumbs{font-size:13.5px; color:var(--muted); margin:26px 0 4px}
+.crumbs a{color:var(--muted)}
+.crumbs a:hover{color:var(--coral-d)}
+
+/* article */
+article{padding:6px 0 8px}
+article h1{font-family:Lora,Georgia,serif; font-weight:600; line-height:1.18;
+  font-size:clamp(30px,5vw,42px); color:var(--ink); margin:8px 0 6px}
+article h2{font-family:Lora,Georgia,serif; font-weight:600; color:var(--ink);
+  font-size:clamp(22px,3.4vw,28px); margin:38px 0 10px; line-height:1.25}
+article h3{font-family:Lora,Georgia,serif; font-weight:600; color:var(--ink);
+  font-size:20px; margin:26px 0 8px}
+article p{margin:0 0 16px}
+article ul,article ol{margin:0 0 16px; padding-left:22px}
+article li{margin:6px 0}
+article strong{color:var(--ink)}
+.accent{width:74px; height:4px; background:var(--coral); border-radius:2px;
+  margin:14px 0 22px}
+
+/* inline code as a pill + code blocks */
+code{font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace; font-size:.88em;
+  background:var(--code-bg); color:var(--code-ink);
+  padding:.12em .42em; border-radius:6px}
+pre{background:var(--code-bg); border:1px solid var(--border); border-radius:12px;
+  padding:16px 18px; overflow-x:auto; margin:0 0 18px}
+pre code{background:none; color:var(--ink); padding:0; font-size:13.5px;
+  line-height:1.55}
+
+/* blockquote with coral left bar */
+blockquote{margin:0 0 18px; padding:2px 0 2px 18px;
+  border-left:3px solid var(--coral); color:var(--muted)}
+blockquote p{margin:0 0 8px}
+
+/* tables */
+.tablewrap{overflow-x:auto; margin:0 0 18px}
+table{border-collapse:collapse; width:100%; font-size:14.5px}
+th,td{border:1px solid var(--border); padding:9px 12px; text-align:left;
+  vertical-align:top}
+thead th{background:var(--tint); color:var(--ink); font-weight:600}
+tbody tr:nth-child(even){background:var(--tint)}
+
+/* figures (inline SVG diagrams) */
+.fig{margin:18px 0; text-align:center}
+.fig svg{max-width:100%; height:auto}
+
+/* prev / next */
+.pager{display:flex; gap:14px; justify-content:space-between; margin:36px 0 0;
+  border-top:1px solid var(--border); padding-top:20px}
+.pager a{display:block; max-width:48%; font-size:14px}
+.pager .lbl{display:block; color:var(--muted); font-size:12px;
+  text-transform:uppercase; letter-spacing:.08em; margin-bottom:3px}
+.pager .nxt{text-align:right; margin-left:auto}
+
+/* reading CTA */
+.readcta{background:var(--cta-bg); color:var(--cta-p); border-radius:18px;
+  border:1px solid var(--cta-border); padding:30px 26px; margin:34px 0 0;
+  text-align:center}
+.readcta h2{font-family:Lora,Georgia,serif; color:var(--cta-h); margin:0 0 8px;
+  font-size:24px}
+.readcta p{margin:0 0 18px; font-size:15.5px}
+.btn{display:inline-flex; align-items:center; gap:9px; font-weight:700;
+  font-size:15px; padding:12px 24px; border-radius:999px; cursor:pointer;
+  border:1.5px solid transparent}
+.btn-primary{background:var(--coral); color:#fff;
+  box-shadow:0 6px 20px rgba(217,119,87,.32)}
+.btn-primary:hover{background:var(--coral-d); color:#fff; text-decoration:none}
+
+/* reading index (leggi.html) */
+.lead{font-size:18px; color:var(--muted); margin:6px 0 26px}
+.part-h{font-family:Lora,Georgia,serif; color:var(--ink); font-weight:600;
+  font-size:22px; margin:30px 0 6px}
+.toc{list-style:none; margin:0 0 8px; padding:0}
+.toc li{border-bottom:1px solid var(--border)}
+.toc a{display:flex; gap:12px; padding:12px 4px; color:var(--ink)}
+.toc a:hover{color:var(--coral-d); text-decoration:none}
+.toc .id{font-family:Lora,Georgia,serif; color:var(--coral-d); flex:none;
+  width:54px}
+
+/* footer */
+footer{margin-top:46px; border-top:1px solid var(--border);
+  padding:28px 0 56px; font-size:13px; color:var(--muted)}
+footer a{color:var(--coral-d)}
+</style><script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"L6.4 — Managing usage limits","description":"By the end you'll understand the difference between usage limit and length limit, what consumption depends on, and how to work for a long time without…","inLanguage":"en","author":{"@type":"Person","name":"Gian Angelo Geminiani"},"isPartOf":{"@type":"Book","name":"Claude: la guida completa"},"mainEntityOfPage":"https://angelogeminiani.github.io/claude-la-guida-completa/en/capitoli/L6-4-gestire-i-limiti-uso.html"}</script><script>(function(){try{var s=localStorage.getItem('theme');if(s==='dark'||s==='light')document.documentElement.setAttribute('data-theme',s);}catch(e){}})();</script></head><body><svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="ast" viewBox="0 0 32 32"><g stroke="#D97757" stroke-width="3.4" stroke-linecap="round"><line x1="16" y1="4" x2="16" y2="28"/><line x1="4" y1="16" x2="28" y2="16"/><line x1="7.5" y1="7.5" x2="24.5" y2="24.5"/><line x1="24.5" y1="7.5" x2="7.5" y2="24.5"/></g></symbol><symbol id="moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol><symbol id="sun" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><line x1="12" y1="2.5" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="21.5"/><line x1="2.5" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="21.5" y2="12"/><line x1="5.2" y1="5.2" x2="6.9" y2="6.9"/><line x1="17.1" y1="17.1" x2="18.8" y2="18.8"/><line x1="5.2" y1="18.8" x2="6.9" y2="17.1"/><line x1="17.1" y1="6.9" x2="18.8" y2="5.2"/></g></symbol></svg><header class="nav"><div class="row"><a class="brand" href="../index.html"><svg class="mark"><use href="#ast"/></svg> Claude · the complete guide</a><div class="nav-right"><a class="nav-cta" href="../leggi.html">Read online</a><a class="nav-cta" href="../manuale_en.pdf" download>Download the PDF →</a><a class="nav-cta" href="../../capitoli/L6-4-gestire-i-limiti-uso.html">IT</a><button class="theme-toggle" id="theme-toggle" type="button" aria-label="theme" title="Theme"><svg class="i-moon" aria-hidden="true"><use href="#moon"/></svg><svg class="i-sun" aria-hidden="true"><use href="#sun"/></svg></button></div></div></header><main class="wrap"><div class="crumbs"><a href="../index.html">Home</a> · <a href="../leggi.html">Read online</a> · Level 6 — Advanced</div><article><h1 id="chapter-l6.4-managing-usage-limits">Chapter L6.4 — Managing usage limits</h1>
+<blockquote>
+<p>Level 6 — Advanced. Product details verified on 27/06/2026 against official sources.</p>
+</blockquote>
+<h2 id="goal">Goal</h2>
+<p>By the end you’ll understand the difference between <strong>usage limit</strong> and <strong>length limit</strong>, what consumption depends on, and how to work for a long time without hitting the limits. This is what lets you use Claude sustainably, especially on heavy tasks.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>Knowing the plans (ch. F.3) and Projects (ch. L3.2).</li>
+</ul>
+<h2 id="two-different-limits">Two different limits</h2>
+<p>Claude has two types of limit, which work in distinct ways:</p>
+<ul>
+<li><strong>Usage limit:</strong> <em>how much</em> you can use Claude in a period. It’s your “conversation budget.” When it runs out, you wait for the reset.</li>
+<li><strong>Length limit:</strong> <em>how long</em> a single chat can get, that is, the <strong>context window</strong> (Claude’s working memory in that conversation).</li>
+</ul>
+<p>The first is about quantity over time; the second about the depth of a single chat. Confusing them leads to the wrong choices when something “gets stuck.”</p>
+<h2 id="what-consumption-depends-on">What consumption depends on</h2>
+<p>Usage isn’t consumed in fixed chunks. Several factors weigh in: the <strong>length and complexity</strong> of the conversation, the active <strong>features</strong>, the <strong>model</strong> chosen, and the <strong>effort level</strong> (how deeply it reasons). A detail that surprises people: all surfaces — claude.ai, Claude Code, Claude Desktop — draw on the <strong>same</strong> usage. They’re not separate budgets.</p>
+<blockquote>
+<p><strong>Note:</strong> with Code execution on, long chats trigger <strong>automatic context management</strong>: Claude summarizes older messages to keep going. Convenient, but long conversations consume <strong>more</strong> usage.</p>
+</blockquote>
+<h2 id="the-context-window">The context window</h2>
+<p>In chat, on paid plans, the context window is <strong>500K tokens</strong> for the flagship models (Opus 4.6/4.7/4.8 and Sonnet 4.6) and <strong>200K</strong> for the others. In <strong>Claude Code</strong> the flagship models go up to <strong>1M tokens</strong>: on Pro, for the million, you need to enable usage credits. You can’t enlarge it at will, but you can use it better: that’s where the difference is decided between a chat that holds up and one that saturates.</p>
+<h2 id="cheaper-tasks-cutting-consumption">Cheaper tasks: cutting consumption</h2>
+<p>A few moves lower consumption for the same result:</p>
+<ul>
+<li><strong>Use Projects.</strong> They leverage RAG (targeted retrieval): they load into context only what’s needed, instead of everything.</li>
+<li><strong>Short instructions.</strong> Concise Projects and prompts weigh less and deliver more.</li>
+<li><strong>Remove what you don’t need.</strong> Unneeded files in Projects, and unnecessary <strong>tools/connectors</strong>: they’re token-intensive, so turn them off when not in use.</li>
+<li><strong>Lower the effort</strong> and disable <strong>extended thinking</strong> on routine tasks.</li>
+<li><strong>Choose the right model.</strong> Don’t use the most powerful one “just to be safe” (ch. F.3): often you pay more with no benefit.</li>
+</ul>
+<h2 id="what-to-do-at-the-limit">What to do at the limit</h2>
+<p>When you hit a limit, the move depends on which one:</p>
+<ul>
+<li><strong>Usage limit reached:</strong> wait for the <strong>reset</strong>, <strong>upgrade</strong> your plan, or buy <strong>usage credits</strong> (on paid plans) to continue right away.</li>
+<li><strong>Length limit (chat too long):</strong> open a <strong>new conversation</strong>, or move the material into a <strong>Project</strong> to work on it more efficiently.</li>
+</ul>
+<blockquote>
+<p><strong>Tip:</strong> if you’re in a long chat and near the usage limit, it’s often worth starting over in a new chat: you restart with the essential context instead of dragging the whole history along.</p>
+</blockquote>
+<h2 id="in-practice-work-for-a-long-time-without-getting-stuck">In practice: work for a long time without getting stuck</h2>
+<ol type="1">
+<li>For recurring work, put it in a <strong>Project</strong> instead of endless chats.</li>
+<li>Keep instructions short and remove files you no longer use.</li>
+<li>Turn off tools and connectors not needed for that session.</li>
+<li>On simple tasks, lower the effort and turn off extended thinking.</li>
+<li>If you near the limit in a long chat, <strong>open a new one</strong>.</li>
+</ol>
+<h2 id="common-mistakes">Common mistakes</h2>
+<ul>
+<li><strong>Confusing the two limits.</strong> If it’s the chat that’s full, no need to wait for the reset: open a new chat.</li>
+<li><strong>Keeping everything on.</strong> Unneeded tools and connectors consume context and usage: turn them off.</li>
+<li><strong>Oversized model.</strong> More power than needed costs more with no better output.</li>
+<li><strong>Endless chats.</strong> Dragging a huge history along consumes usage: split into chats or use Projects.</li>
+</ul>
+<h2 id="summary">Summary</h2>
+<ol type="1">
+<li><strong>Usage limit</strong> = how much you use over time; <strong>length limit</strong> = how long a chat is (context window).</li>
+<li>Consumption depends on length, features, <strong>model</strong>, and <strong>effort</strong>; all surfaces count against the <strong>same</strong> usage.</li>
+<li>Context window in chat: <strong>500K</strong> for flagship models, <strong>200K</strong> for the others; in Claude Code up to <strong>1M</strong> (with usage credits on Pro).</li>
+<li>Cut consumption with Projects, short instructions, fewer active tools, lower effort.</li>
+<li>At the limit: reset/upgrade/<strong>credits</strong> for usage; <strong>new chat</strong>/Project for length.</li>
+</ol>
+<h2 id="next-step">Next step</h2>
+<p>In <strong>ch. L6.5 — Claude at work, safely</strong> we’ll see how to introduce Claude into an organization: governance, roles, data, and when not to use a personal account.</p>
+<p><em>Data on usage/length limit and context window verified on 27/06/2026 against support.claude.com/en/articles/11647753 and /articles/8606394. Values subject to change: see the ledger and the official sources for updates.</em></p>
+</article><nav class="pager"><a href="./L6-3-automazioni-controllo-remoto.html"><span class="lbl">← Previous</span>L6.3 — Automations and remote control</a><a class="nxt" href="./L6-5-claude-al-lavoro-sicuro.html"><span class="lbl">Next →</span>L6.5 — Claude at work, safely</a></nav><div class="readcta"><h2>Found it useful? Get the whole manual</h2><p>33 chapters in a single A5 PDF, free and no signup.</p><a class="btn btn-primary" href="../manuale_en.pdf" download>↓ Download the free PDF</a></div></main><footer><div class="wrap">© 2026 Gian Angelo Geminiani. An <strong>independent, unofficial</strong> publication: not affiliated with, sponsored or endorsed by Anthropic. "Claude" and "Anthropic" are trademarks of their respective owners, used for identification only. Data verified on the date shown and subject to change.</div></footer><script>(function(){var r=document.documentElement;function eff(){var f=r.getAttribute('data-theme');return f?f:(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');}var b=document.getElementById('theme-toggle');if(b)b.addEventListener('click',function(){var n=eff()==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem('theme',n);}catch(e){}});})();</script></body></html>

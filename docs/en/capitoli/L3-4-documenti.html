@@ -1,0 +1,226 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>L3.4 — Documents (Word, PowerPoint, Excel, PDF) · Claude: la guida completa</title><meta name="description" content="By the end you&#x27;ll know how to have Claude generate professional documents — Word, Excel, PowerPoint, PDF — by asking for them the right way, applying…"><link rel="canonical" href="https://angelogeminiani.github.io/claude-la-guida-completa/en/capitoli/L3-4-documenti.html"><link rel="alternate" hreflang="it" href="https://angelogeminiani.github.io/claude-la-guida-completa/capitoli/L3-4-documenti.html"><link rel="alternate" hreflang="en" href="https://angelogeminiani.github.io/claude-la-guida-completa/en/capitoli/L3-4-documenti.html"><link rel="alternate" hreflang="x-default" href="https://angelogeminiani.github.io/claude-la-guida-completa/capitoli/L3-4-documenti.html"><meta name="theme-color" content="#FAF9F5"><meta name="author" content="Gian Angelo Geminiani"><meta property="og:type" content="article"><meta property="og:title" content="L3.4 — Documents (Word, PowerPoint, Excel, PDF) · Claude: la guida completa"><meta property="og:description" content="By the end you&#x27;ll know how to have Claude generate professional documents — Word, Excel, PowerPoint, PDF — by asking for them the right way, applying…"><meta property="og:url" content="https://angelogeminiani.github.io/claude-la-guida-completa/en/capitoli/L3-4-documenti.html"><meta property="og:image" content="https://angelogeminiani.github.io/claude-la-guida-completa/og-image-en.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="L3.4 — Documents (Word, PowerPoint, Excel, PDF) · Claude: la guida completa"><meta name="twitter:image" content="https://angelogeminiani.github.io/claude-la-guida-completa/og-image-en.png"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cg stroke='%23D97757' stroke-width='3' stroke-linecap='round'%3E%3Cline x1='16' y1='5' x2='16' y2='27'/%3E%3Cline x1='5' y1='16' x2='27' y2='16'/%3E%3Cline x1='8' y1='8' x2='24' y2='24'/%3E%3Cline x1='24' y1='8' x2='8' y2='24'/%3E%3C/g%3E%3C/svg%3E"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,600;1,500&display=swap" rel="stylesheet"><style>/* book.css — shared styles for the online chapter pages (docs/capitoli/*.html)
+   and the reading index (docs/leggi.html). Same Claude.ai palette as the
+   landing page, with the light/dark theme system. */
+
+:root{
+  color-scheme:light;
+  --cream:#FAF9F5; --ink:#1F1E1D; --coral:#D97757; --coral-d:#B65A3C;
+  --muted:#6B6760; --border:#E9E2D6; --card:#FFFFFF; --tint:#F4ECE3;
+  --body:#322f2a; --code-bg:#F1EADF; --code-ink:#7A3E27;
+  --nav-bg:rgba(250,249,245,.86);
+  --cta-bg:#1F1E1D; --cta-h:#ffffff; --cta-p:#cdc6ba; --cta-border:#5a554d;
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --cream:#1F1E1D; --ink:#EDEAE2; --coral:#D97757; --coral-d:#E7A184;
+  --muted:#A39E95; --border:#393732; --card:#2A2926; --tint:#242320;
+  --body:#C9C3B8; --code-bg:#2E2C28; --code-ink:#E7A184;
+  --nav-bg:rgba(31,30,29,.86);
+  --cta-bg:#2A2926; --cta-h:#ffffff; --cta-p:#BDB7AC; --cta-border:#4A463F;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --cream:#1F1E1D; --ink:#EDEAE2; --coral:#D97757; --coral-d:#E7A184;
+    --muted:#A39E95; --border:#393732; --card:#2A2926; --tint:#242320;
+    --body:#C9C3B8; --code-bg:#2E2C28; --code-ink:#E7A184;
+    --nav-bg:rgba(31,30,29,.86);
+    --cta-bg:#2A2926; --cta-h:#ffffff; --cta-p:#BDB7AC; --cta-border:#4A463F;
+  }
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--cream); color:var(--body);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  line-height:1.7; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:760px; margin:0 auto; padding:0 24px}
+a{color:var(--coral-d); text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* header / nav */
+header.nav{position:sticky; top:0; z-index:10;
+  background:var(--nav-bg); backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border)}
+.nav .row{max-width:1080px; margin:0 auto; padding:0 24px;
+  display:flex; align-items:center; justify-content:space-between; height:62px}
+.brand{display:flex; align-items:center; gap:10px; font-family:Lora,Georgia,serif;
+  font-weight:600; font-size:18px; color:var(--ink)}
+.brand:hover{text-decoration:none}
+.mark{width:22px; height:22px; flex:none}
+.nav-right{display:flex; align-items:center; gap:16px}
+.nav-cta{font-weight:600; font-size:14px}
+.theme-toggle{display:inline-flex; align-items:center; justify-content:center;
+  width:40px; height:40px; border-radius:999px; border:1px solid var(--border);
+  background:transparent; color:var(--ink); cursor:pointer; flex:none;
+  transition:border-color .2s}
+.theme-toggle:hover{border-color:var(--coral)}
+.theme-toggle svg{width:18px; height:18px}
+.theme-toggle .i-sun{display:none}
+.theme-toggle .i-moon{display:block}
+:root[data-theme="dark"] .theme-toggle .i-moon{display:none}
+:root[data-theme="dark"] .theme-toggle .i-sun{display:block}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .theme-toggle .i-moon{display:none}
+  :root:not([data-theme="light"]) .theme-toggle .i-sun{display:block}
+}
+
+/* breadcrumb */
+.crumbs{font-size:13.5px; color:var(--muted); margin:26px 0 4px}
+.crumbs a{color:var(--muted)}
+.crumbs a:hover{color:var(--coral-d)}
+
+/* article */
+article{padding:6px 0 8px}
+article h1{font-family:Lora,Georgia,serif; font-weight:600; line-height:1.18;
+  font-size:clamp(30px,5vw,42px); color:var(--ink); margin:8px 0 6px}
+article h2{font-family:Lora,Georgia,serif; font-weight:600; color:var(--ink);
+  font-size:clamp(22px,3.4vw,28px); margin:38px 0 10px; line-height:1.25}
+article h3{font-family:Lora,Georgia,serif; font-weight:600; color:var(--ink);
+  font-size:20px; margin:26px 0 8px}
+article p{margin:0 0 16px}
+article ul,article ol{margin:0 0 16px; padding-left:22px}
+article li{margin:6px 0}
+article strong{color:var(--ink)}
+.accent{width:74px; height:4px; background:var(--coral); border-radius:2px;
+  margin:14px 0 22px}
+
+/* inline code as a pill + code blocks */
+code{font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace; font-size:.88em;
+  background:var(--code-bg); color:var(--code-ink);
+  padding:.12em .42em; border-radius:6px}
+pre{background:var(--code-bg); border:1px solid var(--border); border-radius:12px;
+  padding:16px 18px; overflow-x:auto; margin:0 0 18px}
+pre code{background:none; color:var(--ink); padding:0; font-size:13.5px;
+  line-height:1.55}
+
+/* blockquote with coral left bar */
+blockquote{margin:0 0 18px; padding:2px 0 2px 18px;
+  border-left:3px solid var(--coral); color:var(--muted)}
+blockquote p{margin:0 0 8px}
+
+/* tables */
+.tablewrap{overflow-x:auto; margin:0 0 18px}
+table{border-collapse:collapse; width:100%; font-size:14.5px}
+th,td{border:1px solid var(--border); padding:9px 12px; text-align:left;
+  vertical-align:top}
+thead th{background:var(--tint); color:var(--ink); font-weight:600}
+tbody tr:nth-child(even){background:var(--tint)}
+
+/* figures (inline SVG diagrams) */
+.fig{margin:18px 0; text-align:center}
+.fig svg{max-width:100%; height:auto}
+
+/* prev / next */
+.pager{display:flex; gap:14px; justify-content:space-between; margin:36px 0 0;
+  border-top:1px solid var(--border); padding-top:20px}
+.pager a{display:block; max-width:48%; font-size:14px}
+.pager .lbl{display:block; color:var(--muted); font-size:12px;
+  text-transform:uppercase; letter-spacing:.08em; margin-bottom:3px}
+.pager .nxt{text-align:right; margin-left:auto}
+
+/* reading CTA */
+.readcta{background:var(--cta-bg); color:var(--cta-p); border-radius:18px;
+  border:1px solid var(--cta-border); padding:30px 26px; margin:34px 0 0;
+  text-align:center}
+.readcta h2{font-family:Lora,Georgia,serif; color:var(--cta-h); margin:0 0 8px;
+  font-size:24px}
+.readcta p{margin:0 0 18px; font-size:15.5px}
+.btn{display:inline-flex; align-items:center; gap:9px; font-weight:700;
+  font-size:15px; padding:12px 24px; border-radius:999px; cursor:pointer;
+  border:1.5px solid transparent}
+.btn-primary{background:var(--coral); color:#fff;
+  box-shadow:0 6px 20px rgba(217,119,87,.32)}
+.btn-primary:hover{background:var(--coral-d); color:#fff; text-decoration:none}
+
+/* reading index (leggi.html) */
+.lead{font-size:18px; color:var(--muted); margin:6px 0 26px}
+.part-h{font-family:Lora,Georgia,serif; color:var(--ink); font-weight:600;
+  font-size:22px; margin:30px 0 6px}
+.toc{list-style:none; margin:0 0 8px; padding:0}
+.toc li{border-bottom:1px solid var(--border)}
+.toc a{display:flex; gap:12px; padding:12px 4px; color:var(--ink)}
+.toc a:hover{color:var(--coral-d); text-decoration:none}
+.toc .id{font-family:Lora,Georgia,serif; color:var(--coral-d); flex:none;
+  width:54px}
+
+/* footer */
+footer{margin-top:46px; border-top:1px solid var(--border);
+  padding:28px 0 56px; font-size:13px; color:var(--muted)}
+footer a{color:var(--coral-d)}
+</style><script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"L3.4 — Documents (Word, PowerPoint, Excel, PDF)","description":"By the end you'll know how to have Claude generate professional documents — Word, Excel, PowerPoint, PDF — by asking for them the right way, applying…","inLanguage":"en","author":{"@type":"Person","name":"Gian Angelo Geminiani"},"isPartOf":{"@type":"Book","name":"Claude: la guida completa"},"mainEntityOfPage":"https://angelogeminiani.github.io/claude-la-guida-completa/en/capitoli/L3-4-documenti.html"}</script><script>(function(){try{var s=localStorage.getItem('theme');if(s==='dark'||s==='light')document.documentElement.setAttribute('data-theme',s);}catch(e){}})();</script></head><body><svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="ast" viewBox="0 0 32 32"><g stroke="#D97757" stroke-width="3.4" stroke-linecap="round"><line x1="16" y1="4" x2="16" y2="28"/><line x1="4" y1="16" x2="28" y2="16"/><line x1="7.5" y1="7.5" x2="24.5" y2="24.5"/><line x1="24.5" y1="7.5" x2="7.5" y2="24.5"/></g></symbol><symbol id="moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol><symbol id="sun" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><line x1="12" y1="2.5" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="21.5"/><line x1="2.5" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="21.5" y2="12"/><line x1="5.2" y1="5.2" x2="6.9" y2="6.9"/><line x1="17.1" y1="17.1" x2="18.8" y2="18.8"/><line x1="5.2" y1="18.8" x2="6.9" y2="17.1"/><line x1="17.1" y1="6.9" x2="18.8" y2="5.2"/></g></symbol></svg><header class="nav"><div class="row"><a class="brand" href="../index.html"><svg class="mark"><use href="#ast"/></svg> Claude · the complete guide</a><div class="nav-right"><a class="nav-cta" href="../leggi.html">Read online</a><a class="nav-cta" href="../manuale_en.pdf" download>Download the PDF →</a><a class="nav-cta" href="../../capitoli/L3-4-documenti.html">IT</a><button class="theme-toggle" id="theme-toggle" type="button" aria-label="theme" title="Theme"><svg class="i-moon" aria-hidden="true"><use href="#moon"/></svg><svg class="i-sun" aria-hidden="true"><use href="#sun"/></svg></button></div></div></header><main class="wrap"><div class="crumbs"><a href="../index.html">Home</a> · <a href="../leggi.html">Read online</a> · Level 3 — Daily work</div><article><h1 id="chapter-l3.4-documents-word-powerpoint-excel-pdf">Chapter L3.4 — Documents (Word, PowerPoint, Excel, PDF)</h1>
+<blockquote>
+<p>Level 3 — Daily work. Product details verified on 22/06/2026 against official sources.</p>
+</blockquote>
+<h2 id="goal">Goal</h2>
+<p>By the end you’ll know how to have Claude generate professional documents — Word, Excel, PowerPoint, PDF — by asking for them the right way, applying the “content first, then the file” principle, and starting from a template when you want a repeatable result.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>Knowing how to write clear requests (see ch. L1.2).</li>
+<li>Having <strong>Code execution / file creation</strong> active (see ch. L1.3): it’s the sandbox Claude uses to create files. It’s on every plan.</li>
+</ul>
+<h2 id="how-claude-creates-files">How Claude creates files</h2>
+<p>Claude doesn’t “hand-write” a .docx: it uses a code execution sandbox that generates the actual file, with the formatting needed. That’s why the documents produced are real files — openable in Word, Excel, PowerPoint — not plain pasted text. The per-file limit is around <strong>30 MB</strong>.</p>
+<p>The typical formats: <strong>.docx</strong> (Word), <strong>.xlsx</strong> (Excel), <strong>.pptx</strong> (PowerPoint), <strong>.pdf</strong>. The rule for choosing is the recipient: a report to be reread and edited is a .docx; data and calculations are an .xlsx; something to present is a .pptx; a final document to distribute as is is a .pdf.</p>
+<h2 id="asking-well">Asking well</h2>
+<p>A document is only as good as the request. Three things raise the quality of the result:</p>
+<ul>
+<li><strong>The recipient and the purpose:</strong> “a note for the board”, “a flyer for customers”. It changes tone, length, structure.</li>
+<li><strong>The structure you want:</strong> the sections, the order, what to highlight.</li>
+<li><strong>The final format:</strong> explicitly say .docx, .xlsx, .pptx or .pdf.</li>
+</ul>
+<p>Compare:</p>
+<ul>
+<li><strong>Weak:</strong> “Make me a document about sales.”</li>
+<li><strong>Better:</strong> “Create a one-page .docx report on Q1 sales for management: an opening summary, a table by region, three comment points. Sober tone.”</li>
+</ul>
+<h2 id="content-first-then-the-file">Content first, then the file</h2>
+<p>The principle that makes the difference is “<strong>read before create</strong>”: first the content is settled, then it’s laid out. A document starts badly if you ask at the same time “find the data and make me the PDF”: the risk is a nice layout on wrong content.</p>
+<p>It pays to separate the two moments:</p>
+<ol type="1">
+<li><strong>Content.</strong> Have Claude produce or verify the data, the text, the numbers. Check them in chat.</li>
+<li><strong>Document.</strong> Only when the content is right, ask to put it into the file with the desired formatting.</li>
+</ol>
+<p>If you start from an existing file — a report to summarize, data to rework — the same holds: first Claude <strong>reads</strong> the source and extracts what’s needed, then builds the new document. Laying out first means redoing the work.</p>
+<p><em>Figure L3.4.1 — The “content first, then the file” flow.</em> Alt text: vertical diagram from verified content to format choice to the final document.</p>
+<div class="fig">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 526" width="100%" font-family="Inter, &#39;Helvetica Neue&#39;, Arial, sans-serif">
+<defs><marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#D97757"/></marker></defs> <line x1="300.0" y1="54.0" x2="300.0" y2="92.0" stroke="#D97757" stroke-width="1.5" marker-end="url(#ah)"/> <line x1="300.0" y1="146.0" x2="300.0" y2="184.0" stroke="#D97757" stroke-width="1.5" marker-end="url(#ah)"/> <line x1="300.0" y1="238.0" x2="300.0" y2="276.0" stroke="#D97757" stroke-width="1.5" marker-end="url(#ah)"/> <line x1="300.0" y1="340.0" x2="300.0" y2="378.0" stroke="#D97757" stroke-width="1.5" marker-end="url(#ah)"/> <line x1="300.0" y1="432.0" x2="300.0" y2="470.0" stroke="#D97757" stroke-width="1.5" marker-end="url(#ah)"/> <rect x="226.5" y="16.0" width="147.0" height="38" rx="7" fill="#FFFFFF" stroke="#E5DED2" stroke-width="1.2"/> <text x="300.0" y="38.0" font-size="13" fill="#1F1E1D" text-anchor="middle">Source or request</text> <rect x="244.0" y="94.0" width="112.0" height="52" rx="7" fill="#FFFFFF" stroke="#E5DED2" stroke-width="1.2"/> <text x="300.0" y="116.0" font-size="13" fill="#1F1E1D" text-anchor="middle">Claude reads</text> <text x="300.0" y="132.0" font-size="13" fill="#1F1E1D" text-anchor="middle">and extracts</text> <rect x="230.0" y="186.0" width="140.0" height="52" rx="7" fill="#FFFFFF" stroke="#E5DED2" stroke-width="1.2"/> <text x="300.0" y="208.0" font-size="13" fill="#1F1E1D" text-anchor="middle">Content</text> <text x="300.0" y="224.0" font-size="13" fill="#1F1E1D" text-anchor="middle">verified in chat</text> <polygon points="300.0,278.0 382.5,309.0 300.0,340.0 217.5,309.0" fill="#FBEEE7" stroke="#D97757" stroke-width="1.5"/> <text x="300.0" y="300.0" font-size="13" fill="#1F1E1D" text-anchor="middle">Which format?</text> <rect x="240.5" y="380.0" width="119.0" height="52" rx="7" fill="#FFFFFF" stroke="#E5DED2" stroke-width="1.2"/> <text x="300.0" y="402.0" font-size="13" fill="#1F1E1D" text-anchor="middle">.docx / .xlsx</text> <text x="300.0" y="418.0" font-size="13" fill="#1F1E1D" text-anchor="middle">.pptx / .pdf</text> <rect x="237.0" y="472.0" width="126.0" height="38" rx="7" fill="#FFFFFF" stroke="#E5DED2" stroke-width="1.2"/> <text x="300.0" y="494.0" font-size="13" fill="#1F1E1D" text-anchor="middle">Final document</text>
+</svg>
+</div>
+<h2 id="starting-from-a-template">Starting from a template</h2>
+<p>If you produce the same kind of document often — a monthly report, a proposal — don’t start from scratch every time. Give Claude a <strong>template</strong>: a sample file already set up, or a precise description of the structure. It pours the new content into it, keeping form and style.</p>
+<p>It’s the natural bridge to Projects (ch. L3.2): put the template in the knowledge base and every document comes out consistent with the previous one. For voice and recurring style rules, Skills (Level 5) make all of this even more repeatable.</p>
+<h2 id="in-practice-a-report-in-two-moments">In practice: a report in two moments</h2>
+<ol type="1">
+<li><p>In chat, have the content prepared and <strong>check it</strong>:</p>
+<pre class="text"><code>From the data I&#39;m pasting, write the summary and
+the table by region. Show them to me, don&#39;t make
+the file yet.</code></pre></li>
+<li><p>Fix what’s needed until the content is right.</p></li>
+<li><p>Ask for the document, with format and structure:</p>
+<pre class="text"><code>Now put it in a one-page .docx: title,
+summary, table, three comment points.</code></pre></li>
+<li><p>Open the file and check. For touch-ups, ask for targeted edits instead of regenerating everything.</p></li>
+</ol>
+<h2 id="common-mistakes">Common mistakes</h2>
+<ul>
+<li><strong>Asking for data and layout together.</strong> Separate them: first the right content, then the file.</li>
+<li><strong>Not stating the format.</strong> Without “.docx” or “.xlsx” you risk a generic output. Be explicit.</li>
+<li><strong>Regenerating for every touch-up.</strong> Ask for targeted edits (“change only the table”): faster and safer.</li>
+<li><strong>Forgetting the sandbox.</strong> If file creation doesn’t start, check that Code execution is active (ch. L1.3).</li>
+</ul>
+<h2 id="summary">Summary</h2>
+<ol type="1">
+<li>Claude generates real files (.docx, .xlsx, .pptx, .pdf) through the code execution sandbox.</li>
+<li>Choose the format based on the recipient: report, data, presentation, final document.</li>
+<li>Ask well: recipient, structure, explicit format.</li>
+<li>“Content first, then the file”: verify the content in chat, then lay it out.</li>
+<li>For recurring documents start from a template; with Projects it becomes repeatable.</li>
+</ol>
+<h2 id="next-step">Next step</h2>
+<p>In <strong>ch. L3.5 — Slides and Excel</strong> we get into the two most requested cases: building a presentation and a spreadsheet with a method that avoids redoing the work, and using the add-in inside Office.</p>
+<p><em>Data on Code execution / file creation (plans, ~30 MB limit) from the ledger, verified on 22/06/2026 on support.claude.com. The examples were not executed here.</em></p>
+</article><nav class="pager"><a href="./L3-3-connettori.html"><span class="lbl">← Previous</span>L3.3 — Connectors</a><a class="nxt" href="./L3-5-slide-ed-excel.html"><span class="lbl">Next →</span>L3.5 — Slides and Excel</a></nav><div class="readcta"><h2>Found it useful? Get the whole manual</h2><p>33 chapters in a single A5 PDF, free and no signup.</p><a class="btn btn-primary" href="../manuale_en.pdf" download>↓ Download the free PDF</a></div></main><footer><div class="wrap">© 2026 Gian Angelo Geminiani. An <strong>independent, unofficial</strong> publication: not affiliated with, sponsored or endorsed by Anthropic. "Claude" and "Anthropic" are trademarks of their respective owners, used for identification only. Data verified on the date shown and subject to change.</div></footer><script>(function(){var r=document.documentElement;function eff(){var f=r.getAttribute('data-theme');return f?f:(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');}var b=document.getElementById('theme-toggle');if(b)b.addEventListener('click',function(){var n=eff()==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem('theme',n);}catch(e){}});})();</script></body></html>

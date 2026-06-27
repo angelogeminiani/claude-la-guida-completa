@@ -39,7 +39,7 @@ def _head(style, symbols):
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Claude: the complete guide — the manual that updates when Claude does</title>
-<meta name="description" content="Claude changes every week. This practical manual keeps up: from your first prompt to Claude Code, Cowork, Skills and the API. Written in Italian, English edition in progress.">
+<meta name="description" content="Claude changes every week. This practical manual keeps up: from your first prompt to Claude Code, Cowork, Skills and the API. 33 chapters, free to read online and as an A5 PDF.">
 <link rel="canonical" href="{BASE}en/">
 <link rel="alternate" hreflang="it" href="{BASE}">
 <link rel="alternate" hreflang="en" href="{BASE}en/">
@@ -94,8 +94,8 @@ def _body():
       <svg class="mark"><use href="#ast"/></svg> Claude · the complete guide
     </a>
     <div class="nav-right">
-      <a class="nav-cta" href="../leggi.html">Read online</a>
-      <a class="nav-cta" href="#updates">Get updates</a>
+      <a class="nav-cta" href="leggi.html">Read online</a>
+      <a class="nav-cta" href="#download">Download</a>
       <a class="nav-cta" href="../" hreflang="it" title="Versione italiana">IT</a>
       <button class="theme-toggle" id="theme-toggle" type="button"
               aria-label="Toggle light/dark theme" title="Toggle theme">
@@ -117,12 +117,12 @@ def _body():
         <p class="lead"><strong>Claude changes every week. This manual keeps
           up.</strong> Practical, from your first prompt to Claude Code, Cowork,
           Skills and the API — 33 chapters across six levels.</p>
-        <div class="cta-row">
-          <a class="btn btn-primary" href="#updates">Get notified →</a>
-          <a class="btn btn-ghost" href="../leggi.html">Read online</a>
+        <div class="cta-row" id="download">
+          <a class="btn btn-primary" href="manuale_en.pdf" download>
+            ↓ Download the free PDF</a>
+          <a class="btn btn-ghost" href="leggi.html">Read online</a>
         </div>
-        <p class="meta"><strong>Written in Italian.</strong> An English edition is
-          in progress — subscribe below and you'll be the first to know.</p>
+        <p class="meta">PDF · A5 · 33 chapters · free, no signup</p>
       </div>
       <div class="cover-shot">
         <img src="{COVER_DATA}" alt="Cover of Claude: the complete guide"
@@ -182,7 +182,7 @@ def _body():
       <a class="sbtn" target="_blank" rel="noopener" href="{REPO}/subscription">
         <svg><use href="#i-gh"/></svg> Watch on GitHub
         <span class="cnt" id="gh-stars"></span></a>
-      <a class="sbtn" href="../changelog.html">
+      <a class="sbtn" href="changelog.html">
         <svg><use href="#i-clock"/></svg> What changed</a>
     </div>
   </div>
@@ -216,8 +216,9 @@ def _body():
       for identification only.
     </div>
     <div class="links">
-      <a href="../leggi.html">Read online</a>
-      <a href="../changelog.html">Updates</a>
+      <a href="leggi.html">Read online</a>
+      <a href="manuale_en.pdf" download>Download the PDF</a>
+      <a href="changelog.html">Updates</a>
       <a href="../feed.xml">RSS</a>
       <a href="../">Italiano</a>
       <a href="{REPO}">GitHub</a>
