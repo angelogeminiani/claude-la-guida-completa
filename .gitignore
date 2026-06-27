@@ -1,6 +1,6 @@
 # Build artifacts at repo root (the site/ copy IS committed for download)
 /manuale.pdf
-/manuale_produzione.pdf
+/claude-la-guida-completa.pdf
 *.aux
 *.log
 *.toc

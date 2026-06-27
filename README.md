@@ -73,7 +73,7 @@ formato A5. Esistono **due pipeline** di build:
 Esempio:
 
 ```bash
-python3 scripts/build-elegant.py manuale_produzione.pdf
+python3 scripts/build-elegant.py claude-la-guida-completa.pdf
 ```
 
 Oppure la variante LaTeX (la cartella predefinita è `capitoli/`):
@@ -94,7 +94,7 @@ Claude.ai) e si pubblica su **GitHub Pages**:
   modifica `docs/` aggiorna il sito (nessun workflow, nessuno scope token).
 - **Contenuti:** hero con download del PDF, valore del libro, i sei livelli, per
   chi è, CTA finale; meta tag Open Graph/Twitter e immagine social `og-image.png`.
-- **Download:** `docs/manuale_produzione.pdf` è committato per il download diretto.
+- **Download:** `docs/claude-la-guida-completa.pdf` è committato per il download diretto.
 - **Aggiornare gli asset del sito:** `bash scripts/build-site.sh` rigenera PDF,
   immagine social e copertina dentro `docs/`.
 

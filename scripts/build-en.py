@@ -8,7 +8,6 @@
 #   python3 scripts/build-en.py     (run from the repo root)
 import os
 import re
-import base64
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
@@ -16,10 +15,9 @@ os.chdir(ROOT)
 BASE = "https://angelogeminiani.github.io/claude-la-guida-completa/"
 REPO = "https://github.com/angelogeminiani/claude-la-guida-completa"
 
-# Embed the English cover as a data URI so it renders everywhere — including
-# isolated previews where a relative path would not resolve.
-with open("risorse/copertina-en.png", "rb") as _fh:
-    COVER_DATA = "data:image/png;base64," + base64.b64encode(_fh.read()).decode()
+# The English cover is shipped as a cacheable file (docs/en/cover-en.png),
+# referenced relatively instead of inlined as a data URI — smaller HTML,
+# faster first paint, browser-cached across pages.
 
 
 # -----------------------------------------------------------------------------------------------------------------
@@ -67,6 +65,7 @@ def _head(style, symbols):
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,600;1,500&display=swap" rel="stylesheet">
 {style}
 <script>(function(){{try{{var s=localStorage.getItem('theme');if(s==='dark'||s==='light')document.documentElement.setAttribute('data-theme',s);}}catch(e){{}}}})();</script>
+<script type="application/ld+json">{{"@context":"https://schema.org","@type":"Book","name":"Claude: the complete guide","inLanguage":"en","numberOfPages":156,"bookFormat":"https://schema.org/EBook","author":{{"@type":"Person","name":"Gian Angelo Geminiani"}},"about":["Claude","Claude Code","Cowork","Skills","Anthropic API"],"url":"{BASE}en/","image":"{BASE}og-image-en.png","isAccessibleForFree":true,"license":"https://opensource.org/licenses/MIT","translationOfWork":{{"@type":"Book","name":"Claude: la guida completa","inLanguage":"it","url":"{BASE}"}}}}</script>
 </head>
 <body>
 {symbols}'''
@@ -118,15 +117,16 @@ def _body():
           up.</strong> Practical, from your first prompt to Claude Code, Cowork,
           Skills and the API — 33 chapters across six levels.</p>
         <div class="cta-row" id="download">
-          <a class="btn btn-primary" href="manuale_en.pdf" download>
+          <a class="btn btn-primary" href="claude-the-complete-guide.pdf" download>
             ↓ Download the free PDF</a>
           <a class="btn btn-ghost" href="leggi.html">Read online</a>
         </div>
-        <p class="meta">PDF · A5 · 33 chapters · free, no signup</p>
+        <p class="meta">PDF · A5 · 156 pages · 33 chapters · free, no signup</p>
       </div>
       <div class="cover-shot">
-        <img src="{COVER_DATA}" alt="Cover of Claude: the complete guide"
-             width="300">
+        <img src="cover-en.png" width="300" height="426"
+             alt="Cover of Claude: the complete guide"
+             fetchpriority="high" decoding="async">
       </div>
     </div>
   </div>
@@ -196,9 +196,9 @@ def _body():
     </div>
     <p class="quote">«The Claude manual that updates when Claude does.»</p>
     <div class="share-row" id="share-row">
-      <a class="sbtn" id="sh-x" target="_blank" rel="noopener">
+      <a class="sbtn" id="sh-x" href="#download" target="_blank" rel="noopener">
         <svg><use href="#i-x"/></svg> Post on X</a>
-      <a class="sbtn" id="sh-li" target="_blank" rel="noopener">
+      <a class="sbtn" id="sh-li" href="#download" target="_blank" rel="noopener">
         <svg><use href="#i-li"/></svg> LinkedIn</a>
       <button class="sbtn" id="sh-copy" type="button">
         <svg><use href="#i-link"/></svg> Copy link</button>
@@ -217,7 +217,7 @@ def _body():
     </div>
     <div class="links">
       <a href="leggi.html">Read online</a>
-      <a href="manuale_en.pdf" download>Download the PDF</a>
+      <a href="claude-the-complete-guide.pdf" download>Download the PDF</a>
       <a href="changelog.html">Updates</a>
       <a href="../feed.xml">RSS</a>
       <a href="../">Italiano</a>
@@ -243,7 +243,7 @@ def _body():
     var copy=document.getElementById("sh-copy"), msg=document.getElementById("copied");
     if(copy)copy.addEventListener("click",function(){{
       var done=function(){{if(msg){{msg.textContent="Link copied!";setTimeout(function(){{msg.textContent="";}},2500);}}}};
-      if(navigator.clipboard){{navigator.clipboard.writeText(url).then(done,done);}}else{{done();}}
+      if(navigator.clipboard){{navigator.clipboard.writeText(url).then(done,done);}}else if(msg){{msg.textContent="Copy it from the address bar";setTimeout(function(){{msg.textContent="";}},3500);}}
     }});
     try{{
       fetch("https://api.github.com/repos/angelogeminiani/claude-la-guida-completa")

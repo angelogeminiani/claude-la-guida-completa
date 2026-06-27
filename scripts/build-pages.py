@@ -60,7 +60,7 @@ ALL_STEMS = [s for _, _, stems in STRUCTURE for s in stems]
 LANGS = {
     "it": {
         "lang": "it", "src": "capitoli", "outdir": "docs", "part_idx": 0,
-        "pdf": "manuale_produzione.pdf",
+        "pdf": "claude-la-guida-completa.pdf",
         "brand": "Claude · la guida completa",
         "nav_read": "Leggi online", "nav_pdf": "Scarica il PDF →",
         "other_label": "EN",
@@ -85,7 +85,7 @@ LANGS = {
     },
     "en": {
         "lang": "en", "src": "capitoli-en", "outdir": "docs/en", "part_idx": 1,
-        "pdf": "manuale_en.pdf",
+        "pdf": "claude-the-complete-guide.pdf",
         "brand": "Claude · the complete guide",
         "nav_read": "Read online", "nav_pdf": "Download the PDF →",
         "other_label": "IT",

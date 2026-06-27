@@ -4,7 +4,7 @@
 # Diagrams are rendered to on-brand SVG by mermaid2svg.py. Bilingual.
 #
 # Usage:
-#   python3 scripts/build-elegant.py                      -> IT, manuale_produzione.pdf
+#   python3 scripts/build-elegant.py                      -> IT, claude-la-guida-completa.pdf
 #   python3 scripts/build-elegant.py out.pdf              -> IT, out.pdf (back-compat)
 #   python3 scripts/build-elegant.py it [out.pdf]         -> Italian edition
 #   python3 scripts/build-elegant.py en [out.pdf]         -> English edition
@@ -51,10 +51,10 @@ STRUCTURE = [
 LANGS = {
     "it": {"src": "capitoli", "cover": "risorse/copertina.png",
            "colophon": "colophon.md", "toc": "Indice", "part_idx": 0,
-           "keep_tags_stem": "F-1-prefazione", "default_out": "manuale_produzione.pdf"},
+           "keep_tags_stem": "F-1-prefazione", "default_out": "claude-la-guida-completa.pdf"},
     "en": {"src": "capitoli-en", "cover": "risorse/copertina-en.png",
            "colophon": "colophon-en.md", "toc": "Contents", "part_idx": 1,
-           "keep_tags_stem": "F-1-prefazione", "default_out": "docs/en/manuale_en.pdf"},
+           "keep_tags_stem": "F-1-prefazione", "default_out": "docs/en/claude-the-complete-guide.pdf"},
 }
 
 # -----------------------------------------------------------------------------------------------------------------

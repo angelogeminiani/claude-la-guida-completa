@@ -14,8 +14,8 @@ cd "$(dirname "$0")/.."
 python3 -c "import cairosvg; cairosvg.svg2png(url='risorse/copertina-en.svg', write_to='risorse/copertina-en.png', output_width=1748, output_height=2480)"
 
 # PDFs
-python3 scripts/build-elegant.py docs/manuale_produzione.pdf   # Italian
-python3 scripts/build-elegant.py en docs/en/manuale_en.pdf     # English
+python3 scripts/build-elegant.py docs/claude-la-guida-completa.pdf   # Italian
+python3 scripts/build-elegant.py en docs/en/claude-the-complete-guide.pdf     # English
 
 # HTML site
 python3 scripts/build-pages.py
@@ -25,5 +25,6 @@ python3 scripts/build-en.py
 
 # landing cover thumbnail
 cp risorse/copertina.png docs/cover.png
+cp risorse/copertina-en.png docs/en/cover-en.png
 
 echo "Sito aggiornato in docs/ (IT+EN: PDF, capitoli, changelog, RSS, OG, cover)."
