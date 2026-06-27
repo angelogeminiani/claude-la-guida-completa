@@ -16,9 +16,9 @@ os.chdir(ROOT)
 BASE = "https://angelogeminiani.github.io/claude-la-guida-completa/"
 REPO = "https://github.com/angelogeminiani/claude-la-guida-completa"
 
-# Embed the cover as a data URI so it renders everywhere — including isolated
-# previews where a relative path like ../cover.png would not resolve.
-with open("risorse/copertina.png", "rb") as _fh:
+# Embed the English cover as a data URI so it renders everywhere — including
+# isolated previews where a relative path would not resolve.
+with open("risorse/copertina-en.png", "rb") as _fh:
     COVER_DATA = "data:image/png;base64," + base64.b64encode(_fh.read()).decode()
 
 

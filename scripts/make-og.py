@@ -18,8 +18,13 @@ CORAL2 = "#B65A3C"
 MUTED = "#6B6760"
 BORDER = "#E5DED2"
 
-with open("risorse/copertina.png", "rb") as fh:
-    COVER_B64 = base64.b64encode(fh.read()).decode()
+def _b64(path):
+    with open(path, "rb") as fh:
+        return base64.b64encode(fh.read()).decode()
+
+
+COVER_IT = _b64("risorse/copertina.png")
+COVER_EN = _b64("risorse/copertina-en.png")
 
 
 # -----------------------------------------------------------------------------------------------------------------
@@ -51,7 +56,7 @@ def _claim(lines, size):
     return "".join(out), y
 
 
-def _svg(kicker, claim_lines, claim_size, subline, badge):
+def _svg(kicker, claim_lines, claim_size, subline, badge, cover_b64):
     claim, y_end = _claim(claim_lines, claim_size)
     rule_y = y_end - claim_size + 22
     badge_w = 24 + len(badge) * 12
@@ -65,7 +70,7 @@ def _svg(kicker, claim_lines, claim_size, subline, badge):
   <g transform="translate(872,116)">
     <rect x="6" y="10" width="252" height="358" rx="9" fill="#00000022"/>
     <image x="0" y="0" width="252" height="358"
-      href="data:image/png;base64,{COVER_B64}"
+      href="data:image/png;base64,{cover_b64}"
       preserveAspectRatio="xMidYMid slice"/>
     <rect x="0" y="0" width="252" height="358" rx="9" fill="none"
       stroke="{BORDER}" stroke-width="2"/>
@@ -105,7 +110,7 @@ def build():
         claim_lines=["Il manuale su Claude", "che si aggiorna", "con Claude."],
         claim_size=72,
         subline="Pratico, in italiano · Code, Cowork, Skills, API",
-        badge="PDF gratis · 33 capitoli · A5")
+        badge="PDF gratis · 33 capitoli · A5", cover_b64=COVER_IT)
     cairosvg.svg2png(bytestring=it.encode(), write_to="docs/og-image.png",
                      output_width=1200, output_height=630)
 
@@ -114,7 +119,7 @@ def build():
         claim_lines=["The Claude manual", "that updates when", "Claude does."],
         claim_size=66,
         subline="Practical · Code, Cowork, Skills, API",
-        badge="Read free online · 33 chapters")
+        badge="Read free online · 33 chapters", cover_b64=COVER_EN)
     cairosvg.svg2png(bytestring=en.encode(), write_to="docs/og-image-en.png",
                      output_width=1200, output_height=630)
 
