@@ -1,7 +1,7 @@
 # F.3 — Modelli e piani
 
 > Front matter — Livello 0.
-> Dati di prodotto verificati il 22/06/2026 su fonti ufficiali.
+> Dati di prodotto verificati il 27/06/2026 su fonti ufficiali.
 
 ## Obiettivo
 
@@ -28,13 +28,18 @@ agentico lungo; **Sonnet** è l'equilibrio ideale tra resa e velocità, la scelt
 "tutti i giorni"; **Haiku** è il più rapido, perfetto per risposte brevi e task
 semplici.
 
-Esistono anche modelli più recenti o sperimentali (per esempio **Fable 5**, con
-una finestra di contesto molto ampia, in distribuzione promozionale, e
-**Mythos 5** ad accesso ristretto). La loro disponibilità cambia spesso.
+Sopra Opus c'è una classe di modelli più potenti (i "Mythos"), pensata per il
+ragionamento e il lavoro agentico più estremi: **Fable 5** (versione resa
+disponibile più ampiamente) e **Mythos 5** (ad accesso ristretto). La loro
+disponibilità è però molto instabile: lanciati a giugno 2026, sono stati poi
+**sospesi** per una direttiva governativa e, al momento di questa revisione, non
+risultano riattivati. Sono un buon esempio del perché conviene ragionare per
+famiglie e non legarsi a un modello: per lo stato corrente fai riferimento al
+repo companion e alle fonti ufficiali.
 
-> **Attenzione:** nomi e stringhe dei modelli cambiano di frequente. Non
-> memorizzare un modello come "quello giusto per sempre": verifica la versione
-> corrente quando ti serve.
+> **Attenzione:** nomi, stringhe e perfino la *disponibilità* dei modelli cambiano
+> di frequente. Non memorizzare un modello come "quello giusto per sempre":
+> verifica la versione corrente quando ti serve.
 
 ## Come scegliere il modello (EVERGREEN)
 

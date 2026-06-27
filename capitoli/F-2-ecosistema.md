@@ -1,7 +1,7 @@
 # F.2 — L'ecosistema Claude
 
 > Front matter — Livello 0.
-> Dati di prodotto verificati il 22/06/2026 su fonti ufficiali.
+> Dati di prodotto verificati il 27/06/2026 su fonti ufficiali.
 
 ## Obiettivo
 
@@ -42,7 +42,7 @@ sviluppa software. Richiede un piano a pagamento.
 **Claude Cowork.** Porta le capacità agentiche nell'app desktop per lavoro non
 di programmazione: ricerche, documenti, organizzazione di file. Gira in una VM
 isolata (macchina virtuale separata dal sistema) e tocca solo le cartelle che
-colleghi. Solo desktop, piani a pagamento; è in research preview.
+colleghi. Solo desktop (macOS/Windows), piani a pagamento.
 
 **Claude Design.** Un canvas per creare UI, prototipi e presentazioni
 conversando con Claude. Si integra con Code: quando un design è pronto, lo

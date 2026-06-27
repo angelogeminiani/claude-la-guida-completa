@@ -1,7 +1,7 @@
 # Capitolo L3.1 — Cowork: primi passi
 
 > Livello 3 — Lavoro quotidiano.
-> Dati di prodotto verificati il 22/06/2026 su fonti ufficiali.
+> Dati di prodotto verificati il 27/06/2026 su fonti ufficiali.
 
 ## Obiettivo
 
@@ -21,7 +21,8 @@ di una sequenza di passi, e approvare le azioni che Claude propone mentre lavora
 Cowork è il tab dell'app desktop per il **lavoro agentico non di codice**: gli
 affidi un compito su una cartella e lui lo porta avanti da solo — legge i file,
 ragiona, crea o modifica documenti, esegue passaggi in sequenza — fermandosi a
-chiederti conferma quando serve. (VOLATILE: research preview)
+chiederti conferma quando serve. È disponibile sui piani a pagamento su macOS e
+Windows. (VOLATILE: lo stato del prodotto evolve in fretta; vedi il ledger.)
 
 Gira in una **VM isolata** (una macchina virtuale, un computer dentro il
 computer) sul tuo dispositivo. Questo è il punto chiave per la fiducia: Cowork
@@ -70,6 +71,16 @@ Non approvare a scatola chiusa. Leggi cosa propone, soprattutto le prime volte:
 è così che impari a fidarti — o a capire dove serve essere più precisi nella
 richiesta.
 
+Cowork ha due **modalità di permessi** che decidono quanto spesso si ferma:
+
+- **Ask before acting:** si ferma e chiede conferma a ogni azione. È la modalità
+  giusta con file o strumenti nuovi, o quando vuoi tenere tutto sotto controllo.
+- **Act without asking:** procede senza fermarsi. Più veloce, ma più rischiosa:
+  usala solo mentre stai supervisionando, su file e siti di cui ti fidi.
+
+In **entrambe** le modalità, Claude chiede sempre conferma prima di **cancellare**
+file in modo definitivo: la cancellazione non è mai automatica.
+
 ## In pratica: il tuo primo task
 
 1. Apri Claude Desktop e vai sul tab **Cowork**.
@@ -115,6 +126,7 @@ e l'altra.
 
 ---
 
-*Dati su Cowork (VM isolata, piani, cartelle collegate) dal ledger, verificati
-il 22/06/2026 su support.claude.com e code.claude.com/docs. Il task di esempio
-non è stato eseguito qui: richiede l'app desktop con un account a pagamento.*
+*Dati su Cowork (VM isolata, piani, cartelle collegate, modalità di permessi) dal
+ledger, verificati il 27/06/2026 su support.claude.com/en/articles/13345190 e
+code.claude.com/docs. Il task di esempio non è stato eseguito qui: richiede
+l'app desktop con un account a pagamento.*

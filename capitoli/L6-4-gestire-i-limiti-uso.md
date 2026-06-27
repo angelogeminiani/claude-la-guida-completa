@@ -1,7 +1,7 @@
 # Capitolo L6.4 — Gestire i limiti d'uso
 
 > Livello 6 — Avanzato.
-> Dati di prodotto verificati il 24/06/2026 su fonti ufficiali.
+> Dati di prodotto verificati il 27/06/2026 su fonti ufficiali.
 
 ## Obiettivo
 
@@ -39,8 +39,10 @@ usage. Non sono budget separati.
 
 ## Il context window (VOLATILE)
 
-Il context window è di **200K token** su tutti i modelli e i piani a pagamento; le
-**Enterprise** arrivano a **500K** su alcuni modelli. Non puoi ingrandirlo, ma puoi
+Nella chat, sui piani a pagamento, il context window è di **500K token** per i
+modelli di punta (Opus 4.6/4.7/4.8 e Sonnet 4.6) e di **200K** per gli altri. In
+**Claude Code** i modelli di punta arrivano fino a **1M token**: su Pro, per il
+milione, vanno abilitati gli usage credits. Non puoi ingrandirlo a piacere, ma puoi
 usarlo meglio: è lì che si gioca la differenza tra una chat che regge e una che si
 satura.
 
@@ -95,7 +97,8 @@ Quando sbatti contro un limite, la mossa dipende da quale:
    chat (context window).
 2. Il consumo dipende da lunghezza, feature, **modello** ed **effort**; tutte le
    superfici contano sullo **stesso** usage.
-3. Context window **200K** (Enterprise fino a **500K** su alcuni modelli).
+3. Context window in chat: **500K** per i modelli di punta, **200K** per gli
+   altri; in Claude Code fino a **1M** (con usage credits su Pro).
 4. Riduci il consumo con Project, istruzioni brevi, meno tool attivi, effort più
    basso.
 5. Al limite: reset/upgrade/**credits** per l'usage; **nuova chat**/Project per la
@@ -108,6 +111,6 @@ un'organizzazione: governance, ruoli, dati e quando non usare l'account personal
 
 ---
 
-*Dati su usage/length limit e context window verificati il 24/06/2026 su
-support.claude.com/en/articles/11647753. Valori soggetti a modifica: vedi il
-ledger e le fonti ufficiali per gli aggiornamenti.*
+*Dati su usage/length limit e context window verificati il 27/06/2026 su
+support.claude.com/en/articles/11647753 e /articles/8606394. Valori soggetti a
+modifica: vedi il ledger e le fonti ufficiali per gli aggiornamenti.*
