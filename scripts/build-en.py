@@ -2,9 +2,9 @@
 # build-en.py — generate the English landing page (docs/en/index.html).
 # It reuses the Italian landing's inline <style> and icon symbols (so the look
 # stays in sync and the page renders even in isolated previews), and swaps in
-# English copy. The page is honest: the book itself is in Italian and an English
-# edition is in progress, so its main job is to capture the English-speaking
-# audience into the update loop (RSS / GitHub Watch).
+# English copy. The English edition is complete (full PDF + all chapters
+# online), so the page mirrors the Italian landing: same sections, same
+# funnel (download / read online / update loop via RSS and GitHub Watch).
 #   python3 scripts/build-en.py     (run from the repo root)
 import os
 import re
@@ -65,26 +65,36 @@ def _head(style, symbols):
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,600;1,500&display=swap" rel="stylesheet">
 {style}
 <script>(function(){{try{{var s=localStorage.getItem('theme');if(s==='dark'||s==='light')document.documentElement.setAttribute('data-theme',s);}}catch(e){{}}}})();</script>
-<script type="application/ld+json">{{"@context":"https://schema.org","@type":"Book","name":"Claude: the complete guide","inLanguage":"en","numberOfPages":156,"bookFormat":"https://schema.org/EBook","author":{{"@type":"Person","name":"Gian Angelo Geminiani"}},"about":["Claude","Claude Code","Cowork","Skills","Anthropic API"],"url":"{BASE}en/","image":"{BASE}og-image-en.png","isAccessibleForFree":true,"license":"https://opensource.org/licenses/MIT","translationOfWork":{{"@type":"Book","name":"Claude: la guida completa","inLanguage":"it","url":"{BASE}"}}}}</script>
+<script type="application/ld+json">{{"@context":"https://schema.org","@type":"Book","name":"Claude: the complete guide","inLanguage":"en","numberOfPages":156,"bookEdition":"Rev. 3","datePublished":"2026-07-02","bookFormat":"https://schema.org/EBook","author":{{"@type":"Person","name":"Gian Angelo Geminiani"}},"about":["Claude","Claude Code","Cowork","Skills","Anthropic API"],"url":"{BASE}en/","image":"{BASE}og-image-en.png","isAccessibleForFree":true,"license":"https://opensource.org/licenses/MIT","translationOfWork":{{"@type":"Book","name":"Claude: la guida completa","inLanguage":"it","url":"{BASE}"}}}}</script>
 </head>
 <body>
 {symbols}'''
 
 
 def _body():
+    # (label, title, description) — mirrors the Italian "Cosa c'è dentro".
     levels = [
-        ("Foundations", "Get oriented: ecosystem, models, plans, reading paths."),
-        ("Level 1", "First contact, prompting well, settings and styles."),
-        ("Level 2", "Local install: Desktop, Claude Code, auth, project setup."),
-        ("Level 3", "Daily work: Cowork, Projects, connectors, documents."),
-        ("Level 4", "Design: canvas, design system, /design-sync, export."),
-        ("Level 5", "Skills and identity: anatomy, your first skill, your voice."),
-        ("Level 6", "Advanced: hooks, custom MCP, automation, limits, API."),
-        ("Closing", "Putting it together: an end-to-end project, glossary."),
+        ("Front matter", "Get oriented",
+         "Ecosystem, models, plans, reading paths."),
+        ("Level 1", "Foundations",
+         "First contact, prompting well, settings and styles."),
+        ("Level 2", "Local install",
+         "Desktop, Claude Code, authentication, project setup."),
+        ("Level 3", "Daily work",
+         "Cowork, Projects, connectors, documents, slides and Excel."),
+        ("Level 4", "Design",
+         "Canvas, design system, /design-sync, export and Canva."),
+        ("Level 5", "Skills and identity",
+         "Anatomy of a skill, your first skill, your voice."),
+        ("Level 6", "Advanced",
+         "Hooks, custom MCP, automation, usage limits, security, API."),
+        ("Closing", "Putting it together",
+         "An end-to-end project, glossary and troubleshooting."),
     ]
     lvl_html = "".join(
         '<div class="lvl"><div class="n">%s</div><div class="t">'
-        '<span>%s</span></div></div>' % (n, d) for n, d in levels)
+        '<b>%s</b><span>%s</span></div></div>' % (n, t, d)
+        for n, t, d in levels)
 
     return f'''
 <header class="nav">
@@ -110,7 +120,7 @@ def _body():
   <div class="wrap">
     <div class="grid">
       <div>
-        <p class="kicker">Operational handbook · 2026 edition</p>
+        <p class="kicker">Operational handbook · 2026 edition · Rev. 3</p>
         <h1>Claude: the complete guide</h1>
         <div class="rule"></div>
         <p class="lead"><strong>Claude changes every week. This manual keeps
@@ -121,7 +131,8 @@ def _body():
             ↓ Download the free PDF</a>
           <a class="btn btn-ghost" href="leggi.html">Read online</a>
         </div>
-        <p class="meta">PDF · A5 · 156 pages · 33 chapters · free, no signup</p>
+        <p class="meta">PDF · A5 · 156 pages · 33 chapters · free, no signup ·
+          <a href="changelog.html">updated July 2, 2026</a></p>
       </div>
       <div class="cover-shot">
         <img src="cover-en.png" width="300" height="426"
@@ -169,12 +180,62 @@ def _body():
   </div>
 </section>
 
-<section id="updates">
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Who it's for</h2>
+      <p>One path, three ways to read it.</p>
+    </div>
+    <div class="aud">
+      <div class="card">
+        <h3>Starting from scratch</h3>
+        <p>You want to use Claude well without touching a terminal: chat,
+          Cowork, Projects and documents.</p>
+      </div>
+      <div class="card">
+        <h3>Developers</h3>
+        <p>You install and configure locally: Claude Code, Design and the
+          /design-sync bridge to your code.</p>
+      </div>
+      <div class="card">
+        <h3>Automators</h3>
+        <p>You integrate and work as a team: Skills, MCP, automation,
+          governance and API access.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tool" id="tool">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Which plan and model fit you?</h2>
+      <p>Three questions, one tailored suggestion. A taste of ch. F.3.</p>
+    </div>
+    <div class="quiz" id="quiz" aria-live="polite"></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="final">
+      <h2>Download the manual, free</h2>
+      <p>156 pages in A5 format. No email, no signup.</p>
+      <div class="cta-row" style="justify-content:center">
+        <a class="btn btn-primary" href="claude-the-complete-guide.pdf" download>
+          ↓ Download the PDF</a>
+        <a class="btn btn-ghost" href="{REPO}">Code and sources</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="levels" id="updates">
   <div class="wrap">
     <div class="section-head">
       <h2>Stay updated</h2>
-      <p>Claude moves fast. Get told when the manual updates — and when the
-        English edition lands. No email required.</p>
+      <p>Claude moves fast. Get told when the manual updates: no email
+        required, you pick the channel.</p>
     </div>
     <div class="share-row" style="justify-content:center">
       <a class="sbtn" href="../feed.xml">
@@ -200,8 +261,17 @@ def _body():
         <svg><use href="#i-x"/></svg> Post on X</a>
       <a class="sbtn" id="sh-li" href="#download" target="_blank" rel="noopener">
         <svg><use href="#i-li"/></svg> LinkedIn</a>
+      <a class="sbtn" id="sh-wa" href="#download" target="_blank" rel="noopener">
+        <svg><use href="#i-wa"/></svg> WhatsApp</a>
+      <a class="sbtn" id="sh-tg" href="#download" target="_blank" rel="noopener">
+        <svg><use href="#i-tg"/></svg> Telegram</a>
+      <a class="sbtn" id="sh-rd" href="#download" target="_blank" rel="noopener">
+        <svg><use href="#i-rd"/></svg> Reddit</a>
       <button class="sbtn" id="sh-copy" type="button">
         <svg><use href="#i-link"/></svg> Copy link</button>
+      <a class="sbtn star" id="sh-gh" target="_blank" rel="noopener" href="{REPO}">
+        <svg><use href="#i-gh"/></svg> Star on GitHub
+        <span class="cnt" id="gh-stars-share"></span></a>
     </div>
     <p class="copied" id="copied"></p>
   </div>
@@ -240,6 +310,9 @@ def _body():
     function set(id,href){{var e=document.getElementById(id);if(e)e.href=href;}}
     set("sh-x","https://twitter.com/intent/tweet?text="+t+"&url="+u);
     set("sh-li","https://www.linkedin.com/sharing/share-offsite/?url="+u);
+    set("sh-wa","https://wa.me/?text="+t+"%20"+u);
+    set("sh-tg","https://t.me/share/url?url="+u+"&text="+t);
+    set("sh-rd","https://www.reddit.com/submit?url="+u+"&title="+t);
     var copy=document.getElementById("sh-copy"), msg=document.getElementById("copied");
     if(copy)copy.addEventListener("click",function(){{
       var done=function(){{if(msg){{msg.textContent="Link copied!";setTimeout(function(){{msg.textContent="";}},2500);}}}};
@@ -248,8 +321,87 @@ def _body():
     try{{
       fetch("https://api.github.com/repos/angelogeminiani/claude-la-guida-completa")
         .then(function(r){{return r.ok?r.json():null;}})
-        .then(function(d){{if(d&&typeof d.stargazers_count==="number"){{var e=document.getElementById("gh-stars");if(e)e.textContent="· ★ "+d.stargazers_count;}}}});
+        .then(function(d){{
+          // Hide the counter below a threshold: a tiny number is
+          // negative social proof, the plain button works better.
+          if(d&&typeof d.stargazers_count==="number"&&d.stargazers_count>=25){{
+            ["gh-stars","gh-stars-share"].forEach(function(id){{
+              var e=document.getElementById(id);
+              if(e)e.textContent="· ★ "+d.stargazers_count;}});}}}});
     }}catch(e){{}}
+  }})();
+</script>
+
+<script>
+  // Plan + model finder. The logic mirrors chapter F.3 of the book
+  // (kept in sync with the Italian landing's quiz).
+  (function(){{
+    var QUESTIONS=[
+      {{qn:"Question 1 of 3",h:"What do you mostly want to do?",opts:[
+        {{t:"Chat, write, create documents",v:"chat"}},
+        {{t:"Code with Claude Code",v:"code"}},
+        {{t:"Automate tasks on my files (Cowork)",v:"cowork"}},
+        {{t:"Integrate Claude into my software (API)",v:"api"}}]}},
+      {{qn:"Question 2 of 3",h:"How much will you use it?",opts:[
+        {{t:"A little, just to try it",v:"prova"}},
+        {{t:"Every day",v:"daily"}},
+        {{t:"A lot, hours a day",v:"heavy"}},
+        {{t:"As a team or company",v:"team"}}]}},
+      {{qn:"Question 3 of 3",h:"Your most frequent task?",opts:[
+        {{t:"Quick, simple answers",v:"haiku"}},
+        {{t:"Varied everyday work",v:"sonnet"}},
+        {{t:"Complex, difficult reasoning",v:"opus"}}]}}
+    ];
+    var MODELS={{
+      haiku:{{n:"Haiku",w:"the fastest, perfect for short answers and simple tasks."}},
+      sonnet:{{n:"Sonnet",w:"the ideal balance and the everyday choice: start here."}},
+      opus:{{n:"Opus",w:"the most capable, for complex reasoning and long agentic work."}}
+    }};
+    var ans=[];
+    var quiz=document.getElementById("quiz");
+    if(!quiz)return;
+    function planFor(use,freq){{
+      if(freq==="team")return{{name:"Team or Enterprise",
+        why:"For groups and companies: administration, SSO, security and centralized management."}};
+      var needsPaid=(use!=="chat");
+      if(freq==="heavy")return{{name:"Max",
+        why:"Heavy use: Max raises the usage limits well beyond Pro, with the same products."}};
+      if(freq==="prova"&&!needsPaid)return{{name:"Free",
+        why:"To get started with chat, web search and file creation. Note: Code, Cowork and Design require at least Pro."}};
+      return{{name:"Pro",why:needsPaid
+        ?"It's the watershed: it unlocks Claude Code, Cowork and Design, which Free doesn't include."
+        :"For everyday use: unlimited Projects, more models and all the products."}};
+    }}
+    function render(i){{
+      if(i>=QUESTIONS.length){{result();return;}}
+      var q=QUESTIONS[i],dots="";
+      for(var d=0;d<QUESTIONS.length;d++)dots+='<i class="'+(d<=i?"on":"")+'"></i>';
+      var opts=q.opts.map(function(o){{
+        return '<button class="opt" data-v="'+o.v+'">'+o.t+'</button>';}}).join("");
+      quiz.innerHTML='<div class="q-step"><p class="qn">'+q.qn+'</p><h3>'+q.h+
+        '</h3><div class="opts">'+opts+'</div></div><div class="progress">'+dots+'</div>';
+      Array.prototype.forEach.call(quiz.querySelectorAll(".opt"),function(b){{
+        b.addEventListener("click",function(){{ans[i]=b.getAttribute("data-v");render(i+1);}});
+      }});
+    }}
+    function result(){{
+      var p=planFor(ans[0],ans[1]),m=MODELS[ans[2]]||MODELS.sonnet;
+      var share="I found my Claude setup: "+p.name+" plan + "+m.n+
+        " model. What's yours? "+location.href.split("#")[0];
+      quiz.innerHTML=
+        '<div class="result"><p class="pick">Our suggestion for you</p>'+
+        '<p class="big">Plan <b>'+p.name+'</b> · model <b>'+m.n+'</b></p>'+
+        '<p class="why">'+p.why+' About the model: '+m.w+'</p><div class="row">'+
+        '<a class="btn btn-primary" href="capitoli/F-3-modelli-e-piani.html">'+
+        'Read more in ch. F.3 →</a>'+
+        '<a class="sbtn" target="_blank" rel="noopener" '+
+        'href="https://twitter.com/intent/tweet?text='+encodeURIComponent(share)+'">'+
+        '<svg><use href="#i-x"/></svg> Share the result</a></div>'+
+        '<button class="restart" id="quiz-restart" type="button">Start over</button></div>';
+      var r=document.getElementById("quiz-restart");
+      if(r)r.addEventListener("click",function(){{ans=[];render(0);}});
+    }}
+    render(0);
   }})();
 </script>
 </body>

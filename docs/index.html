@@ -135,6 +135,7 @@
   .meta{margin:20px 0 0; font-size:14px; color:var(--muted)}
   .cover-shot{justify-self:center}
   .cover-shot img{width:300px; max-width:78vw; border-radius:12px;
+    background:#FAF9F5; aspect-ratio:300/426;
     border:1px solid var(--border);
     box-shadow:0 24px 48px var(--cover-shadow), 0 4px 12px rgba(0,0,0,.10)}
 
@@ -350,7 +351,8 @@
              Vedi su GitHub</a>
         </div>
         <p class="meta">PDF · A5 · 155 pagine · 33 capitoli · gratuito, nessuna
-          registrazione</p>
+          registrazione · <a href="changelog.html">aggiornato al 2 luglio
+          2026</a></p>
       </div>
       <div class="cover-shot">
         <img src="cover.png" width="300" height="426" alt="Copertina di Claude: la guida completa" fetchpriority="high" decoding="async">
@@ -669,7 +671,10 @@
         .then(function(r){ return r.ok ? r.json() : null; })
         .then(function(d){ if(d && typeof d.stargazers_count === "number"){
           var e = document.getElementById("gh-stars");
-          if(e) e.textContent = "· ★ " + d.stargazers_count; } });
+          // Hide the counter below a threshold: a tiny number is
+          // negative social proof, the plain button works better.
+          if(e && d.stargazers_count >= 25)
+            e.textContent = "· ★ " + d.stargazers_count; } });
     }catch(e){}
   })();
 </script>
