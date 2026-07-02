@@ -1,7 +1,7 @@
 # F.3 — Modelli e piani
 
 > Front matter — Livello 0.
-> Dati di prodotto verificati il 27/06/2026 su fonti ufficiali.
+> Dati di prodotto verificati il 02/07/2026 su fonti ufficiali.
 
 ## Obiettivo
 
@@ -20,22 +20,27 @@ Tabella F.3.1 — Le famiglie e la versione corrente.
 | Famiglia | Versione | Quando usarla |
 |---|---|---|
 | Opus | 4.8 | ragionamento complesso |
-| Sonnet | 4.6 | uso quotidiano |
+| Sonnet | 5 | uso quotidiano |
 | Haiku | 4.5 | risposte rapide |
 
 In breve: **Opus** è il più capace, adatto a compiti difficili e al lavoro
 agentico lungo; **Sonnet** è l'equilibrio ideale tra resa e velocità, la scelta
-"tutti i giorni"; **Haiku** è il più rapido, perfetto per risposte brevi e task
-semplici.
+"tutti i giorni" (ed è il modello proposto di default sui piani Free e Pro);
+**Haiku** è il più rapido, perfetto per risposte brevi e task semplici.
 
 Sopra Opus c'è una classe di modelli più potenti (i "Mythos"), pensata per il
 ragionamento e il lavoro agentico più estremi: **Fable 5** (versione resa
 disponibile più ampiamente) e **Mythos 5** (ad accesso ristretto). La loro
-disponibilità è però molto instabile: lanciati a giugno 2026, sono stati poi
-**sospesi** per una direttiva governativa e, al momento di questa revisione, non
-risultano riattivati. Sono un buon esempio del perché conviene ragionare per
-famiglie e non legarsi a un modello: per lo stato corrente fai riferimento al
-repo companion e alle fonti ufficiali.
+storia recente spiega da sola perché in questo libro ragioniamo per famiglie:
+lanciati a giugno 2026, sono stati **sospesi dopo tre giorni** per una
+direttiva governativa, poi **riattivati** tre settimane dopo, alla revoca
+della direttiva. E il rientro ha condizioni sue: Fable 5 è incluso nei piani a
+pagamento solo in parte e per un periodo limitato, dopodiché si usa tramite
+crediti d'uso (cap. L6.4); ha protezioni più strette degli altri modelli, che
+a volte bloccano richieste legittime; e i suoi dati seguono regole di
+conservazione diverse. Morale: i modelli di punta vanno e vengono, e ognuno
+arriva con le proprie regole. Per lo stato corrente fai riferimento al repo
+companion e alle fonti ufficiali.
 
 > **Attenzione:** nomi, stringhe e perfino la *disponibilità* dei modelli cambiano
 > di frequente. Non memorizzare un modello come "quello giusto per sempre":

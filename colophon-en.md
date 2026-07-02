@@ -1,6 +1,6 @@
 # Legal notes
 
-**Claude: the complete guide** — 2026 Edition · Rev. 2 · June 2026
+**Claude: the complete guide** — 2026 Edition · Rev. 3 · July 2026
 
 An **independent, unofficial** publication. This book is not produced,
 authorized, sponsored, endorsed or otherwise connected with Anthropic PBC or its

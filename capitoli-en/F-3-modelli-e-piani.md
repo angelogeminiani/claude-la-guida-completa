@@ -1,7 +1,7 @@
 # F.3 — Models and plans
 
 > Front matter — Level 0.
-> Product details verified on 27/06/2026 against official sources.
+> Product details verified on 02/07/2026 against official sources.
 
 ## Goal
 
@@ -21,22 +21,26 @@ Table F.3.1 — The families and the current version.
 | Family | Version | When to use it |
 |---|---|---|
 | Opus | 4.8 | complex reasoning |
-| Sonnet | 4.6 | everyday use |
+| Sonnet | 5 | everyday use |
 | Haiku | 4.5 | quick answers |
 
 In short: **Opus** is the most capable, suited to difficult tasks and long
 agentic work; **Sonnet** is the ideal balance between output and speed, the
-"everyday" choice; **Haiku** is the fastest, perfect for short answers and
-simple tasks.
+"everyday" choice (and the model proposed by default on the Free and Pro
+plans); **Haiku** is the fastest, perfect for short answers and simple tasks.
 
 Above Opus there's a class of more powerful models (the "Mythos"), designed for
 the most extreme reasoning and agentic work: **Fable 5** (a version made more
-widely available) and **Mythos 5** (with restricted access). Their availability,
-however, is very unstable: launched in June 2026, they were then **suspended**
-due to a government directive and, at the time of this revision, do not appear to
-have been reactivated. They are a good example of why it's worth thinking in
-terms of families and not tying yourself to a single model: for the current
-status, refer to the companion repo and the official sources.
+widely available) and **Mythos 5** (with restricted access). Their recent
+history alone explains why this book thinks in terms of families: launched in
+June 2026, they were **suspended after three days** by a government directive,
+then **reactivated** three weeks later, when the directive was lifted. And the
+return came with its own conditions: Fable 5 is included in paid plans only in
+part and for a limited period, after which you use it through usage credits
+(ch. L6.4); it has stricter safeguards than the other models, which sometimes
+block legitimate requests; and its data follows different retention rules. The
+moral: flagship models come and go, and each arrives with its own rules. For
+the current status, refer to the companion repo and the official sources.
 
 > **Warning:** the names, strings and even the *availability* of the models
 > change frequently. Don't memorize a model as "the right one forever": verify

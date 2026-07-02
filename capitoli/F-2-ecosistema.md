@@ -1,7 +1,7 @@
 # F.2 — L'ecosistema Claude
 
 > Front matter — Livello 0.
-> Dati di prodotto verificati il 27/06/2026 su fonti ufficiali.
+> Dati di prodotto verificati il 02/07/2026 su fonti ufficiali.
 
 ## Obiettivo
 
@@ -53,6 +53,13 @@ SDK e Console. Serve a chi integra Claude nei propri software. È pay-as-you-go.
 
 **Add-in e browser.** Claude vive anche dentro Excel/Word/PowerPoint (beta) e
 come estensione per Chrome che agisce sulle pagine web (beta, a pagamento).
+
+**I più recenti (beta).** L'ecosistema continua a crescere. **@Claude (Claude
+Tag)** porta Claude dentro Slack come un membro del team: chiunque nel canale
+lo tagga e gli delega un compito (Team/Enterprise). **Claude Science** è un
+workbench (banco di lavoro) per la ricerca scientifica, con decine di database
+e toolkit integrati; è anche il primo prodotto desktop disponibile su Linux
+oltre che su macOS (piani a pagamento). Sono in beta: aspettati cambiamenti.
 
 ## Quando usare cosa (EVERGREEN)
 

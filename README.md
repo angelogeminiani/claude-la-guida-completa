@@ -1,7 +1,7 @@
 # Claude: la guida completa (repo companion)
 
-> **Edizione 2026 · Rev. 2 · Giugno 2026** — dati di prodotto volatili
-> verificati al 27/06/2026 (vedi il ledger dei fatti e le note datate nei capitoli).
+> **Edizione 2026 · Rev. 3 · Luglio 2026** — dati di prodotto volatili
+> verificati al 02/07/2026 (vedi il ledger dei fatti e le note datate nei capitoli).
 
 Materiali di supporto al libro **"Claude: la guida completa"**, manuale in
 italiano in formato A5 dedicato all'ecosistema Claude: dai fondamenti

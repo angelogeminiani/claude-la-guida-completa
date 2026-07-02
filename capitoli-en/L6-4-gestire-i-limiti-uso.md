@@ -1,7 +1,7 @@
 # Chapter L6.4 — Managing usage limits
 
 > Level 6 — Advanced.
-> Product details verified on 27/06/2026 against official sources.
+> Product details verified on 02/07/2026 against official sources.
 
 ## Goal
 
@@ -40,12 +40,13 @@ They're not separate budgets.
 
 ## The context window (VOLATILE)
 
-In chat, on paid plans, the context window is **500K tokens** for the flagship
-models (Opus 4.6/4.7/4.8 and Sonnet 4.6) and **200K** for the others. In **Claude
-Code** the flagship models go up to **1M tokens**: on Pro, for the million, you
-need to enable usage credits. You can't enlarge it at will, but you can use it
-better: that's where the difference is decided between a chat that holds up and one
-that saturates.
+In chat, on paid plans, the context window goes up to **1M tokens** with
+Sonnet 5 (the first model to offer it in chat), is **500K** for the other
+flagship models (Opus 4.6/4.7/4.8 and Sonnet 4.6) and **200K** for the rest. In
+**Claude Code** the flagship models go up to **1M tokens**: on Pro, for the
+million with Opus, you need to enable usage credits. You can't enlarge it at
+will, but you can use it better: that's where the difference is decided between
+a chat that holds up and one that saturates.
 
 ## Cheaper tasks: cutting consumption (EVERGREEN)
 
@@ -68,6 +69,11 @@ When you hit a limit, the move depends on which one:
   **usage credits** (on paid plans) to continue right away.
 - **Length limit (chat too long):** open a **new conversation**, or move the
   material into a **Project** to work on it more efficiently.
+
+> **Note:** usage credits aren't just for "at the limit": some flagship models
+> are used *mostly* this way. When Fable 5 returned (July 2026), for example,
+> the model was included in paid plans only in part and for a few days; once
+> that period ended, access remained via usage credits only. (VOLATILE)
 
 > **Tip:** if you're in a long chat and near the usage limit, it's often worth
 > starting over in a new chat: you restart with the essential context instead of
@@ -97,8 +103,9 @@ When you hit a limit, the move depends on which one:
    is (context window).
 2. Consumption depends on length, features, **model**, and **effort**; all surfaces
    count against the **same** usage.
-3. Context window in chat: **500K** for flagship models, **200K** for the others;
-   in Claude Code up to **1M** (with usage credits on Pro).
+3. Context window in chat: up to **1M** (Sonnet 5), **500K** for the other
+   flagship models, **200K** for the rest; in Claude Code up to **1M** (with
+   usage credits on Pro for Opus).
 4. Cut consumption with Projects, short instructions, fewer active tools, lower
    effort.
 5. At the limit: reset/upgrade/**credits** for usage; **new chat**/Project for
@@ -111,6 +118,6 @@ organization: governance, roles, data, and when not to use a personal account.
 
 ---
 
-*Data on usage/length limit and context window verified on 27/06/2026 against
+*Data on usage/length limit and context window verified on 02/07/2026 against
 support.claude.com/en/articles/11647753 and /articles/8606394. Values subject to
 change: see the ledger and the official sources for updates.*

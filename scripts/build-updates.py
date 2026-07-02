@@ -21,6 +21,31 @@ REPO = "https://github.com/angelogeminiani/claude-la-guida-completa"
 #  data — newest entry first; each entry has Italian and English text
 # -----------------------------------------------------------------------------------------------------------------
 ENTRIES = [
+    {"version": "Rev. 3", "date": "2026-07-02",
+     "title_it": "Rientro di Fable 5, Sonnet 5 e nuovi prodotti",
+     "title_en": "Fable 5 is back, Sonnet 5 and new products",
+     "points_it": [
+         "Modelli: Fable 5 e Mythos 5 sono rientrati il 01/07/2026 (direttiva "
+         "revocata il 30/06). Fable 5 incluso nei piani a pagamento fino al "
+         "50% dei limiti settimanali solo fino al 07/07, poi via usage "
+         "credits; safeguard rafforzate.",
+         "Nuovo Sonnet 5: modello default su Free e Pro, context window 1M "
+         "anche in chat, prezzo introduttivo API fino al 31/08/2026.",
+         "Ecosistema: arrivano Claude Science (ricerca scientifica, beta "
+         "macOS/Linux) e @Claude / Claude Tag (Claude taggabile in Slack, "
+         "beta Team/Enterprise).",
+         "Aggiornati i capitoli F.2, F.3 e L6.4 e il ledger dei fatti."],
+     "points_en": [
+         "Models: Fable 5 and Mythos 5 returned on 2026-07-01 (the directive "
+         "was lifted on 06-30). Fable 5 is included in paid plans up to 50% "
+         "of weekly limits only through 07-07, then via usage credits; "
+         "strengthened safeguards.",
+         "New Sonnet 5: default model on Free and Pro, 1M context window in "
+         "chat too, introductory API pricing through 2026-08-31.",
+         "Ecosystem: Claude Science arrives (scientific research, beta on "
+         "macOS/Linux) along with @Claude / Claude Tag (tag Claude in Slack, "
+         "beta for Team/Enterprise).",
+         "Chapters F.2, F.3 and L6.4 updated, along with the facts ledger."]},
     {"version": "Rev. 2", "date": "2026-06-27",
      "title_it": "Dati volatili aggiornati e nuovo sito",
      "title_en": "Volatile data updated and a new site",

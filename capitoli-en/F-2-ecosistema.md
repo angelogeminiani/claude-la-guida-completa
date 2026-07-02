@@ -1,7 +1,7 @@
 # F.2 — The Claude ecosystem
 
 > Front matter — Level 0.
-> Product details verified on 27/06/2026 against official sources.
+> Product details verified on 02/07/2026 against official sources.
 
 ## Goal
 
@@ -55,6 +55,13 @@ pay-as-you-go.
 
 **Add-in and browser.** Claude also lives inside Excel/Word/PowerPoint (beta)
 and as a Chrome extension that acts on web pages (beta, paid).
+
+**The newest arrivals (beta).** The ecosystem keeps growing. **@Claude (Claude
+Tag)** brings Claude into Slack as a team member: anyone in the channel can tag
+it and delegate a task to it (Team/Enterprise). **Claude Science** is a
+workbench for scientific research, with dozens of integrated databases and
+toolkits; it's also the first desktop product available on Linux as well as
+macOS (paid plans). Both are in beta: expect changes.
 
 ## When to use what (EVERGREEN)
 
